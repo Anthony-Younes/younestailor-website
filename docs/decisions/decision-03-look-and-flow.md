@@ -1,5 +1,5 @@
 # Decision 03 — Look and flow: "the thread" (Home pilot)
-Date 2026-10-25 · GPT: approve (round 2) · Owner: APPROVED 2026-10-25 (owner instruction to the builder: "owner approved", Home pilot)
+Date 2026-10-25 · GPT: approve (round 2) · Owner: APPROVED (owner instruction to the builder, 26 Oct 2026: Home pilot with home-copy.md)
 
 Amends Decision 02: the site is no longer dark-only (cream ground allowed) and Decision 02's layout patterns are replaced by this one. Structure (Decision 01), facts, copy meaning, CTA wording, SEO and the round-1 fixes are unchanged.
 

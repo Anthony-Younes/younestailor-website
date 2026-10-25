@@ -1,6 +1,20 @@
 // Page copy for Launch 1 (Decision 01 + 02). 8 pages x 3 languages.
 // Section types are rendered by build.mjs. Plain text only: the renderer escapes it.
 
+import { HOME } from './content-home.mjs';
+
+// Home: page entry built from the approved Home text.
+function homePage(lang) {
+  const h = HOME[lang];
+  return {
+    title: h.title, description: h.description, ctaLabel: h.cta, home: h,
+    sections: [
+      { t: 'hero', h1: h.h1, lede: h.lede },
+      { t: 'faq', items: h.faq },
+    ],
+  };
+}
+
 export const PATHS = {
   home:        { en: '/', ar: '/ar/', fr: '/fr/' },
   services:    { en: '/services/', ar: '/ar/services/', fr: '/fr/services/' },
@@ -44,141 +58,8 @@ export const ALT = {
 
 export const PAGES = {
   // ───────────────────────────────── HOME
-  home: {
-    cta: 'general',
-    en: {
-      title: 'Younes Tailor — Tailoring and embroidery in Blat, Byblos',
-      description: 'Alterations, repairs and embroidery in Blat, Byblos. Hems, zips and linings by hand; names and logos stitched in-house. No minimum order. Mon–Sat 09:00–19:00.',
-      ctaLabel: 'Tell us what you need',
-      pilot: {
-        em: ['Tailoring', 'embroidery'],
-        marquee: ['hems', 'zips', 'linings', 'names', 'logos', 'caps', 'towels'],
-        marqueeLabel: 'What we work on', marqueeWhat: 'the moving words',
-        stitchOnTitle: 'What we stitch on', stitchOn: ['Tees', 'Hoodies', 'Caps', 'Towels', 'Uniforms', 'Bags'],
-        tailoringLine: 'Clothes you already own, made to fit and last: hems, take-ins, zips, linings and wedding fittings.',
-        embroideryLine: 'Names, initials, text and logos, stitched in the shop. Bring your own item, or choose one of ours.',
-        tailoringBtn: 'Tailoring', embroideryBtn: 'Embroidery',
-        tailoringMore: 'See tailoring services', embroideryMore: 'See embroidery',
-        visitH2: 'The shop in Blat, Byblos', visitMore: 'Hours and map',
-      },
-      sections: [
-        { t: 'hero', eyebrow: 'Younes Tailor', h1: 'Tailoring and embroidery in Blat, Byblos',
-          lede: 'Alterations and repairs, done by hand. Names, initials and logos, embroidered in the shop. Walk in, or message us first.',
-          buttons: [{ label: 'Tailoring', href: 'services#tailoring', kind: 'branch', icon: 'scissors' }, { label: 'Embroidery', href: 'embroidery', kind: 'branch', icon: 'needle' }],
-          image: 'lockstitch', status: true },
-        { t: 'groups', id: 'services', eyebrow: 'What we do', h2: 'Two kinds of work, one shop',
-          groups: [
-            { id: 'tailoring', title: 'Tailoring', intro: 'Clothes you already own, made to fit and last.', cards: [
-              { key: 'alterations', text: 'Hems, take-ins, tapering, sleeve and trouser length. Checked on you, not on a hanger.' },
-              { key: 'repairs', text: 'Zips, seams, linings and moth holes, plus careful work on older and inherited pieces.' },
-            ] },
-            { id: 'embroidery', title: 'Embroidery', intro: 'Names, initials, text and logos, stitched in the shop.', cards: [
-              { key: 'embroidery', text: 'Tees, hoodies, caps, towels and more. Bring your own item or we supply the blank. Single pieces welcome.' },
-              { key: 'uniforms', text: 'Logos for schools, clubs, restaurants and companies. Mixed sizes, no minimum order.' },
-            ] },
-          ] },
-        { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
-        { t: 'process', which: 'embroidery', media: { video: 1 }, trio: true },
-        { t: 'visit' },
-        { t: 'faq', eyebrow: 'Questions', h2: 'Before you come in', items: [
-          ['Do I need an appointment?', 'No. Walk in during opening hours. For a wedding outfit or a larger job, message us first so we can set time aside.'],
-          ['How long do alterations take?', 'Most alterations are ready in 2–3 days. Ask when you drop the garment off and we will give you a date.'],
-          ['Do you make clothes from scratch?', 'Not on the tailoring side: we alter and repair clothes you already own. For embroidery we can supply the blank, including tees, hoodies, sweaters, caps, towels and uniforms.'],
-          ['Is there a minimum order for embroidery?', 'No. One cap or one towel is fine.'],
-          ['What languages do you speak?', 'Arabic, French and English.'],
-          ['Where is the shop?', 'In Blat, a few minutes from Byblos old town. The map and directions are on the Visit page.'],
-        ] },
-      ],
-    },
-    fr: {
-      title: 'Younes Tailor — Couture et broderie à Blat, Byblos',
-      description: 'Retouches, réparations et broderie à Blat, Byblos. Ourlets, fermetures et doublures à la main ; noms et logos brodés sur place. Pas de minimum. Lun–sam 09:00–19:00.',
-      ctaLabel: 'Dites-nous ce qu’il vous faut',
-      pilot: {
-        em: ['Couture', 'broderie'],
-        marquee: ['ourlets', 'fermetures', 'doublures', 'prénoms', 'logos', 'casquettes', 'serviettes'],
-        marqueeLabel: 'Ce que nous faisons', marqueeWhat: 'le texte qui défile',
-        stitchOnTitle: 'Sur quoi on brode', stitchOn: ['T-shirts', 'Sweats à capuche', 'Casquettes', 'Serviettes', 'Uniformes', 'Sacs'],
-        tailoringLine: 'Vos vêtements, ajustés et faits pour durer : ourlets, reprises, fermetures, doublures et essayages de mariage.',
-        embroideryLine: 'Noms, initiales, textes et logos, brodés à l’atelier. Apportez votre article ou choisissez un article fourni par l’atelier.',
-        tailoringBtn: 'Couture', embroideryBtn: 'Broderie',
-        tailoringMore: 'Voir les services de couture', embroideryMore: 'Voir la broderie',
-        visitH2: 'L’atelier à Blat, Byblos', visitMore: 'Horaires et plan',
-      },
-      sections: [
-        { t: 'hero', eyebrow: 'Younes Tailor', h1: 'Couture et broderie à Blat, Byblos',
-          lede: 'Retouches et réparations, faites à la main. Noms, initiales et logos, brodés à l’atelier. Passez directement, ou écrivez-nous avant.',
-          buttons: [{ label: 'Couture', href: 'services#tailoring', kind: 'branch', icon: 'scissors' }, { label: 'Broderie', href: 'embroidery', kind: 'branch', icon: 'needle' }],
-          image: 'lockstitch', status: true },
-        { t: 'groups', id: 'services', eyebrow: 'Nos métiers', h2: 'Deux métiers, un seul atelier',
-          groups: [
-            { id: 'tailoring', title: 'Couture', intro: 'Vos vêtements, ajustés et faits pour durer.', cards: [
-              { key: 'alterations', text: 'Ourlets, reprises, ajustements, longueur de manches et de pantalons. Vérifié sur vous, pas sur un cintre.' },
-              { key: 'repairs', text: 'Fermetures, coutures, doublures, trous de mites, et un travail soigné sur les pièces anciennes ou héritées.' },
-            ] },
-            { id: 'embroidery', title: 'Broderie', intro: 'Noms, initiales, textes et logos, brodés à l’atelier.', cards: [
-              { key: 'embroidery', text: 'T-shirts, sweats, casquettes, serviettes et plus. Apportez votre article ou choisissez un article fourni par l’atelier. À partir d’une pièce.' },
-              { key: 'uniforms', text: 'Logos pour écoles, clubs, restaurants et entreprises. Tailles mélangées, sans minimum de commande.' },
-            ] },
-          ] },
-        { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
-        { t: 'process', which: 'embroidery', media: { video: 1 }, trio: true },
-        { t: 'visit' },
-        { t: 'faq', eyebrow: 'Questions', h2: 'Avant de passer', items: [
-          ['Faut-il un rendez-vous ?', 'Non. Passez pendant les heures d’ouverture. Pour une tenue de mariage ou un travail plus important, écrivez-nous avant pour qu’on vous réserve du temps.'],
-          ['Combien de temps prend une retouche ?', 'La plupart des retouches sont prêtes en 2 à 3 jours. Demandez au moment du dépôt et on vous donne une date.'],
-          ['Faites-vous des vêtements sur mesure ?', 'Pas en couture : nous retouchons et réparons les vêtements que vous avez déjà. En broderie, l’atelier peut fournir l’article : t-shirts, sweats, pulls, casquettes, serviettes et uniformes.'],
-          ['Y a-t-il un minimum de commande en broderie ?', 'Non. Une casquette ou une serviette suffit.'],
-          ['Quelles langues parlez-vous ?', 'Arabe, français et anglais.'],
-          ['Où se trouve l’atelier ?', 'À Blat, à quelques minutes du vieux Byblos. Plan et itinéraire sur la page Nous trouver.'],
-        ] },
-      ],
-    },
-    ar: {
-      title: 'خياطة يونس — خياطة وتطريز في بلاط، جبيل',
-      description: 'تعديل وتصليح ملابس وتطريز في بلاط، جبيل. تقصير وسحّابات وبطانات بشغل يد، وأسماء وشعارات نطرّزها في المحل. لا حدّ أدنى للطلب. الاثنين–السبت 09:00–19:00.',
-      ctaLabel: 'أخبرونا بما تحتاجونه',
-      pilot: {
-        em: [],
-        marquee: ['تقصير', 'سحّابات', 'بطانات', 'أسماء', 'شعارات', 'قبّعات', 'مناشف'],
-        marqueeLabel: 'ما نعمله', marqueeWhat: 'النص المتحرّك',
-        stitchOnTitle: 'على ماذا نطرّز', stitchOn: ['تي شيرت', 'هودي', 'قبّعات', 'مناشف', 'زيّ موحّد', 'حقائب'],
-        tailoringLine: 'ملابسكم نفسها، على قياسكم وتدوم أكثر: تقصير وتضييق وسحّابات وبطانات وقياسات أعراس.',
-        embroideryLine: 'أسماء وأحرف أولى ونصوص وشعارات نطرّزها في المحل. أحضروا قطعتكم، أو نؤمّنها لكم.',
-        tailoringBtn: 'الخياطة', embroideryBtn: 'التطريز',
-        tailoringMore: 'خدمات الخياطة', embroideryMore: 'خدمات التطريز',
-        visitH2: 'المحل في بلاط، جبيل', visitMore: 'الساعات والخريطة',
-      },
-      sections: [
-        { t: 'hero', eyebrow: 'خياطة يونس', h1: 'خياطة وتطريز في بلاط، جبيل',
-          lede: 'تعديل وتصليح بشغل اليد. أسماء وأحرف أولى وشعارات نطرّزها في المحل. تفضّلوا مباشرة، أو راسلونا قبلها.',
-          buttons: [{ label: 'الخياطة', href: 'services#tailoring', kind: 'branch', icon: 'scissors' }, { label: 'التطريز', href: 'embroidery', kind: 'branch', icon: 'needle' }],
-          image: 'lockstitch', status: true },
-        { t: 'groups', id: 'services', eyebrow: 'ما نعمله', h2: 'نوعان من العمل في محل واحد',
-          groups: [
-            { id: 'tailoring', title: 'الخياطة', intro: 'ملابسكم نفسها، على قياسكم وتدوم أكثر.', cards: [
-              { key: 'alterations', text: 'تقصير، تضييق، تعديل القَصّة وطول الأكمام والبنطلون. نتأكّد منها عليكم، لا على العلّاقة.' },
-              { key: 'repairs', text: 'سحّابات، خياطات، بطانات وثقوب العثّ، وعناية خاصة بالقطع القديمة والموروثة.' },
-            ] },
-            { id: 'embroidery', title: 'التطريز', intro: 'أسماء وأحرف أولى ونصوص وشعارات، نطرّزها في المحل.', cards: [
-              { key: 'embroidery', text: 'تي شيرت، هودي، قبّعات، مناشف وغيرها. أحضروا قطعتكم أو نؤمّنها لكم. القطعة الواحدة مرحّب بها.' },
-              { key: 'uniforms', text: 'شعارات للمدارس والنوادي والمطاعم والشركات. مقاسات مختلفة، بلا حدّ أدنى للطلب.' },
-            ] },
-          ] },
-        { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
-        { t: 'process', which: 'embroidery', media: { video: 1 }, trio: true },
-        { t: 'visit' },
-        { t: 'faq', eyebrow: 'أسئلة', h2: 'قبل أن تزورونا', items: [
-          ['هل أحتاج إلى موعد؟', 'لا. تفضّلوا خلال ساعات العمل. لثوب عرس أو عمل أكبر، راسلونا قبلها لنخصّص لكم وقتاً.'],
-          ['كم يستغرق التعديل؟', 'أغلب التعديلات تجهز خلال 2–3 أيام. اسألوا عند التسليم ونعطيكم موعداً.'],
-          ['هل تفصّلون ملابس جديدة؟', 'ليس في قسم الخياطة: نعدّل ونصلّح ملابس تملكونها. أما للتطريز فيمكننا تأمين القطعة: تي شيرت، هودي، كنزات، قبّعات، مناشف وزيّ موحّد.'],
-          ['هل هناك حدّ أدنى لطلبات التطريز؟', 'لا. قبّعة واحدة أو منشفة واحدة تكفي.'],
-          ['ما اللغات التي تتكلّمونها؟', 'العربية والفرنسية والإنكليزية.'],
-          ['أين يقع المحل؟', 'في بلاط، على بعد دقائق من جبيل القديمة. الخريطة والاتجاهات على صفحة زورونا.'],
-        ] },
-      ],
-    },
-  },
+  // Text lives in content-home.mjs (verbatim from docs/decisions/home-copy.md).
+  home: { cta: 'general', en: homePage('en'), ar: homePage('ar'), fr: homePage('fr') },
 
   // ───────────────────────────────── SERVICES OVERVIEW
   services: {

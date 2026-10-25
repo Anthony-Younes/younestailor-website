@@ -48,14 +48,14 @@ function poster(n, lang, { eager = false } = {}) {
   const load = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
   return `<img src="/assets/media/machine-${two(n)}-poster.webp" alt="${esc(ALT.machine[lang])}" width="720" height="1280" ${load} decoding="async">`;
 }
-function video(n, lang, posterSrc) {
+function video(n, lang, posterSrc, opts = {}) {
   const u = UI[lang];
   return `<figure class="media media--video">
 <div class="frame frame--video">
 <video data-video muted playsinline loop controls preload="none" width="720" height="1280" poster="${posterSrc || `/assets/media/machine-${two(n)}-poster.webp`}" aria-label="${esc(u.video.caption)}"><source src="/assets/media/machine-${two(n)}.mp4" type="video/mp4"></video>
 <button class="video-toggle" type="button" data-video-toggle data-label-pause="${esc(u.video.pause)}" data-label-play="${esc(u.video.play)}" hidden>${icon('pause', 'i-pause')}${icon('play', 'i-play')}<span>${esc(u.video.pause)}</span></button>
 </div>
-<figcaption>${esc(u.video.caption)}</figcaption>
+${opts.caption === false ? '' : `<figcaption>${esc(u.video.caption)}</figcaption>`}
 </figure>`;
 }
 function stillFigure(spec, lang, eager) {
@@ -109,12 +109,13 @@ ${ctaButton(page, lang, 'btn btn--primary btn--block')}
 </header>`;
 }
 
-function stickyBar(lang) {
+function stickyBar(lang, labels) {
   const u = UI[lang];
+  const [lWa, lCall, lDir] = labels || [u.sticky.wa, u.sticky.call, u.sticky.directions];
   return `<nav class="sticky-bar" aria-label="${esc(u.form.direct)}" data-sticky>
-<a href="https://wa.me/${FACTS.wa}" rel="noopener">${icon('whatsapp-logo')}<span>${esc(u.sticky.wa)}</span></a>
-<a href="tel:${FACTS.phoneE164}">${icon('phone')}<span>${esc(u.sticky.call)}</span></a>
-<a href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(u.sticky.directions)}</span></a>
+<a href="https://wa.me/${FACTS.wa}" rel="noopener">${icon('whatsapp-logo')}<span>${esc(lWa)}</span></a>
+<a href="tel:${FACTS.phoneE164}">${icon('phone')}<span>${esc(lCall)}</span></a>
+<a href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(lDir)}</span></a>
 </nav>`;
 }
 
@@ -622,7 +623,7 @@ ${body}
 ${key === 'home' ? '' : sEnquire(key, lang, page)}
 </main>
 ${footer(key, lang)}
-${stickyBar(lang)}
+${stickyBar(lang, key === 'home' ? page.home.sticky : null)}
 </body>
 </html>
 `;

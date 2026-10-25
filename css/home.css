@@ -385,3 +385,25 @@ html[lang="ar"] .direct h3 { font-weight: 700; line-height: 1.5; }
 
 /* A closed <details> can still lay out its fixed panel off-screen in some browsers: hide it outright. */
 .menu:not([open]) .menu__panel { display: none; }
+
+/* ── home-copy.md layout additions ────────────────────────────── */
+.p-hero__hours { margin: 22px 0 0; color: var(--muted-navy); font-size: 16px; }
+/* hand-drawn note by the Embroidery button: decoration only (aria-hidden); the FAQ says it in text */
+.p-note { display: flex; align-items: flex-end; gap: 4px; justify-self: end; margin-top: -2px; pointer-events: none; color: var(--gold); }
+.p-note__text { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1; transform: rotate(-4deg); white-space: nowrap; }
+html[lang="ar"] .p-note__text { font-style: normal; font-weight: 700; font-size: 22px; line-height: 1.6; }
+.p-note__arrow { width: 44px; height: 30px; transform: scaleY(-1) rotate(20deg); }
+[dir="rtl"] .p-note__arrow { transform: scaleX(-1) scaleY(-1) rotate(20deg); }
+@media (min-width: 440px) { .p-note { grid-column: 2; } }
+.p-arrow--hero { display: none !important; }
+.p-panel__btn { margin: 18px 0 0; }
+.p-steps .p-step p { margin: 0; color: var(--ink-2); font-size: 18px; max-width: 34em; }
+.p-steps .p-step strong { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 3.2vw, 30px); color: var(--ink); }
+html[lang="ar"] .p-steps .p-step strong { font-weight: 700; }
+.p-panel--embroidery .p-steps .p-step p { color: var(--muted-navy); }
+.p-panel--embroidery .p-steps .p-step strong { color: var(--cream); }
+.p-faq { margin-top: 48px; max-width: 880px; }
+.contact-list li span { padding-top: 1px; }
+.form__rather { margin: 20px 0 0; font-size: 17px; }
+.form__rather a { font-weight: 600; text-decoration-color: var(--gold-text); }
+.enquire .narrow { max-width: 720px; }

@@ -81,7 +81,8 @@ for (const u of all) {
   let text = fullText;
   // Allowed: the exact address line (EN) and its FR form.
   text = text.split('Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon').join('')
-    .split('Blat, district de Jbeil (Byblos), Mont-Liban, Liban').join('');
+    .split('Blat, district de Jbeil (Byblos), Mont-Liban, Liban').join('')
+    .split('Blat, caza de Jbeil (Byblos), Mont-Liban, Liban').join(''); // FR address as written in home-copy.md
   if (/Jbeil/i.test(text)) fail(`${u}: "Jbeil" in running copy`);
   const meta = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
   const metaCheck = meta.replace('Blat, Jbeil (Byblos) District', '').replace('district de Jbeil (Byblos)', '');
@@ -194,6 +195,38 @@ for (const l of ['en', 'ar', 'fr']) {
 }
 for (const [k, b] of Object.entries(PATHS)) if (k !== 'home') for (const l of LANGS) { const h = read(fileFor(b[l])); if (h.includes('/css/home.css') || h.includes('home.js')) fail(`${b[l]}: pilot leaked outside Home`); }
 ok.push('Home pilot contrast (all ≥ 4.5:1):\n    ' + homeRows.join('\n    ') + '\n  Home body 17px (AR 18px); pilot CSS/JS loaded on the 3 Home pages only; other 21 pages unchanged in style');
+
+
+// Home copy: every cell of docs/decisions/home-copy.md must appear verbatim on the rendered Home page.
+{
+  const md = read('docs/decisions/home-copy.md').split(/\r?\n/);
+  const norm = (t) => t.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+  const pages = { 1: read('index.html'), 2: read('ar/index.html'), 3: read('fr/index.html') };
+  const vis = {}; const meta = {};
+  for (const [k, h] of Object.entries(pages)) {
+    vis[k] = norm(visibleText(h.slice(h.indexOf('<body')).replace(/<svg[\s\S]*?<\/svg>/g, ' ')));
+    meta[k] = { title: (h.match(/<title>([^<]*)<\/title>/) || [])[1], desc: (h.match(/<meta name="description" content="([^"]*)"/) || [])[1] };
+  }
+  const dec = (t) => t.replace(/&amp;/g, '&').replace(/&quot;/g, '"');
+  let cells = 0; const missing = [];
+  let facts = false;
+  for (const line of md) {
+    if (/^## Confirmed facts/.test(line)) facts = true; else if (/^## /.test(line)) facts = false;
+    if (facts || !/^\|/.test(line) || /^\|-/.test(line)) continue;
+    const c = line.split('|').slice(1, -1).map(norm);
+    if (c.length < 4 || /^(Element|Step)$/.test(c[0]) || (c[0] === '' && c[1] === 'English')) continue;
+    for (const k of [1, 2, 3]) {
+      const v = c[k]; if (!v) continue; cells++;
+      if (/Page title/.test(c[0])) { if (dec(meta[k].title) !== v) missing.push(`${k}: title`); continue; }
+      if (/Description/.test(c[0])) { if (dec(meta[k].desc) !== v) missing.push(`${k}: description`); continue; }
+      let parts = v.split(' · ').map((x) => x.replace(/\s*·$/, '').trim()).filter(Boolean);
+      if (/Field: service/.test(c[0])) { const m = parts[0].match(/^(.*?[?؟])\s*(.*)$/); parts = [m[1], m[2], ...parts.slice(1)]; }
+      for (const p of parts) if (!vis[k].includes(p)) missing.push(`${['', 'en', 'ar', 'fr'][k]}: "${p}"`);
+    }
+  }
+  if (missing.length) fail(`Home copy not verbatim: ${missing.slice(0, 12).join(' | ')}`);
+  ok.push(`Home copy: all ${cells} EN/AR/FR cells of home-copy.md found verbatim on the rendered Home pages (titles and descriptions compared exactly)`);
+}
 
 
 console.log('PASS:\n- ' + ok.join('\n- '));

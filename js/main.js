@@ -83,8 +83,10 @@
       var order = [];
       var add = function (label, value) {
         if (!value) return;
-        if (!groups[label]) { groups[label] = []; order.push(label); }
-        groups[label].push(value);
+        // Unlabelled choices (radio groups without a visible label) become their own line.
+        var key = label || ('#' + order.length);
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(value);
       };
       form.querySelectorAll('[data-label]').forEach(function (el) {
         if (el.disabled || el.closest('[disabled]')) return;
@@ -100,7 +102,12 @@
           add(label, el.value.trim());
         }
       });
-      order.forEach(function (label) { lines.push(label + ': ' + groups[label].join(form.getAttribute('data-sep') || ', ')); });
+      order.forEach(function (key) {
+        var vals = groups[key].join(form.getAttribute('data-sep') || ', ');
+        if (key.charAt(0) === '#') { lines.push(vals); return; }
+        // A label that already ends in ? or : (Latin or Arabic) needs no extra colon.
+        lines.push(key + (/[?:؟]\s*$/.test(key) ? ' ' : ': ') + vals);
+      });
       var wa = form.getAttribute('data-wa');
       var link = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(lines.join('\n'));
       // One navigation only: a new tab with noopener. window.open returns null with
