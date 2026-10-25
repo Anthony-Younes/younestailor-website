@@ -116,7 +116,7 @@
       if (v.dataset.userPaused === 'true') return;
       if (en.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
     });
-  }, { threshold: 0.5 }) : null;
+  }, { threshold: 0.25 }) : null;
 
   videos.forEach(function (v) {
     var btn = v.parentNode.querySelector('[data-video-toggle]');
