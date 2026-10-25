@@ -106,7 +106,7 @@
         var vals = groups[key].join(form.getAttribute('data-sep') || ', ');
         if (key.charAt(0) === '#') { lines.push(vals); return; }
         // A label that already ends in ? or : (Latin or Arabic) needs no extra colon.
-        lines.push(key + (/[?:؟]\s*$/.test(key) ? ' ' : ': ') + vals);
+        lines.push(key + (/[?:؟]\s*$/.test(key) ? ' ' : (form.getAttribute('data-colon') || ': ')) + vals);
       });
       var wa = form.getAttribute('data-wa');
       var link = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(lines.join('\n'));

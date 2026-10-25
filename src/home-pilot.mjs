@@ -130,7 +130,7 @@ function homeEnquire(lang, h, { esc, icon, FACTS }) {
 <div class="container narrow">
 <h2 id="enquire-h">${esc(h.formH)}</h2>
 <p>${esc(h.formIntro)}</p>
-<form class="form" data-enquiry data-wa="${FACTS.wa}" data-intro="${esc(UI_INTRO[lang])}" data-sep="${lang === 'ar' ? '، ' : ', '}" novalidate>
+<form class="form" data-enquiry data-wa="${FACTS.wa}" data-intro="${esc(UI_INTRO[lang])}" data-colon="${lang === 'fr' ? ' : ' : ': '}" data-sep="${lang === 'ar' ? '، ' : ', '}" novalidate>
 <div class="field">
 <label for="f-service">${esc(h.fService)}</label>
 <select id="f-service" name="service" data-label="${esc(clean(h.fService))}">
