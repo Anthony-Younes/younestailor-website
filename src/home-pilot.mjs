@@ -62,7 +62,7 @@ ${arrow('p-arrow--hero')}
 <div class="p-panel__copy">
 <h3 class="p-h3" data-thread-stop="loop">${esc(tGroup.title)}</h3>
 <p class="p-line">${esc(p.tailoringLine)}</p>
-<p><a class="p-btn p-btn--ink" href="${url('services', lang)}#tailoring">${esc(p.tailoringBtn)}${icon('arrow-right', 'i-arrow')}</a></p>
+<p><a class="p-btn p-btn--ink" href="${url('services', lang)}#tailoring">${esc(p.tailoringMore)}${icon('arrow-right', 'i-arrow')}</a></p>
 <ul class="p-pills">${pill('alterations')}${pill('repairs')}</ul>
 </div>
 </div>
@@ -78,7 +78,7 @@ ${stitch('p-stitch--top')}
 <div class="p-panel__copy">
 <h3 class="p-h3" data-thread-stop="loop">${esc(eGroup.title)}</h3>
 <p class="p-line">${esc(p.embroideryLine)}</p>
-<p><a class="p-btn p-btn--cream" href="${url('embroidery', lang)}">${esc(p.embroideryBtn)}${icon('arrow-right', 'i-arrow')}</a></p>
+<p><a class="p-btn p-btn--cream" href="${url('embroidery', lang)}">${esc(p.embroideryMore)}${icon('arrow-right', 'i-arrow')}</a></p>
 <ul class="p-pills p-pills--on-navy">${pill('embroidery')}${pill('uniforms')}</ul>
 ${trio(lang)}
 </div>
@@ -99,11 +99,11 @@ ${stitch('p-stitch--bottom')}
 <section class="p-visit" id="visit" aria-labelledby="visit-h">
 <div class="p-wrap p-visit__grid">
 <div>
-<h2 id="visit-h" class="p-h2" data-thread-stop="end">${esc(u.visitBlock.h2)}</h2>
+<h2 id="visit-h" class="p-h2" data-thread-stop="end">${esc(p.visitH2)}</h2>
 <p class="p-line">${esc(u.visitBlock.p)}</p>
 ${statusPill()}
 ${contactList(lang)}
-<p class="p-visit__actions"><a class="p-btn p-btn--ink" href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(u.visitBlock.directions)}</span></a><a class="p-btn p-btn--ghost" href="${url('visit', lang)}">${esc(u.visitBlock.more)}${icon('arrow-right', 'i-arrow')}</a></p>
+<p class="p-visit__actions"><a class="p-btn p-btn--ink" href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(u.visitBlock.directions)}</span></a><a class="p-btn p-btn--ghost" href="${url('visit', lang)}">${esc(p.visitMore)}${icon('arrow-right', 'i-arrow')}</a></p>
 ${arrow('p-arrow--visit')}
 </div>
 <div class="p-visit__side">
