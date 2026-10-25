@@ -1,5 +1,6 @@
 // Home page text — verbatim from docs/decisions/home-copy.md (owner approved 26 Oct 2026).
 // Do not edit wording here without updating that document first.
+// msg: labels of the pre-filled WhatsApp message (home-copy.md section 5 templates).
 
 export const HOME = {
   en: {
@@ -74,6 +75,7 @@ export const HOME = {
     send: 'Open WhatsApp',
     fallback: 'WhatsApp didn’t open?', fallbackLink: 'Open the chat',
     rather: 'Rather call?',
+    msg: { intro: 'Hello Younes Tailor', service: 'Service', item: 'Item', do: 'What to do', qty: 'How many', garment: 'Garment', design: 'Design', date: 'Needed by' },
   },
 
   ar: {
@@ -148,6 +150,7 @@ export const HOME = {
     send: 'افتحوا واتساب',
     fallback: 'لم يُفتح واتساب؟', fallbackLink: 'افتحوا المحادثة',
     rather: 'تفضّلون الاتّصال؟',
+    msg: { intro: 'مرحباً خياطة يونس', service: 'الخدمة', item: 'القطعة', do: 'المطلوب', qty: 'العدد', garment: 'القطعة الأساسية', design: 'التصميم', date: 'الموعد المطلوب' },
   },
 
   fr: {
@@ -222,5 +225,6 @@ export const HOME = {
     send: 'Ouvrir WhatsApp',
     fallback: 'WhatsApp ne s’est pas ouvert ?', fallbackLink: 'Ouvrir la discussion',
     rather: 'Vous préférez appeler ?',
+    msg: { intro: 'Bonjour Younes Tailor', service: 'Service', item: 'Article', do: 'À faire', qty: 'Quantité', garment: 'Article à broder', design: 'Visuel', date: 'Pour le' },
   },
 };

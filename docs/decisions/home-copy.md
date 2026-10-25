@@ -128,9 +128,43 @@ The form fills a WhatsApp message; the customer still presses Send.
 |Send button  |Open WhatsApp  |افتحوا واتساب  |Ouvrir WhatsApp  |
 |If it didn’t open  |WhatsApp didn’t open? Open the chat  |لم يُفتح واتساب؟ افتحوا المحادثة  |WhatsApp ne s’est pas ouvert ? Ouvrir la discussion  |
 |No form needed  |Rather call? +961 3 128 413  |تفضّلون الاتّصال؟ +961 3 128 413  |Vous préférez appeler ? +961 3 128 413  |
-**The WhatsApp message it fills** (lines left empty are skipped)
+**The WhatsApp message the form fills** (one line per field; lines the customer left empty are skipped; values are what the customer typed or picked)
 
+English:
+```
+Hello Younes Tailor
+Service: {service}
+Item: {item}
+What to do: {what to do}
+How many: {quantity}
+Garment: {I'll bring mine | Please supply it}
+Design: {I have a design | I need help with it}
+Needed by: {date}
 ```
 
+العربية:
 ```
-Arabic version starts with "مرحباً خياطة يونس", French with "Bonjour Younes Tailor", same labels as the form. The first line also tells you the enquiry came from the website.
+مرحباً خياطة يونس
+الخدمة: {service}
+القطعة: {item}
+المطلوب: {what to do}
+العدد: {quantity}
+القطعة الأساسية: {سأحضر قطعتي | أمّنوها لي}
+التصميم: {لديّ تصميم | أحتاج مساعدة فيه}
+الموعد المطلوب: {date}
+```
+
+Français :
+```
+Bonjour Younes Tailor
+Service : {service}
+Article : {item}
+À faire : {what to do}
+Quantité : {quantity}
+Article à broder : {J’apporte mon article | Article fourni par l’atelier}
+Visuel : {J’ai un visuel | J’ai besoin d’aide}
+Pour le : {date}
+```
+
+Example (English): Hello Younes Tailor / Service: Embroidery / Item: Hoodie / What to do: Name on the chest / How many: 5 / Garment: Please supply it / Design: I need help with it / Needed by: 12 Nov.
+*Builder: the first line is exactly "Hello Younes Tailor" / "مرحباً خياطة يونس" / "Bonjour Younes Tailor" in all three languages. Tailoring requests skip the quantity, garment and design lines.*

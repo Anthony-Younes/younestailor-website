@@ -21,7 +21,8 @@ If the Claude Design handoff says anything that conflicts with 1–3 — facts, 
 - Address line: **Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon**
 - Phone: **+961 3 128 413** · Email: **info@younestailor.com** · Instagram: @younestailormestita
 - Hours: **Mon–Sat 09:00–19:00, Sunday closed**
-- Parking: **available**. Payment: **cash only**.
+- Parking: **available**. Payment: **cash only**. Landmark: **near Best Buy Market**.
+- Arabic register: simple formal Arabic (فصحى مبسّطة) with a warm tone — no Lebanese dialect in site copy.
 - Location in running copy: say **Byblos** (not Jbeil). Arabic: جبيل. Keep Blat visible. Keep "Jbeil" only in the address line and structured data.
 - Embroidery: blanks supplied (tees, hoodies, sweaters, caps, towels, uniforms) or customer brings their own; caps stitched in-house; designs digitised in-house; **no minimum order**; **one all-in price, no separate design or digitising charge**; **preview before stitching on request**.
 - Never write prices, ratings, reviews, customer quotes or turnaround promises that aren't listed here. Speed lines ("most alterations in 2–3 days") at most once per page.

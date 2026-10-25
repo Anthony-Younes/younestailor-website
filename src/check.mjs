@@ -229,6 +229,27 @@ ok.push('Home pilot contrast (all ≥ 4.5:1):\n    ' + homeRows.join('\n    ') +
 }
 
 
+// Home WhatsApp message: first line and line labels must match the templates in home-copy.md section 5.
+{
+  const md = read('docs/decisions/home-copy.md');
+  const blocks = [...md.matchAll(/```\r?\n([\s\S]*?)```/g)].map((m) => m[1].trim().split(/\r?\n/)).filter((b) => b.length > 3);
+  const files = { en: 'index.html', ar: 'ar/index.html', fr: 'fr/index.html' };
+  const dec = (t) => t.replace(/&amp;/g, '&').replace(/&quot;/g, '"');
+  const langs = ['en', 'ar', 'fr'];
+  if (blocks.length !== 3) fail(`home-copy.md: expected 3 WhatsApp templates, found ${blocks.length}`);
+  blocks.forEach((b, i) => {
+    const l = langs[i]; const h = read(files[l]);
+    const intro = dec((h.match(/data-intro="([^"]*)"/) || [])[1] || '');
+    if (intro !== b[0]) fail(`${l}: WhatsApp first line "${intro}" ≠ template "${b[0]}"`);
+    const want = b.slice(1).map((x) => x.split(/\s*:\s*\{/)[0].trim());
+    const form = h.slice(h.indexOf('data-enquiry'), h.indexOf('</form>'));
+    const got = [...new Set([...form.matchAll(/data-label="([^"]*)"/g)].map((m) => dec(m[1])))];
+    if (JSON.stringify(got) !== JSON.stringify(want)) fail(`${l}: WhatsApp labels ${JSON.stringify(got)} ≠ template ${JSON.stringify(want)}`);
+  });
+  ok.push('Home WhatsApp message: first line and the 7 line labels match the EN/AR/FR templates in home-copy.md, in order');
+}
+
+
 console.log('PASS:\n- ' + ok.join('\n- '));
 if (fails.length) { console.log('\nFAIL:\n- ' + fails.join('\n- ')); process.exit(1); }
 console.log('\nAll local checks passed.');

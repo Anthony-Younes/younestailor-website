@@ -125,31 +125,30 @@ ${homeEnquire(lang, h, x)}`;
 function homeEnquire(lang, h, { esc, icon, FACTS }) {
   const svc = ['alterations', 'repairs', 'embroidery', 'uniforms', 'other'];
   const branch = (v) => (v === 'embroidery' || v === 'uniforms') ? 'embroidery' : v === 'other' ? 'other' : 'tailoring';
-  const clean = (s) => s; // labels are used as written
   return `<section class="section enquire" id="enquire" aria-labelledby="enquire-h">
 <div class="container narrow">
 <h2 id="enquire-h">${esc(h.formH)}</h2>
 <p>${esc(h.formIntro)}</p>
-<form class="form" data-enquiry data-wa="${FACTS.wa}" data-intro="${esc(UI_INTRO[lang])}" data-colon="${lang === 'fr' ? ' : ' : ': '}" data-sep="${lang === 'ar' ? '، ' : ', '}" novalidate>
+<form class="form" data-enquiry data-wa="${FACTS.wa}" data-intro="${esc(h.msg.intro)}" data-colon="${lang === 'fr' ? ' : ' : ': '}" data-sep="${lang === 'ar' ? '، ' : ', '}" novalidate>
 <div class="field">
 <label for="f-service">${esc(h.fService)}</label>
-<select id="f-service" name="service" data-label="${esc(clean(h.fService))}">
+<select id="f-service" name="service" data-label="${esc(h.msg.service)}">
 ${svc.map((v, i) => `<option value="${v}" data-branch="${branch(v)}">${esc(h.fServiceOpts[i])}</option>`).join('')}
 </select>
 </div>
-<div class="field"><label for="f-item" id="f-item-l">${esc(h.fItem)} ${esc(h.fItemEg)}</label><input id="f-item" name="item" type="text" autocomplete="off" data-label="${esc(h.fItem)}"></div>
-<div class="field"><label for="f-do">${esc(h.fDo)} ${esc(h.fDoEg)}</label><textarea id="f-do" name="do" rows="3" data-label="${esc(h.fDo)}"></textarea></div>
+<div class="field"><label for="f-item" id="f-item-l">${esc(h.fItem)} ${esc(h.fItemEg)}</label><input id="f-item" name="item" type="text" autocomplete="off" data-label="${esc(h.msg.item)}"></div>
+<div class="field"><label for="f-do">${esc(h.fDo)} ${esc(h.fDoEg)}</label><textarea id="f-do" name="do" rows="3" data-label="${esc(h.msg.do)}"></textarea></div>
 <fieldset class="branch" data-branch="embroidery" hidden disabled>
-<div class="field field--qty"><label for="f-qty">${esc(h.fQty)}</label><input id="f-qty" name="quantity" type="text" inputmode="numeric" autocomplete="off" data-label="${esc(h.fQty)}">
-<label class="check"><input type="checkbox" name="qtyunsure" data-unsure data-label="${esc(h.fQty)}" value="${esc(h.fQtyUnsure)}"><span>${esc(h.fQtyUnsure)}</span></label></div>
+<div class="field field--qty"><label for="f-qty">${esc(h.fQty)}</label><input id="f-qty" name="quantity" type="text" inputmode="numeric" autocomplete="off" data-label="${esc(h.msg.qty)}">
+<label class="check"><input type="checkbox" name="qtyunsure" data-unsure data-label="${esc(h.msg.qty)}" value="${esc(h.fQtyUnsure)}"><span>${esc(h.fQtyUnsure)}</span></label></div>
 <div class="field field--choice" role="radiogroup" aria-labelledby="f-item-l">
-${h.fGarment.map((t) => `<label class="check"><input type="radio" name="garment" value="${esc(t)}" data-label=""><span>${esc(t)}</span></label>`).join('')}
+${h.fGarment.map((t) => `<label class="check"><input type="radio" name="garment" value="${esc(t)}" data-label="${esc(h.msg.garment)}"><span>${esc(t)}</span></label>`).join('')}
 </div>
 <div class="field field--choice" role="radiogroup">
-${h.fDesign.map((t) => `<label class="check"><input type="radio" name="design" value="${esc(t)}" data-label=""><span>${esc(t)}</span></label>`).join('')}
+${h.fDesign.map((t) => `<label class="check"><input type="radio" name="design" value="${esc(t)}" data-label="${esc(h.msg.design)}"><span>${esc(t)}</span></label>`).join('')}
 </div>
 </fieldset>
-<div class="field"><label for="f-date">${esc(h.fDate)} ${esc(h.fDateOpt)}</label><input id="f-date" name="date" type="text" autocomplete="off" data-label="${esc(h.fDate)}"></div>
+<div class="field"><label for="f-date">${esc(h.fDate)} ${esc(h.fDateOpt)}</label><input id="f-date" name="date" type="text" autocomplete="off" data-label="${esc(h.msg.date)}"></div>
 <p class="form__note">${esc(h.photoNote)}</p>
 <button class="btn btn--primary btn--block" type="submit">${icon('whatsapp-logo')}<span>${esc(h.send)}</span></button>
 <p class="form__fallback" data-wa-fallback role="status" hidden>${esc(h.fallback)} <a href="https://wa.me/${FACTS.wa}" target="_blank" rel="noopener">${esc(h.fallbackLink)}</a></p>
@@ -158,8 +157,3 @@ ${h.fDesign.map((t) => `<label class="check"><input type="radio" name="design" v
 </div>
 </section>`;
 }
-
-// First line of the WhatsApp message. home-copy.md section 5 says EN/AR/FR start with the greeting below
-// and the first line should mark website enquiries, but its template block is empty: kept as before until
-// the owner supplies the exact line.
-const UI_INTRO = { en: 'Hello Younes Tailor.', ar: 'مرحباً خياطة يونس.', fr: 'Bonjour Younes Tailor.' };
