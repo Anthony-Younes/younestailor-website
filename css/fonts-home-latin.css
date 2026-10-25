@@ -6,4 +6,4 @@
 /* Metric-matched fallbacks so text does not reflow when the fonts arrive. */
 @font-face{font-family:'Instrument Serif Fallback';font-style:normal;src:local('Times New Roman'),local('TimesNewRomanPSMT'),local('Liberation Serif'),local('LiberationSerif');size-adjust:84.56%;ascent-override:117.08%;descent-override:36.66%;line-gap-override:0%}
 @font-face{font-family:'Instrument Serif Fallback';font-style:italic;src:local('Times New Roman Italic'),local('TimesNewRomanPS-ItalicMT'),local('Liberation Serif Italic'),local('LiberationSerif-Italic');size-adjust:89.18%;ascent-override:111.02%;descent-override:34.76%;line-gap-override:0%}
-@font-face{font-family:'Manrope Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('LiberationSans'),local('Roboto');size-adjust:104.23%;ascent-override:102.27%;descent-override:28.78%;line-gap-override:0%}
+@font-face{font-family:'Manrope Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('LiberationSans'),local('Roboto');size-adjust:102.5%;ascent-override:104%;descent-override:29.27%;line-gap-override:0%}
