@@ -595,8 +595,7 @@ ${alternates}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Younes Tailor"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${pageUrl}"><meta property="og:image" content="${SITE}/assets/og-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Younes Tailor — ${esc(u.place)}"><meta property="og:locale" content="${u.locale}">${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${UI[l].locale}">`).join('')}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
-${fonts}
-${heroImg}
+${pilot ? heroImg + '\n' + fonts : fonts + '\n' + heroImg}
 ${pilot ? `<style>${PILOT_CSS[lang === 'ar' ? 'ar' : 'latin']}</style>` : '<link rel="stylesheet" href="/css/styles.css">'}
 <script type="application/ld+json">${jsonld(key, lang, page)}</script>
 <script id="yt-config" type="application/json">${config(lang)}</script>
