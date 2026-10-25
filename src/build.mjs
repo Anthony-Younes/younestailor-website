@@ -544,7 +544,7 @@ function jsonld(key, lang, page) {
     graph.push({
       '@type': 'Service', '@id': pageUrl + '#service', name: u.schemaServices[key], description: page.description,
       url: pageUrl, provider: { '@id': SITE + '/#business' }, areaServed: { '@type': 'Place', name: 'Jbeil (Byblos) District, Mount Lebanon' },
-      serviceType: u.schemaServices[key], inLanguage: lang,
+      serviceType: u.schemaServices[key],
     });
   }
   const faq = page.sections.find((s) => s.t === 'faq');
