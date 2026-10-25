@@ -130,8 +130,17 @@ for (const pre of ['', '/ar', '/fr']) {
   rd.forEach((l, i) => { const from = l.split(/\s+/)[0]; if (from.startsWith(`${pre}/journal/`) && from !== `${pre}/journal/*` && i > catchAll) fail(`${from} sits below the catch-all`); });
 }
 for (const old of ['/our-story', '/services/made-to-measure', '/fr/services/sur-mesure']) if (idx(old) < 0) fail(`existing redirect ${old} lost`);
-rd.forEach((l) => { const [, to, code] = l.split(/\s+/); if (code !== '301!') fail(`redirect not 301!: ${l}`); if (!all.includes(to)) fail(`redirect target not a live page: ${l}`); });
-ok.push(`_redirects: ${rd.length} rules, all 301! to live pages; existing rules kept; specific journal rules above catch-alls`);
+const BLOCK = ['/CLAUDE.md', '/docs/*', '/src/*'];
+BLOCK.forEach((p, i) => { const l = rd[i] || ''; const [from, to, code] = l.split(/\s+/); if (from !== p || to !== '/404.html' || code !== '404!') fail(`internal path not blocked at top of _redirects: ${p}`); });
+const moves = rd.filter((l) => !BLOCK.includes(l.split(/\s+/)[0]));
+moves.forEach((l) => { const [, to, code] = l.split(/\s+/); if (code !== '301!') fail(`redirect not 301!: ${l}`); if (!all.includes(to)) fail(`redirect target not a live page: ${l}`); });
+ok.push(`_redirects: CLAUDE.md, docs/ and src/ forced to 404 at the top; ${moves.length} moves, all 301! to live pages; existing rules kept; specific journal rules above catch-alls`);
+
+// Round-1: unconfirmed claims must be gone from every generated page and llms.txt
+const claims = [/saved design/i, /approve/i, /on a piece/i, /last batch/i, /digitised design/i, /motif enregistré/i, /validez le visuel|visuel validé|validation du visuel/i, /sur une pièce/i, /série précédente/i, /commandes? répétée/i, /vierge/i, /pièce unique/i, /التصميم المحفوظ/, /توافقون/, /الموافقة/, /على قطعة/, /الدفعة السابقة/, /تصميمكم الرقمي/, /الطلبات المتكرّرة/, /طلبات متكرّرة/];
+const claimFiles = [...all.map((u) => (u.endsWith('.html') ? u : fileFor(u))), 'llms.txt'];
+for (const f of claimFiles) { const t = read(f); for (const c of claims) if (c.test(t)) fail(`${f}: unconfirmed claim ${c}`); }
+ok.push(`Removed claims: no matches for ${claims.length} EN/FR/AR patterns (saved design, approve, on a piece, last batch, repeat orders, vierge, pièce unique…) in ${claimFiles.length} files`);
 
 // 7. contrast of every text colour pair used
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));

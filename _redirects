@@ -1,3 +1,7 @@
+/CLAUDE.md   /404.html   404!
+/docs/*      /404.html   404!
+/src/*       /404.html   404!
+
 # Younes Tailor — redirects (Netlify). Old (pre-2026 rebuild) URLs → current URLs.
 # 301 = permanent: preserves SEO link equity and prevents 404s for any page
 # Google already indexed or that customers bookmarked.

@@ -63,7 +63,7 @@ export const PAGES = {
             ] },
             { id: 'embroidery', title: 'Embroidery', intro: 'Names, initials, text and logos, stitched in the shop.', cards: [
               { key: 'embroidery', text: 'Tees, hoodies, caps, towels and more. Bring your own item or we supply the blank. Single pieces welcome.' },
-              { key: 'uniforms', text: 'Logos for schools, clubs, restaurants and companies. Repeat orders from the saved design.' },
+              { key: 'uniforms', text: 'Logos for schools, clubs, restaurants and companies. Mixed sizes, no minimum order.' },
             ] },
           ] },
         { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
@@ -95,8 +95,8 @@ export const PAGES = {
               { key: 'repairs', text: 'Fermetures, coutures, doublures, trous de mites, et un travail soigné sur les pièces anciennes ou héritées.' },
             ] },
             { id: 'embroidery', title: 'Broderie', intro: 'Noms, initiales, textes et logos, brodés à l’atelier.', cards: [
-              { key: 'embroidery', text: 'T-shirts, sweats, casquettes, serviettes et plus. Apportez votre article ou on fournit le vierge. Pièce unique bienvenue.' },
-              { key: 'uniforms', text: 'Logos pour écoles, clubs, restaurants et entreprises. Commandes répétées à partir du motif enregistré.' },
+              { key: 'embroidery', text: 'T-shirts, sweats, casquettes, serviettes et plus. Apportez votre article ou choisissez un article fourni par l’atelier. À partir d’une pièce.' },
+              { key: 'uniforms', text: 'Logos pour écoles, clubs, restaurants et entreprises. Tailles mélangées, sans minimum de commande.' },
             ] },
           ] },
         { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
@@ -105,7 +105,7 @@ export const PAGES = {
         { t: 'faq', eyebrow: 'Questions', h2: 'Avant de passer', items: [
           ['Faut-il un rendez-vous ?', 'Non. Passez pendant les heures d’ouverture. Pour une tenue de mariage ou un travail plus important, écrivez-nous avant pour qu’on vous réserve du temps.'],
           ['Combien de temps prend une retouche ?', 'La plupart des retouches sont prêtes en 2 à 3 jours. Demandez au moment du dépôt et on vous donne une date.'],
-          ['Faites-vous des vêtements sur mesure ?', 'Pas en couture : nous retouchons et réparons les vêtements que vous avez déjà. En broderie, nous pouvons fournir l’article vierge : t-shirts, sweats, pulls, casquettes, serviettes et uniformes.'],
+          ['Faites-vous des vêtements sur mesure ?', 'Pas en couture : nous retouchons et réparons les vêtements que vous avez déjà. En broderie, l’atelier peut fournir l’article : t-shirts, sweats, pulls, casquettes, serviettes et uniformes.'],
           ['Y a-t-il un minimum de commande en broderie ?', 'Non. Une casquette ou une serviette suffit.'],
           ['Quelles langues parlez-vous ?', 'Arabe, français et anglais.'],
           ['Où se trouve l’atelier ?', 'À Blat, à quelques minutes du vieux Byblos. Plan et itinéraire sur la page Nous trouver.'],
@@ -129,7 +129,7 @@ export const PAGES = {
             ] },
             { id: 'embroidery', title: 'التطريز', intro: 'أسماء وأحرف أولى ونصوص وشعارات، نطرّزها في المحل.', cards: [
               { key: 'embroidery', text: 'تي شيرت، هودي، قبّعات، مناشف وغيرها. أحضروا قطعتكم أو نؤمّنها لكم. القطعة الواحدة مرحّب بها.' },
-              { key: 'uniforms', text: 'شعارات للمدارس والنوادي والمطاعم والشركات. الطلبات المتكرّرة من التصميم المحفوظ.' },
+              { key: 'uniforms', text: 'شعارات للمدارس والنوادي والمطاعم والشركات. مقاسات مختلفة، بلا حدّ أدنى للطلب.' },
             ] },
           ] },
         { t: 'process', which: 'tailoring', media: { image: 'overlock' } },
@@ -163,7 +163,7 @@ export const PAGES = {
           ] },
           { id: 'embroidery', title: 'Embroidery', intro: 'Names, initials, text and logos, stitched in the shop.', trio: true, cards: [
             { key: 'embroidery', text: 'Single pieces welcome. Bring your own item or we supply the blank.', bullets: ['Tees, polos, hoodies and sweaters', 'Caps, stitched in-house', 'Towels, uniforms and bags', 'Designs digitised in-house'] },
-            { key: 'uniforms', text: 'For schools, clubs, restaurants and companies.', bullets: ['Quantities and mixed sizes', 'Chest, sleeve, back or cap front', 'Artwork approved before the run', 'Repeat orders from the saved design'] },
+            { key: 'uniforms', text: 'For schools, clubs, restaurants and companies.', bullets: ['Quantities and mixed sizes', 'Chest, sleeve, back or cap front', 'Preview before stitching on request', 'No minimum order'] },
           ] },
         ] },
         { t: 'faq', eyebrow: 'Questions', h2: 'Choosing a service', items: [
@@ -185,8 +185,8 @@ export const PAGES = {
             { key: 'repairs', text: 'Réparé pour que le vêtement reprenne du service.', bullets: ['Fermetures, boutons, agrafes et pressions', 'Coutures et doublures', 'Accrocs, fils tirés et trous de mites', 'Pièces anciennes et héritées'] },
           ] },
           { id: 'embroidery', title: 'Broderie', intro: 'Noms, initiales, textes et logos, brodés à l’atelier.', trio: true, cards: [
-            { key: 'embroidery', text: 'Pièce unique bienvenue. Apportez votre article ou on fournit le vierge.', bullets: ['T-shirts, polos, sweats et pulls', 'Casquettes, brodées sur place', 'Serviettes, uniformes et sacs', 'Motifs numérisés sur place'] },
-            { key: 'uniforms', text: 'Pour écoles, clubs, restaurants et entreprises.', bullets: ['Quantités et tailles mélangées', 'Poitrine, manche, dos ou devant de casquette', 'Visuel validé avant la série', 'Commandes répétées à partir du motif enregistré'] },
+            { key: 'embroidery', text: 'À partir d’une pièce. Apportez votre article ou choisissez un article fourni par l’atelier.', bullets: ['T-shirts, polos, sweats et pulls', 'Casquettes, brodées sur place', 'Serviettes, uniformes et sacs', 'Motifs numérisés sur place'] },
+            { key: 'uniforms', text: 'Pour écoles, clubs, restaurants et entreprises.', bullets: ['Quantités et tailles mélangées', 'Poitrine, manche, dos ou devant de casquette', 'Aperçu avant broderie sur demande', 'Pas de minimum de commande'] },
           ] },
         ] },
         { t: 'faq', eyebrow: 'Questions', h2: 'Choisir un service', items: [
@@ -209,7 +209,7 @@ export const PAGES = {
           ] },
           { id: 'embroidery', title: 'التطريز', intro: 'أسماء وأحرف أولى ونصوص وشعارات، نطرّزها في المحل.', trio: true, cards: [
             { key: 'embroidery', text: 'القطعة الواحدة مرحّب بها. أحضروا قطعتكم أو نؤمّنها لكم.', bullets: ['تي شيرت، بولو، هودي وكنزات', 'قبّعات، نطرّزها في المحل', 'مناشف، زيّ موحّد وحقائب', 'تحويل التصاميم رقمياً في المحل'] },
-            { key: 'uniforms', text: 'للمدارس والنوادي والمطاعم والشركات.', bullets: ['كمّيات ومقاسات مختلفة', 'الصدر، الكمّ، الظهر أو مقدّمة القبّعة', 'موافقة على التصميم قبل التنفيذ', 'الطلبات المتكرّرة من التصميم المحفوظ'] },
+            { key: 'uniforms', text: 'للمدارس والنوادي والمطاعم والشركات.', bullets: ['كمّيات ومقاسات مختلفة', 'الصدر، الكمّ، الظهر أو مقدّمة القبّعة', 'معاينة قبل التطريز عند الطلب', 'لا حدّ أدنى للطلب'] },
           ] },
         ] },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'اختيار الخدمة', items: [
@@ -280,7 +280,7 @@ export const PAGES = {
       ctaLabel: 'Demander un essayage',
       sections: [
         { t: 'pagehead', eyebrow: 'Couture', h1: 'Retouches & ajustements', lede: 'Ourlets, reprises et ajustements, faits à la main et vérifiés sur vous. Vêtements du quotidien, tenues de travail et de mariage, pour hommes et femmes.', image: 'lockstitch' },
-        { t: 'list', eyebrow: 'Nos retouches', h2: 'Ce que couvrent les retouches', intro: 'La plupart des travaux entrent dans quelques catégories, et la plupart sont plus simples qu’on ne le pense.', items: [
+        { t: 'list', eyebrow: 'Nos retouches', h2: 'Ce que couvrent les retouches', intro: 'La plupart des travaux entrent dans quelques catégories, souvent plus simples qu’on ne le pense.', items: [
           'Ourlets de pantalons, jupes, robes et manches, raccourcis ou rallongés',
           'Tailles et coutures latérales reprises ou élargies',
           'Costumes et vestes ajustés : manches, taille, tombé du pantalon',
@@ -294,7 +294,7 @@ export const PAGES = {
           stepsTitle: 'Quand venir',
           steps: [
             ['6 à 8 semaines avant', 'Premier essayage', 'Apportez la robe ou le costume. Le corps change dans les semaines qui précèdent un mariage : cet essayage sert de point de départ.'],
-            ['3 à 4 semaines avant', 'Essayage de travail', 'C’est là que se fait l’essentiel : ourlet, reprise, bretelles et bustier pour une robe ; épaules, taille et tombé du pantalon pour un costume. Épinglé sur vous, chaussures aux pieds.'],
+            ['3 à 4 semaines avant', 'Essayage principal', 'C’est là que se fait l’essentiel : ourlet, reprise, bretelles et bustier pour une robe ; épaules, taille et tombé du pantalon pour un costume. Épinglé sur vous, chaussures aux pieds.'],
             ['1 à 2 semaines avant', 'Contrôle final', 'Un court essayage pour confirmer le travail, puis un dernier repassage.'],
           ],
           after: 'Moins de deux semaines avant la date ? Appelez-nous ou écrivez-nous, on vous dira ce qui est réaliste.',
@@ -312,7 +312,7 @@ export const PAGES = {
           ] },
           bad: { h: 'En général, ça ne vaut pas la peine', items: [
             'Plus de deux tailles d’écart à la poitrine. On peut déplacer un ourlet, pas reconstruire la structure d’une veste.',
-            'Le tissu est déjà usé, sans rien de solide où coudre.',
+            'Le tissu est déjà usé, sans plus rien de solide sur quoi coudre.',
           ] },
           after: 'Vous hésitez ? Envoyez une photo sur WhatsApp et on vous répond avant que vous vous déplaciez.' },
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos des retouches', items: [
@@ -427,7 +427,7 @@ export const PAGES = {
       ctaLabel: 'Demander une réparation',
       sections: [
         { t: 'pagehead', eyebrow: 'Couture', h1: 'Réparations', lede: 'Fermetures, coutures, doublures et accrocs réparés pour que le vêtement reprenne du service. Les pièces anciennes ou héritées sont d’abord examinées avec soin.', image: 'overlock' },
-        { t: 'list', eyebrow: 'Nos réparations', h2: 'Réparé, pas remplacé', intro: 'Beaucoup de vêtements « fichus » n’ont qu’une pièce cassée avant des années d’usage en plus.', items: [
+        { t: 'list', eyebrow: 'Nos réparations', h2: 'Réparé, pas remplacé', intro: 'Beaucoup de vêtements qu’on croit usés n’ont besoin que d’une petite réparation pour durer encore des années.', items: [
           'Fermetures remplacées sur pantalons, vestes, jupes et sacs',
           'Coutures réparées et renforcées aux points de tension',
           'Doublures remplacées dans les manteaux, blazers et vestes',
@@ -536,15 +536,15 @@ export const PAGES = {
     },
     fr: {
       title: 'Broderie à Blat, Byblos — noms, logos, casquettes | Younes Tailor',
-      description: 'Noms, initiales, textes et logos brodés à Blat, Byblos. Article fourni ou apporté par vous. Pas de minimum, un seul prix, aperçu avant broderie sur demande.',
+      description: 'Noms, initiales, textes et logos brodés à Blat, Byblos. Article fourni par l’atelier ou apporté par vous. Pas de minimum, un seul prix, aperçu avant broderie sur demande.',
       ctaLabel: 'Demander un devis',
       sections: [
-        { t: 'pagehead', eyebrow: 'Broderie', h1: 'Broderie', lede: 'Noms, initiales, textes et logos brodés à l’atelier. Apportez votre article ou on fournit le vierge. Pièce unique bienvenue.', video: 2, trio: true },
+        { t: 'pagehead', eyebrow: 'Broderie', h1: 'Broderie', lede: 'Noms, initiales, textes et logos brodés à l’atelier. Apportez votre article ou choisissez un article fourni par l’atelier. À partir d’une pièce.', video: 2, trio: true },
         { t: 'chips', eyebrow: 'Supports', h2: 'Sur quoi on brode', items: [
           ['t-shirt', 'T-shirts'], ['t-shirt', 'Polos'], ['coat-hanger', 'Sweats à capuche'], ['coat-hanger', 'Pulls'], ['baseball-cap', 'Casquettes'], ['check', 'Serviettes'], ['users-three', 'Uniformes'], ['check', 'Sacs'],
         ], note: 'Les casquettes sont brodées sur place, sur notre propre machine.' },
         { t: 'twocol', cols: [
-          { eyebrow: 'Votre article ou le nôtre', h2: 'Article fourni, ou apporté par vous', p: 'On peut fournir t-shirts, sweats, pulls, casquettes, serviettes et uniformes. Ou apportez la pièce que vous avez déjà et on brode dessus.' },
+          { eyebrow: 'Votre article ou le nôtre', h2: 'Un article de l’atelier, ou le vôtre', p: 'L’atelier peut fournir t-shirts, sweats, pulls, casquettes, serviettes et uniformes. Ou apportez la pièce que vous avez déjà et on brode dessus.' },
           { eyebrow: 'Ce qu’on brode', h2: 'Noms, textes, logos, votre visuel', p: 'Noms, initiales, textes courts, logos et vos propres visuels. Chaque motif est numérisé sur place : un fichier de logo ou la photo d’une écriture devient un fichier de broderie ici.' },
         ] },
         { t: 'process', which: 'embroidery', trio: true },
@@ -553,7 +553,7 @@ export const PAGES = {
           ['Y a-t-il un minimum de commande ?', 'Non. Une seule pièce suffit.'],
           ['Facturez-vous la création ou la numérisation à part ?', 'Non. Vous avez un seul prix, tout compris, sans frais de création ou de numérisation.'],
           ['Puis-je voir le motif avant la broderie ?', 'Oui. Demandez un aperçu et on vous le montre avant de broder.'],
-          ['Quel visuel faut-il envoyer ?', 'Un fichier de logo si vous en avez un. La photo nette d’un dessin ou d’une écriture convient aussi. Envoyez-la dans la conversation WhatsApp une fois ouverte par le formulaire. Besoin d’aide pour le visuel ? Cochez la case et on le prépare avec vous.'],
+          ['Quel visuel faut-il envoyer ?', 'Un fichier de logo si vous en avez un. La photo nette d’un dessin ou d’une écriture convient aussi. Envoyez-la dans WhatsApp, une fois la conversation ouverte par le formulaire. Besoin d’aide pour le visuel ? Cochez la case et on le prépare avec vous.'],
           ['Brodez-vous les casquettes ?', 'Oui. Les casquettes sont brodées sur place.'],
         ] },
       ],
@@ -589,7 +589,7 @@ export const PAGES = {
     cta: 'uniforms',
     en: {
       title: 'Uniform and team embroidery in Byblos | Younes Tailor',
-      description: 'Logo embroidery on uniforms and teamwear for schools, clubs, restaurants and companies around Byblos. Mixed sizes, repeat orders, no minimum order.',
+      description: 'Logo embroidery on uniforms and teamwear for schools, clubs, restaurants and companies around Byblos. Mixed sizes and no minimum order.',
       ctaLabel: 'Request a quote',
       sections: [
         { t: 'pagehead', eyebrow: 'Embroidery', h1: 'Uniforms, teams & business', lede: 'Logos stitched on uniforms and teamwear for schools, clubs, restaurants and companies around Byblos.', video: 3, trio: true },
@@ -604,8 +604,8 @@ export const PAGES = {
           'Your deadline',
         ] },
         { t: 'twocol', cols: [
-          { eyebrow: 'Artwork approval', h2: 'You approve it first', p: 'We digitise your logo in-house and you approve the artwork before we stitch the order. Ask for a preview on a piece if you want to see it stitched.' },
-          { eyebrow: 'Repeat orders', h2: 'The same logo, next time', p: 'We keep your digitised design, so a repeat order or a shirt for a new member of staff matches the last batch.' },
+          { eyebrow: 'Preview', h2: 'See it before we stitch', p: 'We digitise your logo in-house. Preview before stitching on request.' },
+          { eyebrow: 'One price', h2: 'No setup charge for your logo', p: 'One all-in price, with no separate design or digitising charge. No minimum order.' },
         ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'Questions', h2: 'About uniform orders', items: [
@@ -618,7 +618,7 @@ export const PAGES = {
     },
     fr: {
       title: 'Broderie d’uniformes et d’équipes à Byblos | Younes Tailor',
-      description: 'Broderie de logos sur uniformes et tenues d’équipe pour écoles, clubs, restaurants et entreprises autour de Byblos. Tailles mélangées, commandes répétées, sans minimum.',
+      description: 'Broderie de logos sur uniformes et tenues d’équipe pour écoles, clubs, restaurants et entreprises autour de Byblos. Tailles mélangées, sans minimum de commande.',
       ctaLabel: 'Demander un devis',
       sections: [
         { t: 'pagehead', eyebrow: 'Broderie', h1: 'Uniformes, équipes & entreprises', lede: 'Des logos brodés sur les uniformes et tenues d’équipe des écoles, clubs, restaurants et entreprises autour de Byblos.', video: 3, trio: true },
@@ -628,26 +628,26 @@ export const PAGES = {
         { t: 'list', eyebrow: 'Ce qu’il nous faut', h2: 'Pour établir le devis', items: [
           'Les quantités et la taille de chaque pièce',
           'L’emplacement du logo : poitrine, manche, dos ou devant de casquette',
-          'Si on fournit les vêtements ou si vous apportez les vôtres',
+          'Vêtements fournis par l’atelier ou apportés par vous',
           'Votre fichier de logo, ou une photo',
           'Votre date limite',
         ] },
         { t: 'twocol', cols: [
-          { eyebrow: 'Validation du visuel', h2: 'Vous validez d’abord', p: 'On numérise votre logo sur place et vous validez le visuel avant la broderie de la commande. Demandez un aperçu sur une pièce si vous voulez le voir brodé.' },
-          { eyebrow: 'Commandes répétées', h2: 'Le même logo, la prochaine fois', p: 'On garde votre motif numérisé : une nouvelle commande ou le polo d’un nouvel employé correspond à la série précédente.' },
+          { eyebrow: 'Aperçu', h2: 'Voir avant la broderie', p: 'Nous numérisons votre logo à l’atelier. Aperçu avant broderie sur demande.' },
+          { eyebrow: 'Un seul prix', h2: 'Pas de frais pour votre logo', p: 'Un seul prix, tout compris, sans frais de création ou de numérisation. Pas de minimum de commande.' },
         ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos des commandes d’uniformes', items: [
           ['Y a-t-il un minimum de commande ?', 'Non. Vous pouvez commander un seul polo pour un nouvel employé.'],
           ['Une commande peut-elle mélanger les tailles ?', 'Oui. Envoyez la liste des tailles et des quantités avec votre demande.'],
-          ['Fournissez-vous les uniformes ?', 'On peut fournir t-shirts, sweats, pulls, casquettes et uniformes, ou broder sur les vêtements que vous avez déjà.'],
+          ['Fournissez-vous les uniformes ?', 'L’atelier peut fournir t-shirts, sweats, pulls, casquettes et uniformes, ou broder sur les vêtements que vous avez déjà.'],
           ['La mise en place du logo est-elle facturée ?', 'Non. Un seul prix, tout compris, sans frais de création ou de numérisation.'],
         ] },
       ],
     },
     ar: {
       title: 'تطريز الزيّ الموحّد والفرق في جبيل | خياطة يونس',
-      description: 'تطريز الشعارات على الزيّ الموحّد وملابس الفرق للمدارس والنوادي والمطاعم والشركات في منطقة جبيل. مقاسات مختلفة، طلبات متكرّرة، بلا حدّ أدنى.',
+      description: 'تطريز الشعارات على الزيّ الموحّد وملابس الفرق للمدارس والنوادي والمطاعم والشركات في منطقة جبيل. مقاسات مختلفة وبلا حدّ أدنى للطلب.',
       ctaLabel: 'اطلبوا عرض سعر',
       sections: [
         { t: 'pagehead', eyebrow: 'التطريز', h1: 'الزيّ الموحّد والفرق والشركات', lede: 'شعارات نطرّزها على الزيّ الموحّد وملابس الفرق للمدارس والنوادي والمطاعم والشركات في منطقة جبيل.', video: 3, trio: true },
@@ -662,8 +662,8 @@ export const PAGES = {
           'الموعد المطلوب',
         ] },
         { t: 'twocol', cols: [
-          { eyebrow: 'الموافقة على التصميم', h2: 'توافقون أولاً', p: 'نحوّل شعاركم رقمياً في المحل وتوافقون على التصميم قبل تطريز الطلب. اطلبوا معاينة على قطعة إن أردتم رؤيته مطرّزاً.' },
-          { eyebrow: 'الطلبات المتكرّرة', h2: 'الشعار نفسه في المرّة المقبلة', p: 'نحتفظ بتصميمكم الرقمي، فيأتي الطلب الجديد أو قميص الموظّف الجديد مطابقاً للدفعة السابقة.' },
+          { eyebrow: 'المعاينة', h2: 'شاهدوه قبل التطريز', p: 'نحوّل شعاركم رقمياً في المحل. معاينة قبل التطريز عند الطلب.' },
+          { eyebrow: 'سعر واحد', h2: 'لا كلفة لتجهيز شعاركم', p: 'سعر واحد شامل، بلا كلفة منفصلة للتصميم أو التحويل الرقمي. لا حدّ أدنى للطلب.' },
         ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'عن طلبات الزيّ الموحّد', items: [
@@ -720,7 +720,7 @@ export const PAGES = {
       ctaLabel: 'Dites-nous ce qu’il vous faut',
       sections: [
         { t: 'pagehead', eyebrow: 'À propos', h1: 'À propos de Younes Tailor', lede: 'Un tailleur de quartier à Blat, Byblos. Retouches, réparations et broderie, pour hommes et femmes, en arabe, français ou anglais.', image: 'storefront' },
-        { t: 'prose', eyebrow: 'Pourquoi cet atelier', h2: 'Un tailleur de quartier, bien fait', paras: [
+        { t: 'prose', eyebrow: 'Pourquoi cet atelier', h2: 'Un tailleur de quartier qui fait les choses bien', paras: [
           'Younes Tailor a ouvert en 2025 à Blat, près de Byblos. L’idée était simple : un endroit proche et fiable pour un ourlet, une fermeture, une robe reprise ou un costume qui tombe juste, sans payer plus que nécessaire.',
           'Nous sommes un petit atelier indépendant, pas une chaîne. Ce que nous faisons, nous le faisons avec soin : mesuré sur vous, fini à la main et repassé avant de partir. Si un vêtement ne vaut pas la retouche, on vous le dit.',
           'La broderie se fait au même établi : noms, initiales et logos, numérisés et brodés à l’atelier, d’une seule casquette à une série d’uniformes.',
@@ -744,8 +744,8 @@ export const PAGES = {
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos de l’atelier', items: [
           ['L’atelier est-il nouveau ?', 'Oui. Younes Tailor a ouvert en 2025 à Blat. C’est un petit atelier de quartier indépendant.'],
           ['Que faites-vous ?', 'Des retouches et des réparations, dont les essayages de mariage et le travail soigné sur les pièces anciennes, et la broderie de noms, initiales, textes et logos.'],
-          ['Faites-vous des vêtements sur mesure ?', 'Pas en couture : nous travaillons sur les vêtements que vous avez déjà. En broderie, nous pouvons fournir l’article vierge.'],
-          ['Dans quelles langues êtes-vous servi ?', 'Arabe, français et anglais.'],
+          ['Faites-vous des vêtements sur mesure ?', 'Pas en couture : nous travaillons sur les vêtements que vous avez déjà. En broderie, l’atelier peut fournir l’article.'],
+          ['Quelles langues parle-t-on à l’atelier ?', 'Arabe, français et anglais.'],
         ] },
       ],
     },
@@ -815,7 +815,7 @@ export const PAGES = {
         { t: 'faq', eyebrow: 'Questions', h2: 'Pour venir', items: [
           ['Peut-on se garer près de l’atelier ?', 'Appelez-nous ou écrivez-nous avant de prendre la route et on vous indiquera où vous garer le plus facilement à Blat.'],
           ['Faut-il un rendez-vous ?', 'Vous pouvez passer sans rendez-vous pendant les heures d’ouverture. Pour une tenue de mariage, une grosse commande de broderie ou un travail important, écrivez-nous avant pour qu’on vous réserve du temps.'],
-          ['Venez-vous en aide aux clients hors de Blat ?', 'Oui. Des clients viennent de Byblos, Amchit, Halat, Fidar et d’autres villages. Si vous êtes plus loin, envoyez d’abord une photo et on vous dira si le trajet en vaut la peine.'],
+          ['Recevez-vous des clients hors de Blat ?', 'Oui. Des clients viennent de Byblos, Amchit, Halat, Fidar et d’autres villages. Si vous êtes plus loin, envoyez d’abord une photo et on vous dira si le trajet en vaut la peine.'],
         ] },
       ],
     },

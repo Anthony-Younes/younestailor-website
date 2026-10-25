@@ -388,3 +388,5 @@ html[lang="ar"] .site-footer__h { letter-spacing: 0; text-transform: none; font-
 .nf__block[lang="ar"] h2 { font-family: 'Amiri', serif; font-style: normal; }
 .nf__block[lang="ar"] { font-family: 'IBM Plex Sans Arabic', sans-serif; }
 .nf__contact { margin-top: var(--s-6); }
+.form__fallback { margin: 0; font-size: 16px; color: var(--fg); }
+.form__fallback a { text-decoration: underline; text-decoration-color: var(--brass); }

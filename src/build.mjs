@@ -474,6 +474,7 @@ ${f.placements.map((p) => `<label class="check"><input type="checkbox" name="pla
 <p class="form__note" data-note="tailoring"${b === 'tailoring' ? '' : ' hidden'}>${esc(f.noteTailoring)}</p>
 <p class="form__note" data-note="embroidery"${b === 'embroidery' ? '' : ' hidden'}>${esc(f.noteEmbroidery)}</p>
 <button class="btn btn--primary btn--block" type="submit">${icon('whatsapp-logo')}<span>${esc(f.submit)}</span></button>
+<p class="form__fallback" data-wa-fallback role="status" hidden>${esc(f.waFallback)} <a href="https://wa.me/${FACTS.wa}" target="_blank" rel="noopener">${esc(f.waFallbackLink)}</a></p>
 </form>
 </div>
 <aside class="panel direct">

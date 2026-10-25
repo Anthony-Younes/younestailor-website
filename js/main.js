@@ -103,8 +103,15 @@
       order.forEach(function (label) { lines.push(label + ': ' + groups[label].join(form.getAttribute('data-sep') || ', ')); });
       var wa = form.getAttribute('data-wa');
       var link = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(lines.join('\n'));
-      var win = window.open(link, '_blank', 'noopener');
-      if (!win) window.location.href = link;
+      // One navigation only: a new tab with noopener. window.open returns null with
+      // noopener, so no automatic fallback; a visible link covers the rare blocked case.
+      window.open(link, '_blank', 'noopener');
+      var fallback = form.querySelector('[data-wa-fallback]');
+      if (fallback) {
+        var a = fallback.querySelector('a');
+        if (a) a.href = link;
+        fallback.hidden = false;
+      }
     });
   }
 
