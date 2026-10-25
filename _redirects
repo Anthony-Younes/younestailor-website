@@ -1,0 +1,20 @@
+# Younes Tailor — redirects (Netlify). Old (pre-2026 rebuild) URLs → current URLs.
+# 301 = permanent: preserves SEO link equity and prevents 404s for any page
+# Google already indexed or that customers bookmarked.
+
+# "Our Story" was rewritten and renamed to "About Us"
+/our-story               /about/            301!
+/our-story/*             /about/            301!
+/ar/our-story            /ar/about/         301!
+/ar/our-story/*          /ar/about/         301!
+/fr/notre-histoire       /fr/a-propos/      301!
+/fr/notre-histoire/*     /fr/a-propos/      301!
+
+# Made-to-Measure was removed (the shop specialises in alterations & repairs,
+# it does not make clothes from scratch) → redirect to the closest live service.
+/services/made-to-measure              /services/alterations/        301!
+/services/made-to-measure/*            /services/alterations/        301!
+/ar/services/made-to-measure           /ar/services/alterations/     301!
+/ar/services/made-to-measure/*         /ar/services/alterations/     301!
+/fr/services/sur-mesure                /fr/services/retouches/       301!
+/fr/services/sur-mesure/*              /fr/services/retouches/       301!

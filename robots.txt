@@ -1,0 +1,18 @@
+# Younes Tailor — robots.txt
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /docs/
+Disallow: /build.mjs
+
+# AI / LLM crawlers — welcome (see /llms.txt)
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://younestailor.com/sitemap.xml

@@ -1,0 +1,63 @@
+/* ============================================================================
+   RTL / Arabic overrides — loaded only on /ar/ pages.
+   Intentionally small: styles.css uses CSS logical properties, so layout
+   mirrors automatically. This file handles ONLY what logical props can't:
+   Arabic typography, killing Latin letter-spacing/uppercase, decorative flips,
+   and the word-split animation guard.
+   ============================================================================ */
+
+[dir="rtl"] {
+  --font-body: var(--font-arabic);
+}
+
+/* Arabic needs Amiri everywhere + more generous leading; no negative tracking. */
+[dir="rtl"] body { font-family: var(--font-arabic); line-height: 1.9; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4,
+[dir="rtl"] .display, [dir="rtl"] .lede, [dir="rtl"] .brand-name {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+[dir="rtl"] h1, [dir="rtl"] .display-xl { line-height: 1.25; }
+[dir="rtl"] .lede { line-height: 1.85; }
+
+/* Amiri has no uppercase; uppercase + wide tracking mangle Arabic. Reset labels. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .footer-col h3,
+[dir="rtl"] .brand-sub,
+[dir="rtl"] .timeline__era,
+[dir="rtl"] .beforeafter .tag {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-arabic);
+}
+[dir="rtl"] .btn,
+[dir="rtl"] .nav-link,
+[dir="rtl"] .chip,
+[dir="rtl"] .status-pill,
+[dir="rtl"] .actionbar a,
+[dir="rtl"] .step h3,
+[dir="rtl"] .assurance b,
+[dir="rtl"] .visit-card h3,
+[dir="rtl"] .field label,
+[dir="rtl"] .segmented label { font-family: var(--font-arabic); }
+
+/* Numerals & coordinates stay LTR inside RTL flow (phone numbers, hours). */
+[dir="rtl"] .ltr-nums { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* Disable the word-by-word headline split for Arabic — Amiri ligatures clip
+   when spans break mid-word. JS also skips it; this is the CSS backstop. */
+[dir="rtl"] .wi { transform: none !important; }
+[dir="rtl"] .w { overflow: visible; }
+
+/* Decorative directional flips that logical properties don't cover. */
+[dir="rtl"] .btn svg.i-arrow,
+[dir="rtl"] .textlink svg,
+[dir="rtl"] .minicard .arrow svg { transform: scaleX(-1); }
+[dir="rtl"] .hero h1 .accent { font-style: normal; } /* Amiri italic is unreliable */
+[dir="rtl"] .serif-italic,
+[dir="rtl"] .prose blockquote,
+[dir="rtl"] .word-card blockquote { font-style: normal; }
+
+/* Map: no horizontal flip needed, but keep saturation parity. */
+[dir="rtl"] .map-embed iframe { filter: saturate(.9); }
