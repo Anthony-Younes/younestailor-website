@@ -21,8 +21,8 @@
   --rule-strong: #3A4459;
   --field-border: #7D8799;
 
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-ui: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Playfair Display', 'Playfair Display Fallback', Georgia, serif;
+  --font-ui: 'Montserrat', 'Montserrat Fallback', Arial, sans-serif;
 
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
   --r: 2px;

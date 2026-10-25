@@ -568,7 +568,7 @@ function head(key, lang, page) {
   const pageUrl = abs(key, lang);
   const fonts = lang === 'ar'
     ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/amiri-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-arabic.css">`
-    : `<link rel="preload" href="/assets/fonts/playfair-latin-400i.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-latin.css">`;
+    : `<link rel="preload" href="/assets/fonts/playfair-latin-400i.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-600.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-latin.css">`;
   const heroImg = page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
     : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
