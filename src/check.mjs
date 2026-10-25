@@ -168,6 +168,34 @@ const small = [...css.matchAll(/font-size: (\d+)px/g)].map((m) => +m[1]).filter(
 if (small.length) fail(`font sizes under 12px: ${small}`);
 ok.push('Body text 16px (EN/FR) and 17px (AR); smallest label 12px (tracked caps eyebrow)');
 
+// Home pilot (Decision 03): colour pairs per ground, and body size in css/home.css
+const mix = (fg, bg, a) => '#' + [1, 3, 5].map((i) => Math.round(parseInt(fg.slice(i, i + 2), 16) * a + parseInt(bg.slice(i, i + 2), 16) * (1 - a)).toString(16).padStart(2, '0')).join('');
+const CREAM = '#EEE8DA', INK = '#0B1120', NAVY = '#1F305D';
+const fieldBg = mix('#FFFFFF', CREAM, 0.55), hoursBg = mix(NAVY, CREAM, 0.07);
+const homePairs = [
+  ['ink on cream', INK, CREAM], ['secondary #4A5266 on cream', '#4A5266', CREAM], ['dark gold #7A5E2E on cream', '#7A5E2E', CREAM],
+  ['ink on form field', INK, fieldBg], ['secondary on form field', '#4A5266', fieldBg], ['secondary on hours panel', '#4A5266', hoursBg], ['ink on hours panel', INK, hoursBg],
+  ['cream on navy #1F305D', CREAM, NAVY], ['#A9B0BD on navy #1F305D', '#A9B0BD', NAVY], ['gold on navy #1F305D', '#CDB88A', NAVY],
+  ['cream on midnight', CREAM, INK], ['#A9B0BD on midnight', '#A9B0BD', INK], ['gold on midnight', '#CDB88A', INK],
+  ['button: cream on navy', CREAM, NAVY], ['button: ink on cream', INK, CREAM], ['button hover: ink on white', INK, '#FFFFFF'],
+];
+const homeRows = homePairs.map(([name, f, b]) => { const r = ratio(f, b); if (r < 4.5) fail(`Home contrast ${name} = ${r.toFixed(2)}`); return `${name}: ${r.toFixed(2)}:1`; });
+const fieldBorder = ratio('#4A5266', fieldBg); homeRows.push(`field border #4A5266 on field (non-text, needs 3:1): ${fieldBorder.toFixed(2)}:1`);
+if (fieldBorder < 3) fail('Home field border contrast');
+const hcss = read('css/home.css');
+if (!/body \{[^}]*font-size: 17px/.test(hcss)) fail('Home body font-size is not 17px');
+if (/#A9B0BD[^;]*;\s*background: var\(--cream\)/i.test(hcss)) fail('Home: #A9B0BD used on cream');
+const hSmall = [...hcss.matchAll(/font(?:-size)?:[^;]*?(\d+)px/g)].map((m) => +m[1]).filter((n) => n < 12);
+if (hSmall.length) fail(`Home font sizes under 12px: ${hSmall}`);
+for (const l of ['en', 'ar', 'fr']) {
+  const f = fileFor(PATHS.home[l]); const h = read(f);
+  if (!h.includes('/css/home.css') || h.includes('/css/styles.css')) fail(`${f}: Home pilot stylesheet not scoped`);
+  if (!h.includes('data-thread') || !h.includes('data-marquee')) fail(`${f}: thread or marquee missing`);
+}
+for (const [k, b] of Object.entries(PATHS)) if (k !== 'home') for (const l of LANGS) { const h = read(fileFor(b[l])); if (h.includes('/css/home.css') || h.includes('home.js')) fail(`${b[l]}: pilot leaked outside Home`); }
+ok.push('Home pilot contrast (all ≥ 4.5:1):\n    ' + homeRows.join('\n    ') + '\n  Home body 17px (AR 18px); pilot CSS/JS loaded on the 3 Home pages only; other 21 pages unchanged in style');
+
+
 console.log('PASS:\n- ' + ok.join('\n- '));
 if (fails.length) { console.log('\nFAIL:\n- ' + fails.join('\n- ')); process.exit(1); }
 console.log('\nAll local checks passed.');

@@ -50,6 +50,15 @@ export const PAGES = {
       title: 'Younes Tailor — Tailoring and embroidery in Blat, Byblos',
       description: 'Alterations, repairs and embroidery in Blat, Byblos. Hems, zips and linings by hand; names and logos stitched in-house. No minimum order. Mon–Sat 09:00–19:00.',
       ctaLabel: 'Tell us what you need',
+      pilot: {
+        em: ['Tailoring', 'embroidery'],
+        marquee: ['hems', 'zips', 'linings', 'names', 'logos', 'caps', 'towels'],
+        marqueeLabel: 'What we work on', marqueeWhat: 'the moving words',
+        stitchOnTitle: 'What we stitch on', stitchOn: ['Tees', 'Hoodies', 'Caps', 'Towels', 'Uniforms', 'Bags'],
+        tailoringLine: 'Clothes you already own, made to fit and last. Hems, take-ins, zips, linings and wedding fittings, checked on you.',
+        embroideryLine: 'Names, initials, text and logos, stitched in the shop. Bring your own item or we supply the blank. Single pieces welcome.',
+        tailoringBtn: 'Tailoring', embroideryBtn: 'Embroidery',
+      },
       sections: [
         { t: 'hero', eyebrow: 'Younes Tailor', h1: 'Tailoring and embroidery in Blat, Byblos',
           lede: 'Clothes altered and repaired by hand. Names, initials and logos stitched on our own machine. Walk in, or send a message first.',
@@ -83,6 +92,15 @@ export const PAGES = {
       title: 'Younes Tailor — Couture et broderie à Blat, Byblos',
       description: 'Retouches, réparations et broderie à Blat, Byblos. Ourlets, fermetures et doublures à la main ; noms et logos brodés sur place. Pas de minimum. Lun–sam 09:00–19:00.',
       ctaLabel: 'Dites-nous ce qu’il vous faut',
+      pilot: {
+        em: ['Couture', 'broderie'],
+        marquee: ['ourlets', 'fermetures', 'doublures', 'prénoms', 'logos', 'casquettes', 'serviettes'],
+        marqueeLabel: 'Ce que nous faisons', marqueeWhat: 'le texte qui défile',
+        stitchOnTitle: 'Sur quoi on brode', stitchOn: ['T-shirts', 'Sweats à capuche', 'Casquettes', 'Serviettes', 'Uniformes', 'Sacs'],
+        tailoringLine: 'Vos vêtements, ajustés et faits pour durer. Ourlets, reprises, fermetures, doublures et essayages de mariage, vérifiés sur vous.',
+        embroideryLine: 'Noms, initiales, textes et logos, brodés à l’atelier. Apportez votre article ou choisissez un article fourni par l’atelier. À partir d’une pièce.',
+        tailoringBtn: 'Couture', embroideryBtn: 'Broderie',
+      },
       sections: [
         { t: 'hero', eyebrow: 'Younes Tailor', h1: 'Couture et broderie à Blat, Byblos',
           lede: 'Des vêtements retouchés et réparés à la main. Des noms, des initiales et des logos brodés sur notre propre machine. Passez directement, ou écrivez-nous avant.',
@@ -116,6 +134,15 @@ export const PAGES = {
       title: 'خياطة يونس — خياطة وتطريز في بلاط، جبيل',
       description: 'تعديل وتصليح ملابس وتطريز في بلاط، جبيل. تقصير وسحّابات وبطانات بشغل يد، وأسماء وشعارات نطرّزها في المحل. لا حدّ أدنى للطلب. الاثنين–السبت 09:00–19:00.',
       ctaLabel: 'أخبرونا بما تحتاجونه',
+      pilot: {
+        em: [],
+        marquee: ['تقصير', 'سحّابات', 'بطانات', 'أسماء', 'شعارات', 'قبّعات', 'مناشف'],
+        marqueeLabel: 'ما نعمله', marqueeWhat: 'النص المتحرّك',
+        stitchOnTitle: 'على ماذا نطرّز', stitchOn: ['تي شيرت', 'هودي', 'قبّعات', 'مناشف', 'زيّ موحّد', 'حقائب'],
+        tailoringLine: 'ملابسكم نفسها، على قياسكم وتدوم أكثر. تقصير وتضييق وسحّابات وبطانات وقياسات أعراس، نتأكّد منها عليكم.',
+        embroideryLine: 'أسماء وأحرف أولى ونصوص وشعارات نطرّزها في المحل. أحضروا قطعتكم أو نؤمّنها لكم. القطعة الواحدة مرحّب بها.',
+        tailoringBtn: 'الخياطة', embroideryBtn: 'التطريز',
+      },
       sections: [
         { t: 'hero', eyebrow: 'خياطة يونس', h1: 'خياطة وتطريز في بلاط، جبيل',
           lede: 'ملابس تُعدَّل وتُصلَّح باليد. أسماء وأحرف أولى وشعارات نطرّزها على ماكينتنا. تفضّلوا مباشرة، أو راسلونا قبلها.',

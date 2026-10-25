@@ -390,3 +390,6 @@ html[lang="ar"] .site-footer__h { letter-spacing: 0; text-transform: none; font-
 .nf__contact { margin-top: var(--s-6); }
 .form__fallback { margin: 0; font-size: 16px; color: var(--fg); }
 .form__fallback a { text-decoration: underline; text-decoration-color: var(--brass); }
+
+/* A closed <details> can still lay out its fixed panel off-screen in some browsers: hide it outright. */
+.menu:not([open]) .menu__panel { display: none; }

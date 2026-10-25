@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { FACTS, UI } from './content-ui.mjs';
 import { PATHS, PARENT, ALT, PAGES } from './content-pages.mjs';
 import { ICONS } from './icons.mjs';
+import { renderHomePilot } from './home-pilot.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'ar', 'fr'];
@@ -567,10 +568,14 @@ function config(lang) {
 function head(key, lang, page) {
   const u = UI[lang];
   const pageUrl = abs(key, lang);
-  const fonts = lang === 'ar'
+  const pilot = key === 'home';
+  const fonts = pilot ? (lang === 'ar'
+    ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-arabic-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-home-arabic.css">`
+    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-home-latin.css">`)
+    : lang === 'ar'
     ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/amiri-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-arabic.css">`
     : `<link rel="preload" href="/assets/fonts/playfair-latin-400i.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-600.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-latin.css">`;
-  const heroImg = page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
+  const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster.webp" as="image" type="image/webp" media="(min-width: 880px)">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
     : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
   return `<meta charset="utf-8">
@@ -581,17 +586,17 @@ function head(key, lang, page) {
 ${alternates}
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0B1120">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="${pilot ? 'light' : 'dark'}">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Younes Tailor"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${pageUrl}"><meta property="og:image" content="${SITE}/assets/og-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Younes Tailor — ${esc(u.place)}"><meta property="og:locale" content="${u.locale}">${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${UI[l].locale}">`).join('')}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
 ${fonts}
 ${heroImg}
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="${pilot ? '/css/home.css' : '/css/styles.css'}">
 <script type="application/ld+json">${jsonld(key, lang, page)}</script>
 <script id="yt-config" type="application/json">${config(lang)}</script>
-<script src="/js/main.js" defer></script>`;
+<script src="/js/main.js" defer></script>${pilot ? '\n<script src="/js/home.js" defer></script>' : ''}`;
 }
 
 function renderPage(key, lang) {
@@ -599,17 +604,19 @@ function renderPage(key, lang) {
   const page = PAGES[key][lang];
   page.cta = PAGES[key].cta;
   const u = UI[lang];
-  const body = page.sections.map((s) => RENDER[s.t](s, key, lang, page)).join('\n');
+  const body = key === 'home'
+    ? renderHomePilot(lang, page, { esc, icon, url, UI, FACTS, statusPill, contactList, hoursList, sFaq, sEnquire, video, picture, poster, trio })
+    : page.sections.map((s) => RENDER[s.t](s, key, lang, page)).join('\n');
   return `<!doctype html>
 <html lang="${lang}" dir="${u.dir}">
 <head>
 ${head(key, lang, page)}
 </head>
-<body class="page-${key} lang-${lang}">
+<body class="page-${key} lang-${lang}${key === 'home' ? ' pilot' : ''}">
 ${header(key, lang, page)}
 <main id="main">
 ${body}
-${sEnquire(key, lang, page)}
+${key === 'home' ? '' : sEnquire(key, lang, page)}
 </main>
 ${footer(key, lang)}
 ${stickyBar(lang)}
