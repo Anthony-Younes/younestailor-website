@@ -40,7 +40,7 @@ ${arrow('p-arrow--hero')}
 </div>
 <div class="p-hero__meta">${statusPill()}<p>${esc(u.hoursShort)}</p></div>
 </div>
-<div class="p-hero__media">${video(1, lang)}</div>
+<div class="p-hero__media">${video(1, lang, '/assets/media/machine-01-poster-540.webp')}</div>
 </div>
 </section>
 

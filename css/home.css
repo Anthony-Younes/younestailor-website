@@ -129,7 +129,12 @@ html[lang="ar"] .p-hero h1 { font-size: clamp(44px, 11vw, 96px); line-height: 1.
 .p-branch:hover { background: #fff; }
 .p-branch span { flex: 1; }
 .p-branch .icon:first-child { color: var(--gold-text); }
-.p-hero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 22px; }
+.p-hero__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 22px; }
+.p-hero .status { min-height: 36px; max-width: 100%; font-size: 14px; }
+html[lang="ar"] .p-hero .status, html[lang="ar"] .p-visit .status { min-height: 40px; }
+.p-hero .status[hidden] { display: inline-flex !important; visibility: hidden; }
+.p-visit .status { min-height: 36px; }
+.p-visit .status[hidden] { display: inline-flex !important; visibility: hidden; }
 .p-hero__meta p { margin: 0; color: var(--muted-navy); font-size: 16px; }
 .p-arrow { fill: none; stroke: var(--gold); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 .p-arrow--hero { display: none; }
@@ -167,10 +172,12 @@ html[lang="ar"] .p-hero h1 { font-size: clamp(44px, 11vw, 96px); line-height: 1.
 /* ── marquee (one line, pausable) ─────────────────────────────── */
 .p-marquee { display: flex; align-items: center; gap: 16px; padding: 22px var(--gutter); padding-inline-start: calc(var(--gutter) + var(--lane)); max-width: 1240px; margin-inline: auto; }
 @media (min-width: 880px) { .p-marquee { padding-block: 32px; } }
-.p-marquee__viewport { flex: 1; min-width: 0; overflow: hidden; }
-.p-marquee__track { margin: 0; display: flex; flex-wrap: wrap; font-family: var(--serif); font-style: italic; font-size: clamp(26px, 4vw, 38px); line-height: 1.25; color: var(--ink); }
+.p-marquee__viewport { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.p-marquee__viewport::-webkit-scrollbar { display: none; }
+.p-marquee[data-state="playing"] .p-marquee__viewport { overflow: hidden; }
+.p-marquee__track { margin: 0; display: flex; flex-wrap: nowrap; width: max-content; font-family: var(--serif); font-style: italic; font-size: clamp(26px, 4vw, 38px); line-height: 1.25; color: var(--ink); }
 html[lang="ar"] .p-marquee__track { font-style: normal; font-weight: 700; }
-.p-marquee__words { display: inline-flex; flex-wrap: wrap; gap: 0 14px; padding-inline-end: 14px; }
+.p-marquee__words { display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 0 14px; padding-inline-end: 14px; }
 .p-marquee__dot { color: var(--gold-text); font-style: normal; }
 .p-marquee__copy { display: none; }
 .p-marquee[data-state] .p-marquee__track { flex-wrap: nowrap; width: max-content; }

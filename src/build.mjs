@@ -48,11 +48,11 @@ function poster(n, lang, { eager = false } = {}) {
   const load = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
   return `<img src="/assets/media/machine-${two(n)}-poster.webp" alt="${esc(ALT.machine[lang])}" width="720" height="1280" ${load} decoding="async">`;
 }
-function video(n, lang) {
+function video(n, lang, posterSrc) {
   const u = UI[lang];
   return `<figure class="media media--video">
 <div class="frame frame--video">
-<video data-video muted playsinline loop controls preload="none" width="720" height="1280" poster="/assets/media/machine-${two(n)}-poster.webp" aria-label="${esc(u.video.caption)}"><source src="/assets/media/machine-${two(n)}.mp4" type="video/mp4"></video>
+<video data-video muted playsinline loop controls preload="none" width="720" height="1280" poster="${posterSrc || `/assets/media/machine-${two(n)}-poster.webp`}" aria-label="${esc(u.video.caption)}"><source src="/assets/media/machine-${two(n)}.mp4" type="video/mp4"></video>
 <button class="video-toggle" type="button" data-video-toggle data-label-pause="${esc(u.video.pause)}" data-label-play="${esc(u.video.play)}" hidden>${icon('pause', 'i-pause')}${icon('play', 'i-play')}<span>${esc(u.video.pause)}</span></button>
 </div>
 <figcaption>${esc(u.video.caption)}</figcaption>
@@ -564,18 +564,22 @@ function config(lang) {
   return JSON.stringify({ tz: 'Asia/Beirut', hours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:00' }], s: u.status });
 }
 
+// Home pilot CSS is inlined (fonts + home.css), read once per build.
+const readCss = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n').trim();
+const PILOT_CSS = { latin: readCss('css/fonts-home-latin.css') + '\n' + readCss('css/home.css'), ar: readCss('css/fonts-home-arabic.css') + '\n' + readCss('css/home.css') };
+
 // ── page ───────────────────────────────────────────────────────────────────
 function head(key, lang, page) {
   const u = UI[lang];
   const pageUrl = abs(key, lang);
   const pilot = key === 'home';
   const fonts = pilot ? (lang === 'ar'
-    ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-arabic-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-home-arabic.css">`
-    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-home-latin.css">`)
+    ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-arabic-700.woff2" as="font" type="font/woff2" crossorigin>`
+    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>`)
     : lang === 'ar'
     ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/amiri-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-arabic.css">`
     : `<link rel="preload" href="/assets/fonts/playfair-latin-400i.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-600.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-latin.css">`;
-  const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster.webp" as="image" type="image/webp" media="(min-width: 880px)">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
+  const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster-540.webp" as="image" type="image/webp" fetchpriority="high">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
     : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
   return `<meta charset="utf-8">
@@ -593,7 +597,7 @@ ${alternates}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
 ${fonts}
 ${heroImg}
-<link rel="stylesheet" href="${pilot ? '/css/home.css' : '/css/styles.css'}">
+${pilot ? `<style>${PILOT_CSS[lang === 'ar' ? 'ar' : 'latin']}</style>` : '<link rel="stylesheet" href="/css/styles.css">'}
 <script type="application/ld+json">${jsonld(key, lang, page)}</script>
 <script id="yt-config" type="application/json">${config(lang)}</script>
 <script src="/js/main.js" defer></script>${pilot ? '\n<script src="/js/home.js" defer></script>' : ''}`;

@@ -189,7 +189,7 @@ const hSmall = [...hcss.matchAll(/font(?:-size)?:[^;]*?(\d+)px/g)].map((m) => +m
 if (hSmall.length) fail(`Home font sizes under 12px: ${hSmall}`);
 for (const l of ['en', 'ar', 'fr']) {
   const f = fileFor(PATHS.home[l]); const h = read(f);
-  if (!h.includes('/css/home.css') || h.includes('/css/styles.css')) fail(`${f}: Home pilot stylesheet not scoped`);
+  if (!/<style>[^<]*.p-hero/.test(h) || h.includes('/css/styles.css')) fail(`${f}: Home pilot stylesheet not scoped`);
   if (!h.includes('data-thread') || !h.includes('data-marquee')) fail(`${f}: thread or marquee missing`);
 }
 for (const [k, b] of Object.entries(PATHS)) if (k !== 'home') for (const l of LANGS) { const h = read(fileFor(b[l])); if (h.includes('/css/home.css') || h.includes('home.js')) fail(`${b[l]}: pilot leaked outside Home`); }
