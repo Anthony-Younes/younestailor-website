@@ -504,10 +504,12 @@ html[lang="ar"] .step__n { font-family: 'Instrument Serif', Georgia, serif; }
 @media (prefers-reduced-motion: no-preference) {
 @supports (animation-timeline: view()) {
 .card, .step, .values li, .compare__col, .twocol > div, .timeline li {
-animation: p-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 30%;
+animation: p-rise-only linear both; animation-timeline: view(); animation-range: entry 0% entry 30%;
 }
 }
-}</style>
+}
+@keyframes p-rise-only { from { transform: translateY(16px); } to { transform: none; } }
+.panel .subhead, .card .subhead { color: var(--ink-2); }</style>
 </head>
 <body class="page-404">
 <main id="main" class="section nf">

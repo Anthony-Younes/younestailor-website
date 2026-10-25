@@ -158,7 +158,7 @@ const fieldBg = mix('#FFFFFF', CREAM, 0.55);            // inputs
 const asideBg = mix(INK, NAVY, 0.35);                   // .aside-box on navy
 const sitePairs = [
   ['ink on cream', INK, CREAM], ['secondary #4A5266 on cream', INK2, CREAM], ['dark gold #7A5E2E on cream', GOLDTXT, CREAM],
-  ['ink on tinted section', INK, panelBg], ['secondary on tinted section', INK2, panelBg], ['dark gold on tinted section', GOLDTXT, panelBg],
+  ['ink on tinted section', INK, panelBg], ['secondary on tinted section', INK2, panelBg], ['dark gold on tinted section', GOLDTXT, panelBg], ['secondary on panel (labels)', INK2, cardBg],
   ['ink on card', INK, cardBg], ['secondary on card', INK2, cardBg], ['secondary on card hover', INK2, cardHover],
   ['ink on card in tinted section', INK, cardInPanel], ['secondary on card in tinted section', INK2, cardInPanel],
   ['ink on chip', INK, chipBg], ['ink on form field', INK, fieldBg], ['secondary on form field', INK2, fieldBg],
