@@ -143,58 +143,47 @@ const claimFiles = [...all.map((u) => (u.endsWith('.html') ? u : fileFor(u))), '
 for (const f of claimFiles) { const t = read(f); for (const c of claims) if (c.test(t)) fail(`${f}: unconfirmed claim ${c}`); }
 ok.push(`Removed claims: no matches for ${claims.length} EN/FR/AR patterns (saved design, approve, on a piece, last batch, repeat orders, vierge, pièce unique…) in ${claimFiles.length} files`);
 
-// 7. contrast of every text colour pair used
+// 7. contrast of every text colour pair used (Decision 03 look, all pages): cream ground, navy moments, tints
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
 const lum = (h) => { const [r, g, b] = hex(h); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
 const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
-const BG = { midnight: '#0B1120', night: '#121A2C', navy: '#1B2B55', navyCore: '#24396B' };
-const FG = { ivory: '#EEE8DA', muted: '#A9B0BD', brass: '#CDB88A', navyMuted: '#C3C8D2', ledeOnNavy: '#DCD8CE' };
-const pairs = [
-  ['ivory', 'midnight'], ['ivory', 'night'], ['ivory', 'navy'], ['ivory', 'navyCore'],
-  ['muted', 'midnight'], ['muted', 'night'],
-  ['brass', 'midnight'], ['brass', 'night'], ['brass', 'navy'], ['brass', 'navyCore'],
-  ['navyMuted', 'navy'], ['navyMuted', 'navyCore'], ['ledeOnNavy', 'navy'], ['ledeOnNavy', 'navyCore'],
-];
-const rows = pairs.map(([f, b]) => { const r = ratio(FG[f], BG[b]); if (r < 4.5) fail(`contrast ${f} on ${b} = ${r.toFixed(2)}`); return `${f} ${FG[f]} on ${b} ${BG[b]}: ${r.toFixed(2)}:1`; });
-const btn = ratio('#0B1120', '#EEE8DA'); rows.push(`button text #0B1120 on ivory #EEE8DA: ${btn.toFixed(2)}:1`);
-const btnHover = ratio('#0B1120', '#D9D2C2'); rows.push(`button text #0B1120 on ivory-deep #D9D2C2: ${btnHover.toFixed(2)}:1`);
-const field = ratio('#7D8799', '#0B1120'); rows.push(`field border #7D8799 on #0B1120 (non-text, needs 3:1): ${field.toFixed(2)}:1`);
-if (field < 3) fail('field border contrast');
-ok.push('Contrast (all ≥ 4.5:1):\n    ' + rows.join('\n    '));
-
-// 8. body size
-const css = read('css/styles.css');
-if (!/body \{[^}]*font-size: 16px/.test(css)) fail('body font-size is not 16px');
-const small = [...css.matchAll(/font-size: (\d+)px/g)].map((m) => +m[1]).filter((n) => n < 12);
-if (small.length) fail(`font sizes under 12px: ${small}`);
-ok.push('Body text 16px (EN/FR) and 17px (AR); smallest label 12px (tracked caps eyebrow)');
-
-// Home pilot (Decision 03): colour pairs per ground, and body size in css/home.css
 const mix = (fg, bg, a) => '#' + [1, 3, 5].map((i) => Math.round(parseInt(fg.slice(i, i + 2), 16) * a + parseInt(bg.slice(i, i + 2), 16) * (1 - a)).toString(16).padStart(2, '0')).join('');
-const CREAM = '#EEE8DA', INK = '#0B1120', NAVY = '#1F305D';
-const fieldBg = mix('#FFFFFF', CREAM, 0.55), hoursBg = mix(NAVY, CREAM, 0.07);
-const homePairs = [
-  ['ink on cream', INK, CREAM], ['secondary #4A5266 on cream', '#4A5266', CREAM], ['dark gold #7A5E2E on cream', '#7A5E2E', CREAM],
-  ['ink on form field', INK, fieldBg], ['secondary on form field', '#4A5266', fieldBg], ['secondary on hours panel', '#4A5266', hoursBg], ['ink on hours panel', INK, hoursBg],
-  ['cream on navy #1F305D', CREAM, NAVY], ['#A9B0BD on navy #1F305D', '#A9B0BD', NAVY], ['gold on navy #1F305D', '#CDB88A', NAVY],
-  ['cream on midnight', CREAM, INK], ['#A9B0BD on midnight', '#A9B0BD', INK], ['gold on midnight', '#CDB88A', INK],
+const CREAM = '#EEE8DA', INK = '#0B1120', NAVY = '#1F305D', INK2 = '#4A5266', GOLDTXT = '#7A5E2E', GOLD = '#CDB88A', MUTED = '#A9B0BD';
+const panelBg = mix(NAVY, CREAM, 0.05);                 // .section--panel
+const cardBg = mix(NAVY, CREAM, 0.06);                  // .card, hours/visit panels
+const cardHover = mix(NAVY, CREAM, 0.1);                // .card:hover
+const cardInPanel = mix('#FFFFFF', panelBg, 0.5);       // .section--panel .card
+const chipBg = mix(NAVY, CREAM, 0.07);                  // .chips li
+const fieldBg = mix('#FFFFFF', CREAM, 0.55);            // inputs
+const asideBg = mix(INK, NAVY, 0.35);                   // .aside-box on navy
+const sitePairs = [
+  ['ink on cream', INK, CREAM], ['secondary #4A5266 on cream', INK2, CREAM], ['dark gold #7A5E2E on cream', GOLDTXT, CREAM],
+  ['ink on tinted section', INK, panelBg], ['secondary on tinted section', INK2, panelBg], ['dark gold on tinted section', GOLDTXT, panelBg],
+  ['ink on card', INK, cardBg], ['secondary on card', INK2, cardBg], ['secondary on card hover', INK2, cardHover],
+  ['ink on card in tinted section', INK, cardInPanel], ['secondary on card in tinted section', INK2, cardInPanel],
+  ['ink on chip', INK, chipBg], ['ink on form field', INK, fieldBg], ['secondary on form field', INK2, fieldBg],
+  ['cream on navy #1F305D', CREAM, NAVY], ['#A9B0BD on navy', MUTED, NAVY], ['gold on navy', GOLD, NAVY],
+  ['cream on aside box', CREAM, asideBg], ['#A9B0BD on aside box', MUTED, asideBg],
+  ['cream on midnight', CREAM, INK], ['#A9B0BD on midnight', MUTED, INK], ['gold on midnight', GOLD, INK],
   ['button: cream on navy', CREAM, NAVY], ['button: ink on cream', INK, CREAM], ['button hover: ink on white', INK, '#FFFFFF'],
 ];
-const homeRows = homePairs.map(([name, f, b]) => { const r = ratio(f, b); if (r < 4.5) fail(`Home contrast ${name} = ${r.toFixed(2)}`); return `${name}: ${r.toFixed(2)}:1`; });
-const fieldBorder = ratio('#4A5266', fieldBg); homeRows.push(`field border #4A5266 on field (non-text, needs 3:1): ${fieldBorder.toFixed(2)}:1`);
-if (fieldBorder < 3) fail('Home field border contrast');
-const hcss = read('css/home.css');
-if (!/body \{[^}]*font-size: 17px/.test(hcss)) fail('Home body font-size is not 17px');
-if (/#A9B0BD[^;]*;\s*background: var\(--cream\)/i.test(hcss)) fail('Home: #A9B0BD used on cream');
-const hSmall = [...hcss.matchAll(/font(?:-size)?:[^;]*?(\d+)px/g)].map((m) => +m[1]).filter((n) => n < 12);
-if (hSmall.length) fail(`Home font sizes under 12px: ${hSmall}`);
-for (const l of ['en', 'ar', 'fr']) {
-  const f = fileFor(PATHS.home[l]); const h = read(f);
-  if (!/<style>[^<]*.p-hero/.test(h) || h.includes('/css/styles.css')) fail(`${f}: Home pilot stylesheet not scoped`);
-  if (!h.includes('data-thread') || !h.includes('data-marquee')) fail(`${f}: thread or marquee missing`);
+const siteRows = sitePairs.map(([name, f, b]) => { const r = ratio(f, b); if (r < 4.5) fail(`contrast ${name} = ${r.toFixed(2)}`); return `${name}: ${r.toFixed(2)}:1`; });
+const fieldBorder = ratio(INK2, fieldBg); siteRows.push(`field border #4A5266 on field (non-text, needs 3:1): ${fieldBorder.toFixed(2)}:1`);
+if (fieldBorder < 3) fail('field border contrast');
+ok.push('Contrast, all pages (all ≥ 4.5:1):\n    ' + siteRows.join('\n    '));
+
+// 8. body size and scoping: every page inlines the site CSS; the thread and marquee script stays on Home
+const scss = read('css/site.css');
+if (!/body \{[^}]*font-size: 17px/.test(scss)) fail('body font-size is not 17px');
+const sSmall = [...scss.matchAll(/font(?:-size)?:[^;]*?(\d+)px/g)].map((m) => +m[1]).filter((n) => n < 12);
+if (sSmall.length) fail(`font sizes under 12px: ${sSmall}`);
+for (const [k, b] of Object.entries(PATHS)) for (const l of LANGS) {
+  const h = read(fileFor(b[l]));
+  if (!/<style>[^<]*\.p-hero/.test(h) || /href="\/css\//.test(h)) fail(`${b[l]}: site CSS not inlined`);
+  if (k === 'home' ? !(h.includes('home.js') && h.includes('<svg class="thread"') && h.includes('data-marquee>')) : (h.includes('home.js') || h.includes('<svg class="thread"'))) fail(`${b[l]}: thread/marquee scoping wrong`);
 }
-for (const [k, b] of Object.entries(PATHS)) if (k !== 'home') for (const l of LANGS) { const h = read(fileFor(b[l])); if (h.includes('/css/home.css') || h.includes('home.js')) fail(`${b[l]}: pilot leaked outside Home`); }
-ok.push('Home pilot contrast (all ≥ 4.5:1):\n    ' + homeRows.join('\n    ') + '\n  Home body 17px (AR 18px); pilot CSS/JS loaded on the 3 Home pages only; other 21 pages unchanged in style');
+const nf = read('404.html'); if (!/<style>[^<]*\.p-hero/.test(nf) || /href="\/css\//.test(nf)) fail('404.html: site CSS not inlined');
+ok.push('Body text 17px (AR 18px); smallest label 12px (logo lockup caption). All 24 pages and 404.html use the Decision 03 look (inlined CSS); thread + marquee on the 3 Home pages only');
 
 
 // Home copy: every cell of docs/decisions/home-copy.md must appear verbatim on the rendered Home page.

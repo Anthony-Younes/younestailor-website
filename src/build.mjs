@@ -565,21 +565,19 @@ function config(lang) {
   return JSON.stringify({ tz: 'Asia/Beirut', hours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:00' }], s: u.status });
 }
 
-// Home pilot CSS is inlined (fonts + home.css), read once per build.
+// Site CSS (Decision 03 look, all pages) is inlined: fonts + site.css, read once per build.
 const readCss = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n').trim();
-const PILOT_CSS = { latin: readCss('css/fonts-home-latin.css') + '\n' + readCss('css/home.css'), ar: readCss('css/fonts-home-arabic.css') + '\n' + readCss('css/home.css') };
+const SITE_CSS = { latin: readCss('css/fonts-site-latin.css') + '\n' + readCss('css/site.css'), ar: readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/site.css') };
+const SITE_CSS_404 = readCss('css/fonts-site-latin.css') + '\n' + readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/site.css');
 
 // ── page ───────────────────────────────────────────────────────────────────
 function head(key, lang, page) {
   const u = UI[lang];
   const pageUrl = abs(key, lang);
   const pilot = key === 'home';
-  const fonts = pilot ? (lang === 'ar'
+  const fonts = lang === 'ar'
     ? `<link rel="preload" href="/assets/fonts/plexarabic-home-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-home-700.woff2" as="font" type="font/woff2" crossorigin>`
-    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>`)
-    : lang === 'ar'
-    ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/amiri-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-arabic.css">`
-    : `<link rel="preload" href="/assets/fonts/playfair-latin-400i.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/montserrat-latin-600.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-latin.css">`;
+    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>`;
   const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster-540.webp" as="image" type="image/webp" fetchpriority="high">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
     : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
@@ -591,13 +589,14 @@ function head(key, lang, page) {
 ${alternates}
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0B1120">
-<meta name="color-scheme" content="${pilot ? 'light' : 'dark'}">
+<meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Younes Tailor"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${pageUrl}"><meta property="og:image" content="${SITE}/assets/og-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Younes Tailor — ${esc(u.place)}"><meta property="og:locale" content="${u.locale}">${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${UI[l].locale}">`).join('')}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
-${pilot ? heroImg + '\n' + fonts : fonts + '\n' + heroImg}
-${pilot ? `<style>${PILOT_CSS[lang === 'ar' ? 'ar' : 'latin']}</style>` : '<link rel="stylesheet" href="/css/styles.css">'}
+${heroImg}
+${fonts}
+<style>${SITE_CSS[lang === 'ar' ? 'ar' : 'latin']}</style>
 <script type="application/ld+json">${jsonld(key, lang, page)}</script>
 <script id="yt-config" type="application/json">${config(lang)}</script>
 <script src="/js/main.js" defer></script>${pilot ? '\n<script src="/js/home.js" defer></script>' : ''}`;
@@ -643,9 +642,7 @@ function render404() {
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0B1120">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/css/fonts-latin.css">
-<link rel="stylesheet" href="/css/fonts-arabic.css">
-<link rel="stylesheet" href="/css/styles.css">
+<style>${SITE_CSS_404}</style>
 </head>
 <body class="page-404">
 <main id="main" class="section nf">
