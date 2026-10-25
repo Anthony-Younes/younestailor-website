@@ -574,7 +574,7 @@ function head(key, lang, page) {
   const pageUrl = abs(key, lang);
   const pilot = key === 'home';
   const fonts = pilot ? (lang === 'ar'
-    ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-arabic-700.woff2" as="font" type="font/woff2" crossorigin>`
+    ? `<link rel="preload" href="/assets/fonts/plexarabic-home-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-home-700.woff2" as="font" type="font/woff2" crossorigin>`
     : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>`)
     : lang === 'ar'
     ? `<link rel="preload" href="/assets/fonts/plexarabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/amiri-arabic-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/css/fonts-arabic.css">`
