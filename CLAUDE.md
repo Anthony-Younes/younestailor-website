@@ -1,0 +1,35 @@
+# Younes Tailor website — rules for Claude Code
+
+Static hand-built site (HTML/CSS/JS, no build step), hosted on Netlify, deployed automatically from `main` of GitHub `Anthony-Younes/younestailor-website`. Three languages: EN (root), AR (`/ar/`, same slugs as EN, RTL), FR (`/fr/`, French slugs).
+
+## How work happens here
+- Lead agent (Claude, in the owner's "Younes Tailor - website" project) plans; GPT reviews in ChatGPT; the owner approves. You are the builder.
+- **Never commit to `main`, never merge, never deploy.** Work on a branch, push it, open a pull request. Netlify builds a Deploy Preview for every PR; post the preview URL in the PR.
+- Build only what an approved decision record says (`docs/decisions/`). If something isn't covered, stop and ask instead of inventing.
+- Don't use Netlify Drop or Netlify's built-in agent.
+
+## Facts — use exactly, never invent others
+- Name: **Younes Tailor**
+- Address line: **Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon**
+- Phone: **+961 3 128 413** · Email: **info@younestailor.com** · Instagram: @younestailormestita
+- Hours: **Mon–Sat 09:00–19:00, Sunday closed**
+- Location in running copy: say **Byblos** (not Jbeil). Arabic: جبيل. Keep Blat visible. Keep "Jbeil" only in the address line and structured data.
+- Embroidery: blanks supplied (tees, hoodies, sweaters, caps, towels, uniforms) or customer brings their own; caps stitched in-house; designs digitised in-house; **no minimum order**; **one all-in price, no separate design or digitising charge**; **preview before stitching on request**.
+- Never write prices, ratings, reviews, customer quotes or turnaround promises that aren't listed here. Speed lines ("most alterations in 2–3 days") at most once per page.
+
+## Copy rules
+Short, specific, plain, dry. Sentence case. No AI filler: no "not just X, it's Y", "passion", "crafted", "elevate", "journey", "bespoke experience", "seamless", "we pride ourselves". No exclamation marks. Arabic and French must read as native, not translated word by word.
+
+## Brand (from Claude Design handoff; if handoff files differ, the handoff wins on exact values)
+- Dark only. ink `#0B1120`, panel `#121A2C`, navy `#1F305D` / `#1B2B55`, cream `#EEE8DA`, body text `#A9B0BD`, gold `#CDB88A` (hairlines, numerals, small labels).
+- Every text colour pair ≥ 4.5:1 (large text ≥ 3:1). The mockup's dim grey labels fail on navy: lighten them.
+- Fonts self-hosted WOFF2 in `/assets/fonts/` (CSP is `font-src 'self'`): Playfair Display Italic (real headlines only) + Medium (card titles); Montserrat 400/600 (body ≥16px, never thin cuts for text); Arabic: Amiri (headings) + IBM Plex Sans Arabic (body). No uppercase or letter-spacing on Arabic. Load only what each language needs.
+- Icons: Phosphor, thin outline; controls always have text labels.
+- Logo: script "Younes" + يونس SVG from the handoff. Never retype it in a font. Footer lockup "TAILOR · BYBLOS".
+
+## Technical guardrails
+- Keep `_headers` (CSP etc.) and every existing redirect in `_redirects`. Self-hosted media only (CSP has no external img/media sources; map iframe from google.com is allowed).
+- Every page: unique title + meta description, one H1, canonical to itself, reciprocal hreflang (en, ar, fr, x-default=en), language switcher that keeps the current page.
+- Structured data: keep `@type ["LocalBusiness","ProfessionalService"]`, one business identity on every page, exact facts above, `Service` entries for each live service. No ratings/reviews/prices.
+- Images/video: reserved width/height, poster frames, `loading="lazy"` below the fold, hero image eager. Videos muted, `playsinline`, pause control, no autoplay when `prefers-reduced-motion`.
+- Mobile first. Sticky bar on phones (WhatsApp · Call · Directions) must never cover focused fields or content.
