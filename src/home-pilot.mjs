@@ -35,7 +35,7 @@ export function renderHomePilot(lang, page, x) {
 </div>
 <p class="p-hero__hours">${esc(h.hours)}</p>
 </div>
-<div class="p-hero__media">${video(1, lang, '/assets/media/machine-01-poster-540.webp', { caption: false })}</div>
+<div class="p-hero__media">${video(1, lang, '/assets/media/machine-01-poster-540.webp', { caption: false, eagerPoster: true })}</div>
 </div>
 </section>
 

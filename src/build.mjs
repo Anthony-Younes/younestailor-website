@@ -51,9 +51,12 @@ function poster(n, lang, { eager = false } = {}) {
 }
 function video(n, lang, posterSrc, opts = {}) {
   const u = UI[lang];
+  // Below the fold the poster is set by main.js shortly before the video nears the screen (a poster attribute is
+  // fetched at page load and would compete with the hero image). opts.eagerPoster keeps it in the HTML for the first screen.
+  const src = posterSrc || `/assets/media/machine-${two(n)}-poster.webp`;
   return `<figure class="media media--video">
 <div class="frame frame--video">
-<video data-video muted playsinline loop controls preload="none" width="720" height="1280" poster="${posterSrc || `/assets/media/machine-${two(n)}-poster.webp`}" aria-label="${esc(u.video.caption)}"><source src="/assets/media/machine-${two(n)}.mp4" type="video/mp4"></video>
+<video data-video muted playsinline loop controls preload="none" width="720" height="1280" ${opts.eagerPoster ? 'poster' : 'data-poster'}="${src}" aria-label="${esc(u.video.caption)}"><source src="/assets/media/machine-${two(n)}.mp4" type="video/mp4"></video>
 <button class="video-toggle" type="button" data-video-toggle data-label-pause="${esc(u.video.pause)}" data-label-play="${esc(u.video.play)}" hidden>${icon('pause', 'i-pause')}${icon('play', 'i-play')}<span>${esc(u.video.pause)}</span></button>
 </div>
 ${opts.caption === false ? '' : `<figcaption>${esc(u.video.caption)}</figcaption>`}

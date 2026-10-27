@@ -134,7 +134,14 @@
     });
   }, { threshold: 0.25 }) : null;
 
+  // Below-the-fold posters: set shortly before the video nears the screen, so they don't compete with the hero image.
+  var setPoster = function (v) { if (v.dataset.poster) { v.poster = v.dataset.poster; v.removeAttribute('data-poster'); } };
+  var posterIo = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { setPoster(en.target); posterIo.unobserve(en.target); } });
+  }, { rootMargin: '800px 0px' }) : null;
+
   videos.forEach(function (v) {
+    if (v.dataset.poster) { if (posterIo) posterIo.observe(v); else setPoster(v); }
     var btn = v.parentNode.querySelector('[data-video-toggle]');
     v.removeAttribute('controls');
     v.muted = true;
