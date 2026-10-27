@@ -30,8 +30,8 @@
 @media (min-width: 1200px) { :root { --gutter: 56px; --lane: 88px; --media-w: 380px; } }
 
 html[lang="ar"] {
-  --serif: 'Aref Ruqaa', 'IBM Plex Sans Arabic', serif;
-  --sans: 'IBM Plex Sans Arabic', Tahoma, sans-serif;
+  --serif: 'Aref Ruqaa', 'Aref Ruqaa Fallback', 'IBM Plex Sans Arabic', serif;
+  --sans: 'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', Tahoma, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -452,7 +452,7 @@ html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-weight: 700; l
 .pagehead__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; }
 @media (min-width: 880px) { .pagehead--media .pagehead__grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 64px; } }
 .pagehead h1 { margin-bottom: 18px; }
-.pagehead .media { max-width: 420px; width: 100%; justify-self: center; }
+.pagehead .media { max-width: 420px; width: 100%; justify-self: center; flex: none; height: auto; }
 .pagehead .media .frame { aspect-ratio: 4 / 5; border-radius: 999px 999px 40px 40px; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; font-size: 15px; }
 .crumbs li { color: var(--muted-navy); }
@@ -596,3 +596,8 @@ html[lang="ar"] .step__n { font-family: 'Instrument Serif', Georgia, serif; }
 .band-navy .status { border-color: var(--line-navy); color: var(--cream); }
 .band-navy .status__dot { background: var(--muted-navy); }
 .band-navy .status[data-open="true"] .status__dot { background: #7FC79A; }
+
+/* Fixes round 3: hero frames keep their own size (aspect-ratio on the frame and its figure), never tied to the text column. */
+.pagehead .media .frame, .p-hero__media .frame { height: auto; flex: none; }
+.pagehead .media .frame img, .p-hero__media .frame img, .p-hero__media .frame video { aspect-ratio: inherit; }
+.p-hero__media, .p-hero__media .media { flex: none; height: auto; }

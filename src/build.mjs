@@ -582,17 +582,26 @@ function config(lang) {
 
 // Site CSS (Decision 03 look, all pages) is inlined: fonts + site.css, read once per build.
 const readCss = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n').trim();
-const SITE_CSS = { latin: readCss('css/fonts-site-latin.css') + '\n' + readCss('css/site.css'), ar: readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/site.css') };
-const SITE_CSS_404 = readCss('css/fonts-site-latin.css') + '\n' + readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/site.css');
+// Fixes round 3: EN and FR each get their own measured fallback faces (css/fallback-en.css, css/fallback-fr.css).
+const SITE_CSS = {
+  en: readCss('css/fonts-site-latin.css') + '\n' + readCss('css/fallback-en.css') + '\n' + readCss('css/site.css'),
+  fr: readCss('css/fonts-site-latin.css') + '\n' + readCss('css/fallback-fr.css') + '\n' + readCss('css/site.css'),
+  ar: readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/fallback-ar.css') + '\n' + readCss('css/site.css'),
+};
+const SITE_CSS_404 = readCss('css/fonts-site-latin.css') + '\n' + readCss('css/fallback-en.css') + '\n' + readCss('css/fonts-site-arabic.css') + '\n' + readCss('css/fallback-ar.css') + '\n' + readCss('css/site.css');
 
 // ── page ───────────────────────────────────────────────────────────────────
 function head(key, lang, page) {
   const u = UI[lang];
   const pageUrl = abs(key, lang);
   const pilot = key === 'home';
-  const fonts = lang === 'ar'
-    ? `<link rel="preload" href="/assets/fonts/plexarabic-home-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/arefruqaa-home-700.woff2" as="font" type="font/woff2" crossorigin>`
-    : `<link rel="preload" href="/assets/fonts/instrumentserif-latin-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin>`;
+  // Fixes round 3: preload exactly the font files the first screen uses, so they arrive together and early.
+  // EN/FR: Instrument Serif regular (headlines), italic only on Home (the headline's italic words), Manrope 400 (text) + 600 (buttons, nav).
+  // AR: IBM Plex Sans Arabic 400 + 600 and Aref Ruqaa 700 (headline), Home-only subsets shared by all AR pages.
+  const pre = (f) => `<link rel="preload" href="/assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`;
+  const fonts = (lang === 'ar'
+    ? ['plexarabic-home-400.woff2', 'plexarabic-home-600.woff2', 'arefruqaa-home-700.woff2']
+    : ['instrumentserif-latin-400.woff2', ...(pilot ? ['instrumentserif-latin-400i.woff2'] : []), 'manrope-latin-400.woff2', 'manrope-latin-600.woff2']).map(pre).join('');
   const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster-540.webp" as="image" type="image/webp" fetchpriority="high">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
     : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
@@ -611,7 +620,7 @@ ${alternates}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
 ${heroImg}
 ${fonts}
-<style>${SITE_CSS[lang === 'ar' ? 'ar' : 'latin']}</style>
+<style>${SITE_CSS[lang]}</style>
 <script type="application/ld+json">${jsonld(key, lang, page)}</script>
 <script id="yt-config" type="application/json">${config(lang)}</script>
 <script src="/js/main.js" defer></script>${pilot ? '\n<script src="/js/home.js" defer></script>' : ''}`;
