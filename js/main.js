@@ -78,6 +78,8 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      // Home's general form starts on an empty "Choose a service" option and requires a choice.
+      if (service.required && !service.value) { service.focus(); if (service.reportValidity) service.reportValidity(); return; }
       var lines = [form.getAttribute('data-intro') || ''];
       var groups = {};
       var order = [];

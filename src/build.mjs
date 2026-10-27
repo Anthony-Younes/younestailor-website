@@ -10,6 +10,7 @@ import { FACTS, UI } from './content-ui.mjs';
 import { PATHS, PARENT, ALT, PAGES } from './content-pages.mjs';
 import { ICONS } from './icons.mjs';
 import { renderHomePilot } from './home-pilot.mjs';
+import { HOME } from './content-home.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'ar', 'fr'];
@@ -65,7 +66,10 @@ function stillFigure(spec, lang, eager) {
   return '';
 }
 
-const eyebrow = (t) => t ? `<p class="eyebrow">${esc(t)}</p>` : '';
+// Fixes round 2, section 6: a small label is dropped when its words already appear in its heading.
+const words = (t) => String(t || '').toLowerCase().replace(/[&·.,:;!?؟،()'’"—–-]/g, ' ').split(/\s+/).filter((w) => w && !['and', 'et', 'the', 'de', 'la', 'le', 'les'].includes(w));
+const repeats = (label, heading) => { const h = new Set(words(heading)); const l = words(label); return l.length > 0 && l.every((w) => h.has(w)); };
+const eyebrow = (t, heading) => (t && !(heading && repeats(t, heading))) ? `<p class="eyebrow">${esc(t)}</p>` : '';
 const trio = (lang) => `<ul class="trio">${UI[lang].trio.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
 const ctaButton = (page, lang, cls = 'btn btn--primary') =>
   `<a class="${cls}" href="#enquire" data-cta>${esc(page.ctaLabel)}</a>`;
@@ -129,6 +133,11 @@ function hoursList(lang, { table = false } = {}) {
   return `<dl class="hours${table ? ' hours--table' : ''}" data-hours>${rows}</dl>`;
 }
 
+// Fixes round 2, section 8: the three social links, opening in a new tab, named for screen readers and on screen.
+function socialLinks(cls = 'social') {
+  return `<ul class="${cls}">${FACTS.social.map((n) => `<li><a href="${n.url}" target="_blank" rel="noopener">${icon(n.icon)}<span>${n.name}</span></a></li>`).join('')}</ul>`;
+}
+
 function contactList(lang) {
   const u = UI[lang];
   return `<ul class="contact-list">
@@ -136,8 +145,10 @@ function contactList(lang) {
 <li>${icon('phone')}<span><span class="contact-list__label">${esc(u.labels.phone)}</span><a href="tel:${FACTS.phoneE164}">${ltr(FACTS.phoneDisplay)}</a></span></li>
 <li>${icon('whatsapp-logo')}<span><span class="contact-list__label">${esc(u.labels.whatsapp)}</span><a href="https://wa.me/${FACTS.wa}" rel="noopener">${ltr(FACTS.phoneDisplay)}</a></span></li>
 <li>${icon('envelope-simple')}<span><span class="contact-list__label">${esc(u.labels.email)}</span><a href="mailto:${FACTS.email}">${ltr(FACTS.email)}</a></span></li>
-<li>${icon('instagram-logo')}<span><span class="contact-list__label">${esc(u.labels.instagram)}</span><a href="${FACTS.instagram}" rel="noopener">${ltr(FACTS.instagramHandle)}</a></span></li>
-</ul>`;
+<li>${icon('check')}<span>${esc(HOME[lang].parking)}</span></li>
+<li>${icon('check')}<span>${esc(HOME[lang].payment)}</span></li>
+</ul>
+${socialLinks()}`;
 }
 
 function statusPill() {
@@ -164,7 +175,8 @@ function footer(key, lang) {
 <h2 class="site-footer__h">${esc(u.footer.hours)}</h2>
 <p>${esc(u.hoursShort)}</p>
 <h2 class="site-footer__h">${esc(u.footer.contact)}</h2>
-<p><a href="tel:${FACTS.phoneE164}">${ltr(FACTS.phoneDisplay)}</a><br><a href="mailto:${FACTS.email}">${ltr(FACTS.email)}</a><br><a href="${FACTS.instagram}" rel="noopener">${ltr(FACTS.instagramHandle)}</a></p>
+<p><a href="tel:${FACTS.phoneE164}">${ltr(FACTS.phoneDisplay)}</a><br><a href="mailto:${FACTS.email}">${ltr(FACTS.email)}</a></p>
+${socialLinks('social social--footer')}
 </div>
 <nav aria-label="${esc(u.footer.pages)}">
 <h2 class="site-footer__h">${esc(u.footer.pages)}</h2>
@@ -195,7 +207,7 @@ function sHero(s, key, lang, page) {
   return `<section class="hero band-night">
 <div class="container hero__grid">
 <div class="hero__copy">
-${eyebrow(s.eyebrow)}
+${eyebrow(s.eyebrow, s.h1)}
 <h1>${esc(s.h1)}</h1>
 <p class="lede">${esc(s.lede)}</p>
 <div class="btn-row">${s.buttons.map((b) => `<a class="btn btn--branch" href="${href(b.href, lang)}">${icon(b.icon)}<span>${esc(b.label)}</span>${icon('arrow-right', 'i-arrow')}</a>`).join('')}</div>
@@ -212,9 +224,10 @@ function sPagehead(s, key, lang, page) {
 <div class="container pagehead__grid">
 <div class="pagehead__copy">
 ${breadcrumbs(key, lang)}
-${eyebrow(s.eyebrow)}
+${eyebrow(s.eyebrow, s.h1)}
 <h1>${esc(s.h1)}</h1>
 <p class="lede">${esc(s.lede)}</p>
+${s.lede2 ? `<p class="lede">${esc(s.lede2)}</p>` : ''}
 <div class="btn-row">${ctaButton(page, lang)}<a class="btn btn--ghost" href="https://wa.me/${FACTS.wa}" rel="noopener">${icon('whatsapp-logo')}<span>${esc(UI[lang].form.waDirect)}</span></a></div>
 ${s.trio ? trio(lang) : ''}
 </div>
@@ -237,7 +250,7 @@ ${c.bullets ? `<ul class="dots">${c.bullets.map((b) => `<li>${esc(b)}</li>`).joi
 }
 
 function sGroups(s, key, lang, page) {
-  const head = s.h2 ? `<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>` : '';
+  const head = s.h2 ? `<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>` : '';
   return `<section class="section"${s.id ? ` id="${s.id}"` : ''}>
 <div class="container">
 ${head}
@@ -262,7 +275,7 @@ function sProcess(s, key, lang, page) {
   return `<section class="section${s.which === 'tailoring' ? ' section--panel' : ''}" id="process-${s.which}">
 <div class="container${media ? ' split' : ''}">
 <div>
-<div class="section-head">${eyebrow(base.eyebrow)}<h2>${esc(base.h2)}</h2></div>
+<div class="section-head">${eyebrow(base.eyebrow, base.h2)}<h2>${esc(base.h2)}</h2></div>
 <ol class="steps">${steps.map(([h, p], i) => `<li class="step"><span class="step__n" aria-hidden="true">${two(i + 1)}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('')}</ol>
 ${s.trio ? trio(lang) : ''}
 ${key === 'home' ? `<p class="section-cta"><a class="btn btn--ghost" href="${url(isEmb ? 'embroidery' : 'alterations', lang)}">${esc(isEmb ? u.services.embroidery : u.services.alterations)} ${icon('arrow-right', 'i-arrow')}</a></p>` : `<p class="section-cta">${ctaButton(page, lang)}</p>`}
@@ -275,7 +288,7 @@ ${media}
 function sList(s, key, lang) {
   return `<section class="section">
 <div class="container narrow">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2>${s.intro ? `<p>${esc(s.intro)}</p>` : ''}</div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2>${s.intro ? `<p>${esc(s.intro)}</p>` : ''}</div>
 <ul class="checks">${s.items.map((i) => `<li>${icon('check')}<span>${esc(i)}</span></li>`).join('')}</ul>
 ${s.note ? `<p class="note">${esc(s.note)}</p>` : ''}
 </div>
@@ -289,7 +302,7 @@ function asideBox(a) {
 function sTimeline(s, key, lang, page) {
   return `<section class="section band-navy" id="${s.id}">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2><p>${esc(s.intro)}</p></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2><p>${esc(s.intro)}</p></div>
 <div class="split split--aside">
 <div>
 <h3 class="subhead">${esc(s.stepsTitle)}</h3>
@@ -305,7 +318,7 @@ ${asideBox(s.aside)}
 function sCompare(s) {
   return `<section class="section">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>
 <div class="compare">
 <div class="compare__col"><h3>${esc(s.good.h)}</h3><ul class="checks">${s.good.items.map((i) => `<li>${icon('check')}<span>${esc(i)}</span></li>`).join('')}</ul></div>
 <div class="compare__col compare__col--muted"><h3>${esc(s.bad.h)}</h3><ul class="crosses">${s.bad.items.map((i) => `<li>${icon('x')}<span>${esc(i)}</span></li>`).join('')}</ul></div>
@@ -318,7 +331,7 @@ function sCompare(s) {
 function sRestoration(s) {
   return `<section class="section band-navy" id="${s.id}">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2><p>${esc(s.intro)}</p></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2><p>${esc(s.intro)}</p></div>
 <div class="split split--aside">
 <div>
 <ul class="checks">${s.items.map((i) => `<li>${icon('check')}<span>${esc(i)}</span></li>`).join('')}</ul>
@@ -333,7 +346,7 @@ ${asideBox(s.aside)}
 function sChips(s) {
   return `<section class="section">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head"><h2>${esc(s.h2)}</h2></div>
 <ul class="chips">${s.items.map(([ic, label]) => `<li>${icon(ic)}<span>${esc(label)}</span></li>`).join('')}</ul>
 ${s.note ? `<p class="note">${esc(s.note)}</p>` : ''}
 </div>
@@ -343,7 +356,7 @@ ${s.note ? `<p class="note">${esc(s.note)}</p>` : ''}
 function sTwocol(s) {
   return `<section class="section section--panel">
 <div class="container twocol">
-${s.cols.map((c) => `<div>${eyebrow(c.eyebrow)}<h2>${esc(c.h2)}</h2><p>${esc(c.p)}</p></div>`).join('')}
+${s.cols.map((c) => `<div>${eyebrow(c.eyebrow, c.h2)}<h2>${esc(c.h2)}</h2><p>${esc(c.p)}</p></div>`).join('')}
 </div>
 </section>`;
 }
@@ -351,7 +364,7 @@ ${s.cols.map((c) => `<div>${eyebrow(c.eyebrow)}<h2>${esc(c.h2)}</h2><p>${esc(c.p
 function sVideos(s, key, lang) {
   return `<section class="section">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>
 <div class="videos">${s.clips.map((n) => video(n, lang)).join('')}</div>
 </div>
 </section>`;
@@ -360,7 +373,7 @@ function sVideos(s, key, lang) {
 function sProse(s) {
   return `<section class="section">
 <div class="container narrow">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>
 <div class="prose">${s.paras.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
 </div>
 </section>`;
@@ -369,7 +382,7 @@ function sProse(s) {
 function sValues(s) {
   return `<section class="section section--panel">
 <div class="container">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>
 <ul class="values">${s.items.map(([h, p]) => `<li><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('')}</ul>
 </div>
 </section>`;
@@ -380,10 +393,10 @@ function sVisit(s, key, lang) {
   return `<section class="section band-navy" id="visit">
 <div class="container split">
 <div>
-<div class="section-head">${eyebrow(u.visitBlock.eyebrow)}<h2>${esc(u.visitBlock.h2)}</h2><p>${esc(u.visitBlock.p)}</p></div>
+<div class="section-head">${eyebrow(u.visitBlock.eyebrow, u.visitBlock.h2)}<h2>${esc(u.visitBlock.h2)}</h2><p>${esc(HOME[lang].visitLine)}</p></div>
 ${statusPill()}
 ${contactList(lang)}
-<div class="btn-row"><a class="btn btn--primary" href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(u.visitBlock.directions)}</span></a><a class="btn btn--ghost" href="${url('visit', lang)}">${esc(u.visitBlock.more)} ${icon('arrow-right', 'i-arrow')}</a></div>
+<div class="btn-row"><a class="btn btn--primary" href="${esc(FACTS.directions)}" rel="noopener">${icon('navigation-arrow')}<span>${esc(HOME[lang].visitBtns[0])}</span></a><a class="btn btn--ghost" href="https://wa.me/${FACTS.wa}" rel="noopener">${icon('whatsapp-logo')}<span>${esc(HOME[lang].visitBtns[1])}</span></a><a class="btn btn--ghost" href="tel:${FACTS.phoneE164}">${icon('phone')}<span>${esc(HOME[lang].visitBtns[2])}</span></a></div>
 </div>
 <div class="panel"><h3 class="subhead">${esc(u.footer.hours)}</h3>${hoursList(lang)}</div>
 </div>
@@ -419,7 +432,7 @@ ${contactList(lang)}
 function sFaq(s) {
   return `<section class="section">
 <div class="container narrow">
-<div class="section-head">${eyebrow(s.eyebrow)}<h2>${esc(s.h2)}</h2></div>
+<div class="section-head">${eyebrow(s.eyebrow, s.h2)}<h2>${esc(s.h2)}</h2></div>
 <div class="faq">${s.items.map(([q, a]) => `<details class="faq__item"><summary>${esc(q)}</summary><div class="faq__a"><p>${esc(a)}</p></div></details>`).join('')}</div>
 </div>
 </section>`;
@@ -504,7 +517,7 @@ function business(lang) {
     '@type': ['LocalBusiness', 'ProfessionalService'],
     '@id': SITE + '/#business',
     name: FACTS.name,
-    description: 'Tailoring and embroidery in Blat, Byblos: alterations, repairs, embroidery and uniform embroidery.',
+    description: 'Tailoring and embroidery in Blat, Byblos, near Best Buy Market: alterations, repairs, embroidery and uniform embroidery.',
     url: SITE + '/',
     telephone: FACTS.phoneE164,
     email: FACTS.email,
@@ -522,7 +535,9 @@ function business(lang) {
       '@type': 'Offer',
       itemOffered: { '@type': 'Service', '@id': abs(k, lang) + '#service', name: u.schemaServices[k], url: abs(k, lang) },
     })),
-    sameAs: [FACTS.gbp, FACTS.instagram],
+    paymentAccepted: 'Cash',
+    amenityFeature: [{ '@type': 'LocationFeatureSpecification', name: 'Parking', value: true }],
+    sameAs: FACTS.social.map((n) => n.url),
   };
 }
 

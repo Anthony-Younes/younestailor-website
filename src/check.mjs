@@ -85,7 +85,7 @@ for (const u of all) {
     .split('Blat, caza de Jbeil (Byblos), Mont-Liban, Liban').join(''); // FR address as written in home-copy.md
   if (/Jbeil/i.test(text)) fail(`${u}: "Jbeil" in running copy`);
   const meta = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
-  const metaCheck = meta.replace('Blat, Jbeil (Byblos) District', '').replace('district de Jbeil (Byblos)', '');
+  const metaCheck = meta.replace('Blat, Jbeil (Byblos) District', '').replace('district de Jbeil (Byblos)', '').replace('caza de Jbeil (Byblos)', '');
   if (/Jbeil/i.test(metaCheck)) fail(`${u}: "Jbeil" in meta description`);
   for (const b of banned) if (b.test(text)) fail(`${u}: banned phrase ${b}`);
   if (/[!！]/.test(text.replace(/<!--[\s\S]*?-->/g, ''))) fail(`${u}: exclamation mark in copy`);
@@ -94,11 +94,11 @@ for (const u of all) {
 ok.push('No "Jbeil" in running copy (only the address line and structured data); no banned phrases; no exclamation marks; Blat visible on every page');
 
 // 4. facts + structured data
-const FACT_STRINGS = ['+961 3 128 413', 'info@younestailor.com', '@younestailormestita'];
+const FACT_STRINGS = ['+961 3 128 413', 'info@younestailor.com', 'https://www.instagram.com/younestailor/', 'https://www.facebook.com/profile.php?id=61571488297091', 'https://www.tiktok.com/@younes.tailor'];
 for (const u of all.filter((x) => !x.endsWith('.html'))) {
   const h = read(fileFor(u));
   for (const s of FACT_STRINGS) if (!h.includes(s)) fail(`${u}: missing fact ${s}`);
-  if (u.startsWith('/ar/') ? !h.includes('بلاط، قضاء جبيل، جبل لبنان، لبنان') : u.startsWith('/fr/') ? !h.includes('Blat, district de Jbeil (Byblos), Mont-Liban, Liban') : !h.includes('Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon')) fail(`${u}: address line missing`);
+  if (u.startsWith('/ar/') ? !h.includes('بلاط، قضاء جبيل، جبل لبنان، لبنان') : u.startsWith('/fr/') ? !h.includes('Blat, caza de Jbeil (Byblos), Mont-Liban, Liban') : !h.includes('Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon')) fail(`${u}: address line missing`);
   const ld = (h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1];
   let data;
   try { data = JSON.parse(ld); } catch (e) { fail(`${u}: JSON-LD does not parse`); continue; }
@@ -236,6 +236,63 @@ ok.push('Body text 17px (AR 18px); smallest label 12px (logo lockup caption). Al
     if (JSON.stringify(got) !== JSON.stringify(want)) fail(`${l}: WhatsApp labels ${JSON.stringify(got)} ≠ template ${JSON.stringify(want)}`);
   });
   ok.push('Home WhatsApp message: first line and the 7 line labels match the EN/AR/FR templates in home-copy.md, in order');
+}
+
+
+// Fixes round 2 (docs/decisions/launch-1-fixes-round-2.md), section 9 checks that can run on the built files.
+{
+  const files = [...all.map((u) => (u.endsWith('.html') ? u : fileFor(u))), 'llms.txt'];
+  const gone = ['Why we opened', 'idea was simple', 'done properly', 'Envoyez l’article et le visuel', 'No setup charge', 'younestailormestita',
+    'Pourquoi cet atelier', 'L’idée était simple', 'fait les choses bien', 'لماذا افتتحنا', 'الفكرة بسيطة', 'كما يجب',
+    'How we like to work', 'Comment nous travaillons', 'كيف نحبّ أن نعمل',
+    'digitising charge', 'frais de création', 'كلفة منفصلة', 'all-in', 'tout compris', 'Pas de frais pour votre logo', 'لا كلفة لتجهيز'];
+  const hits = [];
+  for (const f of files) { const t = read(f); for (const g of gone) if (t.includes(g)) hits.push(`${f}: "${g}"`); }
+  if (hits.length) fail('round 2, removed text still present: ' + hits.slice(0, 10).join(' | '));
+  ok.push(`Round 2 greps: 0 hits in 24 pages, 404.html and llms.txt for ${gone.length} removed phrases (EN/FR/AR): "Why we opened", "idea was simple", "done properly", "Envoyez l’article et le visuel", "No setup charge", "younestailormestita", old price wording…`);
+
+  // 1. Location, parking and payment worded identically wherever a page states them
+  const { HOME } = await import('./content-home.mjs');
+  const facts = [];
+  for (const [k, b] of Object.entries(PATHS)) for (const l of LANGS) {
+    const h = HOME[l]; const t = visibleText(read(fileFor(b[l])).slice(read(fileFor(b[l])).indexOf('<body')));
+    const kw = { loc: /Best Buy/, park: l === 'ar' ? /موقف/ : l === 'fr' ? /parking|garer/i : /parking/i, pay: l === 'ar' ? /نقد/ : l === 'fr' ? /espèces/i : /\bcash\b/i };
+    if (kw.loc.test(t) && !t.includes(h.visitLine)) fail(`${b[l]}: landmark/location not worded as on Home`);
+    if (kw.park.test(t) && !t.includes(h.parking)) fail(`${b[l]}: parking not worded as on Home`);
+    if (kw.pay.test(t) && !t.includes(h.payment)) fail(`${b[l]}: payment not worded as on Home`);
+    if (k === 'home' || k === 'visit' || k === 'about') { for (const x of [h.visitLine, h.parking, h.payment, h.address]) if (!t.includes(x)) fail(`${b[l]}: missing "${x}"`); facts.push(b[l]); }
+  }
+  ok.push(`Location (with Best Buy Market), parking, cash only and address: identical wording on ${facts.join(', ')}; any other page that mentions them uses the same wording`);
+
+  // 8. Structured data sameAs = the three social links; links open in a new tab with noopener
+  const want = JSON.stringify(['https://www.instagram.com/younestailor/', 'https://www.facebook.com/profile.php?id=61571488297091', 'https://www.tiktok.com/@younes.tailor']);
+  for (const u of all.filter((x) => !x.endsWith('.html'))) {
+    const h = read(fileFor(u));
+    const biz = JSON.parse(h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'][0];
+    if (JSON.stringify(biz.sameAs) !== want) fail(`${u}: sameAs is not the three social links`);
+    if (biz.paymentAccepted !== 'Cash') fail(`${u}: paymentAccepted not Cash`);
+    for (const m of h.matchAll(/<a href="(https:\/\/www\.(?:instagram|facebook|tiktok)\.com[^"]*)"([^>]*)>/g)) if (!/target="_blank"/.test(m[2]) || !/rel="noopener"/.test(m[2])) fail(`${u}: social link without new tab/noopener`);
+  }
+  ok.push('Social: sameAs = Instagram, Facebook, TikTok (exact URLs) on all 24 pages; paymentAccepted Cash; every social link opens in a new tab with rel="noopener" and shows the network name');
+
+  // 4. Home form opens on "Choose a service"; 5. marquee words hidden from screen readers
+  for (const l of LANGS) {
+    const h = read(fileFor(PATHS.home[l]));
+    const sel = h.slice(h.indexOf('<select id="f-service"'), h.indexOf('</select>'));
+    if (!/required/.test(sel.slice(0, sel.indexOf('>'))) || !sel.includes(`<option value="" data-branch="none" selected>${HOME[l].fServiceChoose}</option>`)) fail(`${PATHS.home[l]}: form does not open on "${HOME[l].fServiceChoose}"`);
+    if (!h.includes('<div class="p-marquee__viewport" aria-hidden="true">') || /p-marquee"[^>]*aria-label/.test(h)) fail(`${PATHS.home[l]}: marquee words exposed to screen readers`);
+  }
+  ok.push('Home form opens on "Choose a service" / "اختاروا الخدمة" / "Choisissez un service" (empty, required); marquee words are aria-hidden, the Pause/Play button stays reachable');
+
+  // 6. Benefits once per page; no small label repeating the H1; one heading for "What we stitch on"
+  for (const u of all.filter((x) => !x.endsWith('.html'))) {
+    const h = read(fileFor(u));
+    const trios = (h.match(/<ul class="trio">/g) || []).length;
+    if (trios > 1) fail(`${u}: embroidery benefits shown ${trios} times`);
+    const head = h.match(/<p class="eyebrow">([^<]*)<\/p>\s*<h1>([^<]*)<\/h1>/);
+    if (head && head[2].toLowerCase().includes(head[1].toLowerCase())) fail(`${u}: label "${head[1]}" repeats the H1`);
+  }
+  ok.push('Embroidery benefits at most once per page (near the main button); no page-head label repeating its H1; "What we stitch on" has one heading');
 }
 
 

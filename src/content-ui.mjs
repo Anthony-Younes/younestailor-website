@@ -8,8 +8,12 @@ export const FACTS = {
   phoneE164: '+9613128413',
   wa: '9613128413',
   email: 'info@younestailor.com',
-  instagram: 'https://www.instagram.com/younestailormestita/',
-  instagramHandle: '@younestailormestita',
+  // Social links: fixes round 2, section 8 (owner confirmed 27 Oct 2026).
+  social: [
+    { name: 'Instagram', url: 'https://www.instagram.com/younestailor/', icon: 'instagram-logo' },
+    { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61571488297091', icon: 'facebook-logo' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@younes.tailor', icon: 'tiktok-logo' },
+  ],
   gbp: 'https://share.google/dWoveO4JQwfjGxZGy',
   directions: 'https://www.google.com/maps/dir/?api=1&destination=34.106411,35.664007',
   mapEmbed: 'https://www.google.com/maps?q=34.106411,35.664007&z=15&output=embed',
@@ -57,7 +61,7 @@ export const UI = {
       alterations: 'Alterations & fitting', repairs: 'Repairs & mending', embroidery: 'Embroidery', uniforms: 'Uniform & team embroidery',
     },
     groups: { tailoring: 'Tailoring', embroidery: 'Embroidery' },
-    trio: ['No minimum order', 'One price — no separate design or digitising charge', 'Preview before stitching on request'],
+    trio: ['No minimum order', 'One price, design and setup included', 'See the design before we stitch, on request'],
     processTailoring: {
       eyebrow: 'Tailoring',
       h2: 'How tailoring works',
@@ -73,7 +77,7 @@ export const UI = {
       h2: 'How embroidery works',
       steps: [
         ['Send item details and artwork', 'Tell us the item, the quantity and what to stitch. No artwork yet? Ask for help with it.'],
-        ['Agree the quote, preview on request', 'One price, with no separate design or digitising charge. Ask to see a preview before we stitch.'],
+        ['Agree the quote, preview on request', 'One price, design and setup included. Ask to see a preview before we stitch.'],
         ['Stitch', 'We digitise the design in-house and stitch it on our own machine.'],
         ['Collect', 'We message you when it is ready.'],
       ],
@@ -127,7 +131,7 @@ export const UI = {
     langLabel: 'Langue',
     home: 'Accueil',
     sticky: { wa: 'WhatsApp', call: 'Appeler', directions: 'Itinéraire' },
-    addressLine: 'Blat, district de Jbeil (Byblos), Mont-Liban, Liban',
+    addressLine: 'Blat, caza de Jbeil (Byblos), Mont-Liban, Liban',
     place: 'Blat, Byblos',
     hoursShort: 'Lun–sam 09:00–19:00 · dimanche fermé',
     days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
@@ -155,7 +159,7 @@ export const UI = {
       alterations: 'Retouches & ajustements', repairs: 'Réparations', embroidery: 'Broderie', uniforms: 'Broderie d’uniformes et d’équipes',
     },
     groups: { tailoring: 'Couture', embroidery: 'Broderie' },
-    trio: ['Pas de minimum de commande', 'Un seul prix — pas de frais de création ou de numérisation', 'Aperçu avant broderie sur demande'],
+    trio: ['Sans minimum de commande', 'Un seul prix, création et préparation comprises', 'Aperçu du motif avant broderie, sur demande'],
     processTailoring: {
       eyebrow: 'Couture',
       h2: 'Comment se passe une retouche',
@@ -170,8 +174,8 @@ export const UI = {
       eyebrow: 'Broderie',
       h2: 'Comment se passe une broderie',
       steps: [
-        ['Envoyez l’article et le visuel', 'Dites-nous l’article, la quantité et ce qu’il faut broder. Pas encore de visuel ? Demandez-nous de l’aide.'],
-        ['Validez le devis, aperçu sur demande', 'Un seul prix, sans frais de création ou de numérisation. Demandez un aperçu avant la broderie.'],
+        ['Envoyez les détails de l’article et votre visuel.', 'Dites-nous l’article, la quantité et ce qu’il faut broder. Pas encore de visuel ? Demandez-nous de l’aide.'],
+        ['Validez le devis, aperçu sur demande', 'Un seul prix, création et préparation comprises. Demandez un aperçu avant la broderie.'],
         ['Broderie', 'On numérise le motif sur place et on le brode sur notre propre machine.'],
         ['Retrait', 'On vous envoie un message quand c’est prêt.'],
       ],
@@ -253,7 +257,7 @@ export const UI = {
       alterations: 'تعديل وضبط القياس', repairs: 'تصليح وترقيع الملابس', embroidery: 'التطريز', uniforms: 'تطريز الزيّ الموحّد والفرق',
     },
     groups: { tailoring: 'الخياطة', embroidery: 'التطريز' },
-    trio: ['لا حدّ أدنى للطلب', 'سعر واحد — بلا كلفة منفصلة للتصميم أو التحويل الرقمي', 'معاينة قبل التطريز عند الطلب'],
+    trio: ['من دون حدّ أدنى للطلب', 'سعر واحد يشمل التصميم والتجهيز', 'معاينة التصميم قبل التطريز عند الطلب'],
     processTailoring: {
       eyebrow: 'الخياطة',
       h2: 'كيف يتمّ التعديل',
@@ -269,7 +273,7 @@ export const UI = {
       h2: 'كيف يتمّ التطريز',
       steps: [
         ['أرسلوا تفاصيل القطعة والتصميم', 'أخبرونا بنوع القطعة والكمية وما تريدون تطريزه. ليس لديكم تصميم؟ اطلبوا المساعدة.'],
-        ['اتّفاق على السعر، ومعاينة عند الطلب', 'سعر واحد بلا كلفة منفصلة للتصميم أو التحويل الرقمي. اطلبوا معاينة قبل التطريز.'],
+        ['اتّفاق على السعر، ومعاينة عند الطلب', 'سعر واحد يشمل التصميم والتجهيز. اطلبوا معاينة قبل التطريز.'],
         ['التطريز', 'نحوّل التصميم رقمياً في المحل ونطرّزه على ماكينتنا.'],
         ['الاستلام', 'نرسل لكم رسالة حين يجهز الطلب.'],
       ],

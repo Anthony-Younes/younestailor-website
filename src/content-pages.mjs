@@ -426,10 +426,10 @@ export const PAGES = {
     cta: 'embroidery',
     en: {
       title: 'Embroidery in Blat, Byblos — names, logos, caps | Younes Tailor',
-      description: 'Names, initials, text and logos embroidered in Blat, Byblos. Blanks supplied or bring your own. No minimum order, one price, preview before stitching on request.',
+      description: 'Names, initials, text and logos embroidered in Blat, Byblos. Blanks supplied or bring your own. One price, design and setup included. No minimum order.',
       ctaLabel: 'Request a quote',
       sections: [
-        { t: 'pagehead', eyebrow: 'Embroidery', h1: 'Embroidery', lede: 'Names, initials, text and logos stitched in the shop. Bring your own item or we supply the blank. Single pieces welcome.', video: 2, trio: true },
+        { t: 'pagehead', eyebrow: 'Embroidery', h1: 'Embroidery', lede: 'Names, initials, text and logos stitched in the shop. Bring your own item or we supply the blank.', video: 2, trio: true },
         { t: 'chips', eyebrow: 'What we stitch on', h2: 'What we stitch on', items: [
           ['t-shirt', 'Tees'], ['t-shirt', 'Polos'], ['coat-hanger', 'Hoodies'], ['coat-hanger', 'Sweaters'], ['baseball-cap', 'Caps'], ['check', 'Towels'], ['users-three', 'Uniforms'], ['check', 'Bags'],
         ], note: 'Caps are stitched in-house, on our own machine.' },
@@ -437,11 +437,11 @@ export const PAGES = {
           { eyebrow: 'Your item or ours', h2: 'Blanks supplied, or bring your own', p: 'We can supply tees, hoodies, sweaters, caps, towels and uniforms. Or bring the piece you already have and we stitch on that.' },
           { eyebrow: 'What we stitch', h2: 'Names, text, logos, your artwork', p: 'Names, initials, short text, logos and your own artwork. Every design is digitised in-house, so a logo file or a photo of handwriting becomes a stitch file here.' },
         ] },
-        { t: 'process', which: 'embroidery', trio: true },
+        { t: 'process', which: 'embroidery' },
         { t: 'videos', eyebrow: 'In the shop', h2: 'The machine at work', clips: [3, 4] },
         { t: 'faq', eyebrow: 'Questions', h2: 'About embroidery', items: [
           ['Is there a minimum order?', 'No. One piece is fine.'],
-          ['Do you charge separately for the design or digitising?', 'No. You get one all-in price, with no separate design or digitising charge.'],
+          ['Do you charge separately for the design or digitising?', 'No. One price, design and setup included.'],
           ['Can I see the design before you stitch?', 'Yes. Ask for a preview and we show it to you before stitching.'],
           ['What should I send as artwork?', 'A logo file if you have one. A clear photo of a drawing or handwriting works too. Send it in the WhatsApp chat after the form opens it. If you need help with the artwork, tick the box and we will work on it with you.'],
           ['Can you stitch on caps?', 'Yes. Caps are stitched in-house.'],
@@ -450,10 +450,10 @@ export const PAGES = {
     },
     fr: {
       title: 'Broderie à Blat, Byblos — noms, logos, casquettes | Younes Tailor',
-      description: 'Noms, initiales, textes et logos brodés à Blat, Byblos. Article fourni par l’atelier ou apporté par vous. Pas de minimum, un seul prix, aperçu avant broderie sur demande.',
+      description: 'Noms, initiales, textes et logos brodés à Blat, Byblos. Article fourni par l’atelier ou le vôtre. Un seul prix, création et préparation comprises. Sans minimum de commande.',
       ctaLabel: 'Demander un devis',
       sections: [
-        { t: 'pagehead', eyebrow: 'Broderie', h1: 'Broderie', lede: 'Noms, initiales, textes et logos brodés à l’atelier. Apportez votre article ou choisissez un article fourni par l’atelier. À partir d’une pièce.', video: 2, trio: true },
+        { t: 'pagehead', eyebrow: 'Broderie', h1: 'Broderie', lede: 'Noms, initiales, textes et logos brodés à l’atelier. Apportez votre article ou choisissez un article fourni par l’atelier.', video: 2, trio: true },
         { t: 'chips', eyebrow: 'Supports', h2: 'Sur quoi on brode', items: [
           ['t-shirt', 'T-shirts'], ['t-shirt', 'Polos'], ['coat-hanger', 'Sweats à capuche'], ['coat-hanger', 'Pulls'], ['baseball-cap', 'Casquettes'], ['check', 'Serviettes'], ['users-three', 'Uniformes'], ['check', 'Sacs'],
         ], note: 'Les casquettes sont brodées sur place, sur notre propre machine.' },
@@ -461,11 +461,11 @@ export const PAGES = {
           { eyebrow: 'Votre article ou le nôtre', h2: 'Un article de l’atelier, ou le vôtre', p: 'L’atelier peut fournir t-shirts, sweats, pulls, casquettes, serviettes et uniformes. Ou apportez la pièce que vous avez déjà et on brode dessus.' },
           { eyebrow: 'Ce qu’on brode', h2: 'Noms, textes, logos, votre visuel', p: 'Noms, initiales, textes courts, logos et vos propres visuels. Chaque motif est numérisé sur place : un fichier de logo ou la photo d’une écriture devient un fichier de broderie ici.' },
         ] },
-        { t: 'process', which: 'embroidery', trio: true },
+        { t: 'process', which: 'embroidery' },
         { t: 'videos', eyebrow: 'À l’atelier', h2: 'La machine en marche', clips: [3, 4] },
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos de la broderie', items: [
           ['Y a-t-il un minimum de commande ?', 'Non. Une seule pièce suffit.'],
-          ['Facturez-vous la création ou la numérisation à part ?', 'Non. Vous avez un seul prix, tout compris, sans frais de création ou de numérisation.'],
+          ['Facturez-vous la création ou la numérisation à part ?', 'Non. Un seul prix, création et préparation comprises.'],
           ['Puis-je voir le motif avant la broderie ?', 'Oui. Demandez un aperçu et on vous le montre avant de broder.'],
           ['Quel visuel faut-il envoyer ?', 'Un fichier de logo si vous en avez un. La photo nette d’un dessin ou d’une écriture convient aussi. Envoyez-la dans WhatsApp, une fois la conversation ouverte par le formulaire. Besoin d’aide pour le visuel ? Cochez la case et on le prépare avec vous.'],
           ['Brodez-vous les casquettes ?', 'Oui. Les casquettes sont brodées sur place.'],
@@ -474,10 +474,10 @@ export const PAGES = {
     },
     ar: {
       title: 'تطريز في بلاط، جبيل — أسماء وشعارات وقبّعات | خياطة يونس',
-      description: 'تطريز أسماء وأحرف أولى ونصوص وشعارات في بلاط، جبيل. نؤمّن القطعة أو تحضرونها. لا حدّ أدنى للطلب، سعر واحد، ومعاينة قبل التطريز عند الطلب.',
+      description: 'تطريز أسماء وأحرف أولى ونصوص وشعارات في بلاط، جبيل. نؤمّن القطعة أو تحضرونها. سعر واحد يشمل التصميم والتجهيز، من دون حدّ أدنى للطلب.',
       ctaLabel: 'اطلبوا عرض سعر',
       sections: [
-        { t: 'pagehead', eyebrow: 'التطريز', h1: 'التطريز', lede: 'أسماء وأحرف أولى ونصوص وشعارات نطرّزها في المحل. أحضروا قطعتكم أو نؤمّنها لكم. القطعة الواحدة مرحّب بها.', video: 2, trio: true },
+        { t: 'pagehead', eyebrow: 'التطريز', h1: 'التطريز', lede: 'أسماء وأحرف أولى ونصوص وشعارات نطرّزها في المحل. أحضروا قطعتكم أو نؤمّنها لكم.', video: 2, trio: true },
         { t: 'chips', eyebrow: 'القطع', h2: 'على ماذا نطرّز', items: [
           ['t-shirt', 'تي شيرت'], ['t-shirt', 'بولو'], ['coat-hanger', 'هودي'], ['coat-hanger', 'كنزات'], ['baseball-cap', 'قبّعات'], ['check', 'مناشف'], ['users-three', 'زيّ موحّد'], ['check', 'حقائب'],
         ], note: 'القبّعات نطرّزها في المحل، على ماكينتنا.' },
@@ -485,11 +485,11 @@ export const PAGES = {
           { eyebrow: 'قطعتكم أو قطعتنا', h2: 'نؤمّن القطعة، أو تحضرونها', p: 'يمكننا تأمين تي شيرت وهودي وكنزات وقبّعات ومناشف وزيّ موحّد. أو أحضروا القطعة التي لديكم ونطرّز عليها.' },
           { eyebrow: 'ماذا نطرّز', h2: 'أسماء، نصوص، شعارات وتصاميمكم', p: 'أسماء وأحرف أولى ونصوص قصيرة وشعارات وتصاميمكم الخاصة. نحوّل كلّ تصميم رقمياً في المحل، فيصبح ملف الشعار أو صورة الخطّ اليدوي ملفّ تطريز هنا.' },
         ] },
-        { t: 'process', which: 'embroidery', trio: true },
+        { t: 'process', which: 'embroidery' },
         { t: 'videos', eyebrow: 'في المحل', h2: 'الماكينة أثناء العمل', clips: [3, 4] },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'عن التطريز', items: [
           ['هل هناك حدّ أدنى للطلب؟', 'لا. قطعة واحدة تكفي.'],
-          ['هل تحتسبون كلفة التصميم أو التحويل الرقمي على حدة؟', 'لا. سعر واحد شامل، بلا كلفة منفصلة للتصميم أو التحويل الرقمي.'],
+          ['هل تحتسبون كلفة التصميم أو التحويل الرقمي على حدة؟', 'لا. سعر واحد يشمل التصميم والتجهيز.'],
           ['هل يمكنني رؤية التصميم قبل التطريز؟', 'نعم. اطلبوا معاينة ونريكم إيّاها قبل التطريز.'],
           ['ماذا أرسل كتصميم؟', 'ملف الشعار إن كان لديكم. صورة واضحة لرسم أو خطّ يدوي تفي بالغرض أيضاً. أرسلوها في محادثة واتساب بعد أن يفتحها النموذج. تحتاجون مساعدة في التصميم؟ اختاروا الخانة ونعمل عليه معكم.'],
           ['هل تطرّزون على القبّعات؟', 'نعم. القبّعات نطرّزها في المحل.'],
@@ -517,16 +517,12 @@ export const PAGES = {
           'Your logo file, or a photo of it',
           'Your deadline',
         ] },
-        { t: 'twocol', cols: [
-          { eyebrow: 'Preview', h2: 'See it before we stitch', p: 'We digitise your logo in-house. Preview before stitching on request.' },
-          { eyebrow: 'One price', h2: 'No setup charge for your logo', p: 'One all-in price, with no separate design or digitising charge. No minimum order.' },
-        ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'Questions', h2: 'About uniform orders', items: [
           ['Is there a minimum order?', 'No. You can order a single shirt for a new member of staff.'],
           ['Can one order have mixed sizes?', 'Yes. Send the list of sizes and quantities with your request.'],
           ['Do you supply the uniforms?', 'We can supply tees, hoodies, sweaters, caps and uniforms, or stitch on garments you already have.'],
-          ['Is there a charge for setting up our logo?', 'No. One all-in price, with no separate design or digitising charge.'],
+          ['Is there a charge for setting up our logo?', 'No. One price, design and setup included.'],
         ] },
       ],
     },
@@ -546,16 +542,12 @@ export const PAGES = {
           'Votre fichier de logo, ou une photo',
           'Votre date limite',
         ] },
-        { t: 'twocol', cols: [
-          { eyebrow: 'Aperçu', h2: 'Voir avant la broderie', p: 'Nous numérisons votre logo à l’atelier. Aperçu avant broderie sur demande.' },
-          { eyebrow: 'Un seul prix', h2: 'Pas de frais pour votre logo', p: 'Un seul prix, tout compris, sans frais de création ou de numérisation. Pas de minimum de commande.' },
-        ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos des commandes d’uniformes', items: [
           ['Y a-t-il un minimum de commande ?', 'Non. Vous pouvez commander un seul polo pour un nouvel employé.'],
           ['Une commande peut-elle mélanger les tailles ?', 'Oui. Envoyez la liste des tailles et des quantités avec votre demande.'],
           ['Fournissez-vous les uniformes ?', 'L’atelier peut fournir t-shirts, sweats, pulls, casquettes et uniformes, ou broder sur les vêtements que vous avez déjà.'],
-          ['La mise en place du logo est-elle facturée ?', 'Non. Un seul prix, tout compris, sans frais de création ou de numérisation.'],
+          ['La mise en place du logo est-elle facturée ?', 'Non. Un seul prix, création et préparation comprises.'],
         ] },
       ],
     },
@@ -575,16 +567,12 @@ export const PAGES = {
           'ملف الشعار، أو صورة عنه',
           'الموعد المطلوب',
         ] },
-        { t: 'twocol', cols: [
-          { eyebrow: 'المعاينة', h2: 'شاهدوه قبل التطريز', p: 'نحوّل شعاركم رقمياً في المحل. معاينة قبل التطريز عند الطلب.' },
-          { eyebrow: 'سعر واحد', h2: 'لا كلفة لتجهيز شعاركم', p: 'سعر واحد شامل، بلا كلفة منفصلة للتصميم أو التحويل الرقمي. لا حدّ أدنى للطلب.' },
-        ] },
         { t: 'process', which: 'embroidery', media: { video: 4 } },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'عن طلبات الزيّ الموحّد', items: [
           ['هل هناك حدّ أدنى للطلب؟', 'لا. يمكنكم طلب قميص واحد لموظّف جديد.'],
           ['هل يمكن أن يضمّ الطلب مقاسات مختلفة؟', 'نعم. أرسلوا لائحة المقاسات والكمّيات مع طلبكم.'],
           ['هل تؤمّنون الزيّ الموحّد؟', 'يمكننا تأمين تي شيرت وهودي وكنزات وقبّعات وزيّ موحّد، أو التطريز على قطع لديكم.'],
-          ['هل تحتسبون كلفة لتجهيز شعارنا؟', 'لا. سعر واحد شامل، بلا كلفة منفصلة للتصميم أو التحويل الرقمي.'],
+          ['هل تحتسبون كلفة لتجهيز شعارنا؟', 'لا. سعر واحد يشمل التصميم والتجهيز.'],
         ] },
       ],
     },
@@ -598,18 +586,7 @@ export const PAGES = {
       description: 'Younes Tailor opened in 2025 in Blat, Byblos. A small neighbourhood shop for alterations, repairs and embroidery, in Arabic, French or English.',
       ctaLabel: 'Tell us what you need',
       sections: [
-        { t: 'pagehead', eyebrow: 'About', h1: 'About Younes Tailor', lede: 'A neighbourhood tailor in Blat, Byblos. Alterations, repairs and embroidery, for men and women, in Arabic, French or English.', image: 'storefront' },
-        { t: 'prose', eyebrow: 'Why we opened', h2: 'A neighbourhood tailor, done properly', paras: [
-          'Younes Tailor opened in 2025 in Blat, near Byblos. The idea was simple: a nearby place you can trust to take up a hem, replace a zip, take in a dress or get a suit sitting right, without paying for more than you need.',
-          'We are a small, independent shop, not a chain. What we do, we do carefully: measured on you, finished by hand and pressed before it leaves. If something is not worth altering, we say so.',
-          'Embroidery sits on the same bench: names, initials and logos, digitised and stitched in the shop, from a single cap to a set of uniforms.',
-        ] },
-        { t: 'values', eyebrow: 'How we work', h2: 'How we like to work', items: [
-          ['Finished by hand', 'Checked on you, sewn and pressed in the shop.'],
-          ['Straight answers', 'If a garment is not worth altering, we tell you, even when it costs us the job.'],
-          ['Price first', 'You get the price before any work starts. No surprises at collection.'],
-          ['Three languages', 'Arabic, French or English, whichever is easiest for you.'],
-        ] },
+        { t: 'pagehead', eyebrow: 'About', h1: 'About Younes Tailor', lede: 'A neighbourhood tailor in Blat, Byblos. Alterations, repairs and embroidery, for men and women, in Arabic, French or English.', lede2: 'Younes Tailor is run by the Younes family in Blat, Byblos.', image: 'storefront' },
         { t: 'groups', eyebrow: 'What we do', h2: 'Two kinds of work', groups: [
           { id: 'tailoring', title: 'Tailoring', cards: [
             { key: 'alterations', text: 'Hems, take-ins, tapering and wedding fittings.' },
@@ -620,6 +597,7 @@ export const PAGES = {
             { key: 'uniforms', text: 'Schools, clubs, restaurants and companies.' },
           ] },
         ] },
+        { t: 'visit' },
         { t: 'faq', eyebrow: 'Questions', h2: 'About the shop', items: [
           ['Are you a new shop?', 'Yes. Younes Tailor opened in 2025 in Blat. We are a small, independent neighbourhood tailor.'],
           ['What do you do?', 'Alterations and repairs, including wedding fittings and careful work on older pieces, plus embroidery of names, initials, text and logos.'],
@@ -633,18 +611,7 @@ export const PAGES = {
       description: 'Younes Tailor a ouvert en 2025 à Blat, Byblos. Un petit atelier de quartier pour les retouches, réparations et la broderie, en arabe, français ou anglais.',
       ctaLabel: 'Dites-nous ce qu’il vous faut',
       sections: [
-        { t: 'pagehead', eyebrow: 'À propos', h1: 'À propos de Younes Tailor', lede: 'Un tailleur de quartier à Blat, Byblos. Retouches, réparations et broderie, pour hommes et femmes, en arabe, français ou anglais.', image: 'storefront' },
-        { t: 'prose', eyebrow: 'Pourquoi cet atelier', h2: 'Un tailleur de quartier qui fait les choses bien', paras: [
-          'Younes Tailor a ouvert en 2025 à Blat, près de Byblos. L’idée était simple : un endroit proche et fiable pour un ourlet, une fermeture, une robe reprise ou un costume qui tombe juste, sans payer plus que nécessaire.',
-          'Nous sommes un petit atelier indépendant, pas une chaîne. Ce que nous faisons, nous le faisons avec soin : mesuré sur vous, fini à la main et repassé avant de partir. Si un vêtement ne vaut pas la retouche, on vous le dit.',
-          'La broderie se fait au même établi : noms, initiales et logos, numérisés et brodés à l’atelier, d’une seule casquette à une série d’uniformes.',
-        ] },
-        { t: 'values', eyebrow: 'Notre façon de faire', h2: 'Comment nous travaillons', items: [
-          ['Fini à la main', 'Vérifié sur vous, cousu et repassé à l’atelier.'],
-          ['Des réponses franches', 'Si un vêtement ne vaut pas la retouche, on vous le dit, même si on perd le travail.'],
-          ['Le prix d’abord', 'Le prix est donné avant tout travail. Aucune surprise au retrait.'],
-          ['Trois langues', 'Arabe, français ou anglais, selon ce qui vous convient.'],
-        ] },
+        { t: 'pagehead', eyebrow: 'À propos', h1: 'À propos de Younes Tailor', lede: 'Un tailleur de quartier à Blat, Byblos. Retouches, réparations et broderie, pour hommes et femmes, en arabe, français ou anglais.', lede2: 'Younes Tailor est tenu par la famille Younes, à Blat, Byblos.', image: 'storefront' },
         { t: 'groups', eyebrow: 'Nos métiers', h2: 'Deux métiers', groups: [
           { id: 'tailoring', title: 'Couture', cards: [
             { key: 'alterations', text: 'Ourlets, reprises, ajustements et essayages de mariage.' },
@@ -655,6 +622,7 @@ export const PAGES = {
             { key: 'uniforms', text: 'Écoles, clubs, restaurants et entreprises.' },
           ] },
         ] },
+        { t: 'visit' },
         { t: 'faq', eyebrow: 'Questions', h2: 'À propos de l’atelier', items: [
           ['L’atelier est-il nouveau ?', 'Oui. Younes Tailor a ouvert en 2025 à Blat. C’est un petit atelier de quartier indépendant.'],
           ['Que faites-vous ?', 'Des retouches et des réparations, dont les essayages de mariage et le travail soigné sur les pièces anciennes, et la broderie de noms, initiales, textes et logos.'],
@@ -668,18 +636,7 @@ export const PAGES = {
       description: 'افتُتحت خياطة يونس عام 2025 في بلاط، جبيل. محل صغير في الحيّ للتعديل والتصليح والتطريز، بالعربية أو الفرنسية أو الإنكليزية.',
       ctaLabel: 'أخبرونا بما تحتاجونه',
       sections: [
-        { t: 'pagehead', eyebrow: 'من نحن', h1: 'عن خياطة يونس', lede: 'خيّاط الحيّ في بلاط، جبيل. تعديل وتصليح وتطريز، للرجال والنساء، بالعربية أو الفرنسية أو الإنكليزية.', image: 'storefront' },
-        { t: 'prose', eyebrow: 'لماذا افتتحنا', h2: 'خيّاط الحيّ، كما يجب', paras: [
-          'افتُتحت خياطة يونس عام 2025 في بلاط، قرب جبيل. الفكرة بسيطة: مكان قريب تثقون به لتقصير قطعة، أو تبديل سحّاب، أو تضييق فستان، أو ضبط بدلة، من دون أن تدفعوا أكثر ممّا تحتاجون.',
-          'نحن محل صغير ومستقلّ، لا سلسلة. وما نعمله نعمله بعناية: قياس عليكم، إنهاء باليد، وكيّ قبل أن تخرج القطعة. وإن كانت القطعة لا تستحقّ التعديل، نقول لكم ذلك.',
-          'والتطريز على الطاولة نفسها: أسماء وأحرف أولى وشعارات، نحوّلها رقمياً ونطرّزها في المحل، من قبّعة واحدة إلى طقم زيّ موحّد.',
-        ] },
-        { t: 'values', eyebrow: 'طريقتنا', h2: 'كيف نحبّ أن نعمل', items: [
-          ['إنهاء باليد', 'نتأكّد منها عليكم، ونخيطها ونكويها في المحل.'],
-          ['أجوبة صريحة', 'إن كانت القطعة لا تستحقّ التعديل نقول لكم، حتى لو خسرنا العمل.'],
-          ['السعر أولاً', 'تعرفون السعر قبل أيّ عمل. لا مفاجآت عند الاستلام.'],
-          ['ثلاث لغات', 'العربية أو الفرنسية أو الإنكليزية، الأسهل عليكم.'],
-        ] },
+        { t: 'pagehead', eyebrow: 'من نحن', h1: 'عن خياطة يونس', lede: 'خيّاط الحيّ في بلاط، جبيل. تعديل وتصليح وتطريز، للرجال والنساء، بالعربية أو الفرنسية أو الإنكليزية.', lede2: 'تديرُ عائلة يونس خياطة يونس في بلاط، جبيل.', image: 'storefront' },
         { t: 'groups', eyebrow: 'ما نعمله', h2: 'نوعان من العمل', groups: [
           { id: 'tailoring', title: 'الخياطة', cards: [
             { key: 'alterations', text: 'تقصير، تضييق، ضبط القَصّة وقياسات الأعراس.' },
@@ -690,6 +647,7 @@ export const PAGES = {
             { key: 'uniforms', text: 'مدارس، نوادٍ، مطاعم وشركات.' },
           ] },
         ] },
+        { t: 'visit' },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'عن المحل', items: [
           ['هل المحل جديد؟', 'نعم. افتُتحت خياطة يونس عام 2025 في بلاط. نحن خيّاط حيّ صغير ومستقلّ.'],
           ['ماذا تعملون؟', 'التعديل والتصليح، ومنها قياسات الأعراس والعناية بالقطع القديمة، إضافة إلى تطريز الأسماء والأحرف الأولى والنصوص والشعارات.'],
@@ -708,11 +666,12 @@ export const PAGES = {
       description: 'Younes Tailor, Blat, Jbeil (Byblos) District, Mount Lebanon. Open Mon–Sat 09:00–19:00, Sunday closed. Phone and WhatsApp +961 3 128 413. Map and directions.',
       ctaLabel: 'Tell us what you need',
       sections: [
-        { t: 'pagehead', eyebrow: 'Visit', h1: 'Visit the shop', lede: 'In Blat, a few minutes from Byblos old town. Walk in during opening hours, or message us first so we can set time aside.' },
+        { t: 'pagehead', eyebrow: 'Visit', h1: 'Visit the shop', lede: 'In Blat, near Best Buy Market, a few minutes from Byblos old town. Walk in during opening hours, or message us first for a bigger job.' },
         { t: 'visitfull', areasTitle: 'Areas we serve', areas: ['Blat', 'Byblos', 'Amchit', 'Halat', 'Fidar', 'Kfaryassine', 'Mastita'],
           reviews: { h: 'Google reviews', p: 'We do not publish ratings or testimonials on this site. If we have worked on something for you, a Google review helps neighbours find us.', link: 'Open our Google Business Profile' } },
         { t: 'faq', eyebrow: 'Questions', h2: 'About visiting', items: [
-          ['Is there parking near the shop?', 'Call or message us before you drive over and we will tell you the easiest place to park in Blat.'],
+          ['Is there parking near the shop?', 'Parking available.'],
+          ['How do I pay?', 'Cash only.'],
           ['Do I need an appointment?', 'Walk-ins are welcome during opening hours. For a wedding outfit, a large embroidery order or a bigger job, message us first so we can set time aside.'],
           ['Do you serve customers outside Blat?', 'Yes. Customers come from Byblos, Amchit, Halat, Fidar and other towns. If you are further away, send a photo first and we will tell you whether the trip is worth it.'],
         ] },
@@ -720,14 +679,15 @@ export const PAGES = {
     },
     fr: {
       title: 'Nous trouver — Younes Tailor à Blat, Byblos, horaires et itinéraire',
-      description: 'Younes Tailor, Blat, district de Jbeil (Byblos), Mont-Liban. Ouvert lun–sam 09:00–19:00, dimanche fermé. Téléphone et WhatsApp +961 3 128 413. Plan et itinéraire.',
+      description: 'Younes Tailor, Blat, caza de Jbeil (Byblos), Mont-Liban. Ouvert lun–sam 09:00–19:00, dimanche fermé. Téléphone et WhatsApp +961 3 128 413. Plan et itinéraire.',
       ctaLabel: 'Dites-nous ce qu’il vous faut',
       sections: [
-        { t: 'pagehead', eyebrow: 'Nous trouver', h1: 'Venir à l’atelier', lede: 'À Blat, à quelques minutes du vieux Byblos. Passez pendant les heures d’ouverture, ou écrivez-nous avant pour qu’on vous réserve un moment.' },
+        { t: 'pagehead', eyebrow: 'Nous trouver', h1: 'Venir à l’atelier', lede: 'À Blat, près de Best Buy Market, à quelques minutes du vieux Byblos. Passez aux heures d’ouverture, ou écrivez-nous d’abord pour un gros travail.' },
         { t: 'visitfull', areasTitle: 'Secteurs desservis', areas: ['Blat', 'Byblos', 'Amchit', 'Halat', 'Fidar', 'Kfaryassine', 'Mastita'],
           reviews: { h: 'Avis Google', p: 'Nous ne publions ni notes ni témoignages sur ce site. Si nous avons travaillé pour vous, un avis Google aide vos voisins à nous trouver.', link: 'Voir notre fiche Google' } },
         { t: 'faq', eyebrow: 'Questions', h2: 'Pour venir', items: [
-          ['Peut-on se garer près de l’atelier ?', 'Appelez-nous ou écrivez-nous avant de prendre la route et on vous indiquera où vous garer le plus facilement à Blat.'],
+          ['Peut-on se garer près de l’atelier ?', 'Parking disponible.'],
+          ['Quels moyens de paiement acceptez-vous ?', 'En espèces uniquement.'],
           ['Faut-il un rendez-vous ?', 'Vous pouvez passer sans rendez-vous pendant les heures d’ouverture. Pour une tenue de mariage, une grosse commande de broderie ou un travail important, écrivez-nous avant pour qu’on vous réserve du temps.'],
           ['Recevez-vous des clients hors de Blat ?', 'Oui. Des clients viennent de Byblos, Amchit, Halat, Fidar et d’autres villages. Si vous êtes plus loin, envoyez d’abord une photo et on vous dira si le trajet en vaut la peine.'],
         ] },
@@ -738,11 +698,12 @@ export const PAGES = {
       description: 'خياطة يونس، بلاط، قضاء جبيل، جبل لبنان. مفتوح الاثنين–السبت 09:00–19:00، الأحد مغلق. هاتف وواتساب ‎+961 3 128 413. الخريطة والاتجاهات.',
       ctaLabel: 'أخبرونا بما تحتاجونه',
       sections: [
-        { t: 'pagehead', eyebrow: 'زورونا', h1: 'زوروا المحل', lede: 'في بلاط، على بعد دقائق من جبيل القديمة. تفضّلوا خلال ساعات العمل، أو راسلونا قبلها لنخصّص لكم وقتاً.' },
+        { t: 'pagehead', eyebrow: 'زورونا', h1: 'زوروا المحل', lede: 'في بلاط، قرب Best Buy Market، على بُعد دقائق من جبيل القديمة. زورونا خلال ساعات العمل، أو راسلونا مسبقاً إن كان العمل كبيراً.' },
         { t: 'visitfull', areasTitle: 'المناطق التي نخدمها', areas: ['بلاط', 'جبيل', 'عمشيت', 'حالات', 'الفيدار', 'كفرياسين', 'مستيتا'],
           reviews: { h: 'تقييمات Google', p: 'لا ننشر تقييمات أو شهادات على هذا الموقع. إن كنّا عملنا لكم شيئاً، تقييمكم على Google يساعد الجيران على إيجادنا.', link: 'صفحتنا على Google' } },
         { t: 'faq', eyebrow: 'أسئلة', h2: 'عن الزيارة', items: [
-          ['هل يوجد موقف سيارات قرب المحل؟', 'اتصلوا بنا أو راسلونا قبل أن تنطلقوا ونقول لكم أسهل مكان للركن في بلاط.'],
+          ['هل يوجد موقف سيارات قرب المحل؟', 'يتوفّر موقف للسيارات.'],
+          ['ما طرق الدفع؟', 'الدفع نقداً فقط.'],
           ['هل أحتاج إلى موعد؟', 'تفضّلوا من دون موعد خلال ساعات العمل. لثوب عرس أو طلب تطريز كبير أو عمل أكبر، راسلونا قبلها لنخصّص لكم وقتاً.'],
           ['هل تخدمون زبائن من خارج بلاط؟', 'نعم. يأتي زبائن من جبيل وعمشيت وحالات والفيدار وبلدات أخرى. إن كنتم أبعد، أرسلوا صورة أولاً ونقول لكم إن كانت الزيارة تستحقّ.'],
         ] },

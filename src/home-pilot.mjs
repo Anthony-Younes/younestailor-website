@@ -39,8 +39,8 @@ export function renderHomePilot(lang, page, x) {
 </div>
 </section>
 
-<section class="p-marquee" aria-label="${esc(h.marquee.join(' · '))}" data-marquee>
-<div class="p-marquee__viewport">
+<section class="p-marquee" data-marquee>
+<div class="p-marquee__viewport" aria-hidden="true">
 <p class="p-marquee__track" id="marquee-track"><span class="p-marquee__words">${marqueeWords}</span><span class="p-marquee__words p-marquee__copy" aria-hidden="true">${marqueeWords}</span></p>
 </div>
 <button class="p-marquee__toggle" type="button" aria-controls="marquee-track" data-marquee-toggle data-label-pause="${esc(u.video.pause)}" data-label-play="${esc(u.video.play)}" hidden>${icon('pause', 'i-pause')}${icon('play', 'i-play')}<span data-marquee-label>${esc(u.video.play)}</span></button>
@@ -132,7 +132,8 @@ function homeEnquire(lang, h, { esc, icon, FACTS }) {
 <form class="form" data-enquiry data-wa="${FACTS.wa}" data-intro="${esc(h.msg.intro)}" data-colon="${lang === 'fr' ? ' : ' : ': '}" data-sep="${lang === 'ar' ? '، ' : ', '}" novalidate>
 <div class="field">
 <label for="f-service">${esc(h.fService)}</label>
-<select id="f-service" name="service" data-label="${esc(h.msg.service)}">
+<select id="f-service" name="service" required data-label="${esc(h.msg.service)}">
+<option value="" data-branch="none" selected>${esc(h.fServiceChoose)}</option>
 ${svc.map((v, i) => `<option value="${v}" data-branch="${branch(v)}">${esc(h.fServiceOpts[i])}</option>`).join('')}
 </select>
 </div>

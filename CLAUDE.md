@@ -19,7 +19,7 @@ If the Claude Design handoff says anything that conflicts with 1–3 — facts, 
 ## Facts — use exactly, never invent others
 - Name: **Younes Tailor**
 - Address line: **Blat, Jbeil (Byblos) District, Mount Lebanon, Lebanon**
-- Phone: **+961 3 128 413** · Email: **info@younestailor.com** · Instagram: @younestailormestita
+- Phone: **+961 3 128 413** · Email: **info@younestailor.com** · Instagram: https://www.instagram.com/younestailor/ (@younestailor) · Facebook: https://www.facebook.com/profile.php?id=61571488297091 · TikTok: https://www.tiktok.com/@younes.tailor (@younes.tailor). The old handle @younestailormestita is retired
 - Hours: **Mon–Sat 09:00–19:00, Sunday closed**
 - Parking: **available**. Payment: **cash only**. Landmark: **near Best Buy Market**.
 - Arabic register: simple formal Arabic (فصحى مبسّطة) with a warm tone — no Lebanese dialect in site copy.
