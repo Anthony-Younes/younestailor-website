@@ -602,8 +602,8 @@ function head(key, lang, page) {
   const fonts = (lang === 'ar'
     ? ['plexarabic-home-400.woff2', 'plexarabic-home-600.woff2', 'arefruqaa-home-700.woff2']
     : ['instrumentserif-latin-400.woff2', ...(pilot ? ['instrumentserif-latin-400i.woff2'] : []), 'manrope-latin-400.woff2', 'manrope-latin-600.woff2']).map(pre).join('');
-  const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster-540.webp" as="image" type="image/webp" fetchpriority="high">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp">`
-    : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp">` : '';
+  const heroImg = pilot ? `<link rel="preload" href="/assets/media/machine-01-poster-540.webp" as="image" type="image/webp" fetchpriority="high">` : page.sections[0].image ? `<link rel="preload" href="${WORK[page.sections[0].image].base}.webp" as="image" type="image/webp" fetchpriority="high">`
+    : page.sections[0].video ? `<link rel="preload" href="/assets/media/machine-${two(page.sections[0].video)}-poster.webp" as="image" type="image/webp" fetchpriority="high">` : '';
   const alternates = LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(key, l)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${abs(key, 'en')}">`;
   return `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
