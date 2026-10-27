@@ -1,0 +1,6 @@
+/* Fallback faces for AR pages (fixes round 3). Sizes measured against Tahoma so the headline breaks lines like
+   Aref Ruqaa and the breadcrumb, intro and buttons keep their height as with IBM Plex Sans Arabic, at 320-430 px.
+   Vertical metrics are the real fonts' (Aref Ruqaa 1.221/0.244, Plex Arabic 1.085/0.415). */
+@font-face{font-family:'Aref Ruqaa Fallback';font-weight:700;src:local('Tahoma Bold'),local('Tahoma-Bold'),local('Tahoma');size-adjust:64%;ascent-override:190.78%;descent-override:38.13%;line-gap-override:15.31%}
+@font-face{font-family:'IBM Plex Sans Arabic Fallback';font-weight:400;src:local('Tahoma');size-adjust:87.5%;ascent-override:124.00%;descent-override:47.43%;line-gap-override:0.00%}
+@font-face{font-family:'IBM Plex Sans Arabic Fallback';font-weight:600;src:local('Tahoma Bold'),local('Tahoma-Bold'),local('Tahoma');size-adjust:83%;ascent-override:130.72%;descent-override:50.00%;line-gap-override:0.00%}

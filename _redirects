@@ -1,3 +1,7 @@
+/CLAUDE.md   /404.html   404!
+/docs/*      /404.html   404!
+/src/*       /404.html   404!
+
 # Younes Tailor — redirects (Netlify). Old (pre-2026 rebuild) URLs → current URLs.
 # 301 = permanent: preserves SEO link equity and prevents 404s for any page
 # Google already indexed or that customers bookmarked.
@@ -18,3 +22,32 @@
 /ar/services/made-to-measure/*         /ar/services/alterations/     301!
 /fr/services/sur-mesure                /fr/services/retouches/       301!
 /fr/services/sur-mesure/*              /fr/services/retouches/       301!
+
+# Launch 1 (2026-10): wedding + restoration merged, journal removed
+/services/wedding-and-formalwear        /services/alterations/        301!
+/services/wedding-and-formalwear/*      /services/alterations/        301!
+/ar/services/wedding-and-formalwear     /ar/services/alterations/     301!
+/ar/services/wedding-and-formalwear/*   /ar/services/alterations/     301!
+/fr/services/mariage-ceremonie          /fr/services/retouches/       301!
+/fr/services/mariage-ceremonie/*        /fr/services/retouches/       301!
+/services/restoration                   /services/repairs/            301!
+/services/restoration/*                 /services/repairs/            301!
+/ar/services/restoration                /ar/services/repairs/         301!
+/ar/services/restoration/*              /ar/services/repairs/         301!
+/fr/services/restauration               /fr/services/reparations/     301!
+/fr/services/restauration/*             /fr/services/reparations/     301!
+/journal/clothes-need-alterations*      /services/alterations/        301!
+/journal/wedding-alterations-timeline*  /services/alterations/        301!
+/journal/heirloom-garment-care*         /services/repairs/            301!
+/journal                                /services/                    301!
+/journal/*                              /services/                    301!
+/ar/journal/clothes-need-alterations*      /ar/services/alterations/  301!
+/ar/journal/wedding-alterations-timeline*  /ar/services/alterations/  301!
+/ar/journal/heirloom-garment-care*         /ar/services/repairs/      301!
+/ar/journal                                /ar/services/              301!
+/ar/journal/*                              /ar/services/              301!
+/fr/journal/vetement-besoin-retouche*      /fr/services/retouches/    301!
+/fr/journal/delai-retouches-mariage*       /fr/services/retouches/    301!
+/fr/journal/entretien-vetement-heritage*   /fr/services/reparations/  301!
+/fr/journal                                /fr/services/              301!
+/fr/journal/*                              /fr/services/              301!

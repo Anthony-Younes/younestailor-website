@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /src/
 Disallow: /docs/
-Disallow: /build.mjs
+Disallow: /CLAUDE.md
 
 # AI / LLM crawlers — welcome (see /llms.txt)
 User-agent: GPTBot
