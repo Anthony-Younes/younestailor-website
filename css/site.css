@@ -601,3 +601,6 @@ html[lang="ar"] .step__n { font-family: 'Instrument Serif', Georgia, serif; }
 .pagehead .media .frame, .p-hero__media .frame { height: auto; flex: none; }
 .pagehead .media .frame img, .p-hero__media .frame img, .p-hero__media .frame video { aspect-ratio: inherit; }
 .p-hero__media, .p-hero__media .media { flex: none; height: auto; }
+/* Fixes round 3: on phones the three benefits already sit one per line with the real fonts; stacking them
+   keeps that layout while the fallback font shows, so nothing below them moves when the fonts arrive. */
+@media (max-width: 440px) { .trio { flex-direction: column; } }
