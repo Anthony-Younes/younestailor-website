@@ -2,6 +2,7 @@
 // Section types are rendered by build.mjs. Plain text only: the renderer escapes it.
 
 import { HOME } from './content-home.mjs';
+import { applyPages } from './content-launch2.mjs';
 
 // Home: page entry built from the approved Home text.
 function homePage(lang) {
@@ -21,7 +22,7 @@ export const PATHS = {
   alterations: { en: '/services/alterations/', ar: '/ar/services/alterations/', fr: '/fr/services/retouches/' },
   repairs:     { en: '/services/repairs/', ar: '/ar/services/repairs/', fr: '/fr/services/reparations/' },
   embroidery:  { en: '/services/embroidery/', ar: '/ar/services/embroidery/', fr: '/fr/services/broderie/' },
-  uniforms:    { en: '/services/embroidery/uniforms/', ar: '/ar/services/embroidery/uniforms/', fr: '/fr/services/broderie/uniformes/' },
+  uniforms:    { en: '/services/uniforms/', ar: '/ar/services/uniforms/', fr: '/fr/services/uniformes/' },
   about:       { en: '/about/', ar: '/ar/about/', fr: '/fr/a-propos/' },
   visit:       { en: '/visit/', ar: '/ar/visit/', fr: '/fr/nous-trouver/' },
 };
@@ -29,7 +30,7 @@ export const PATHS = {
 // Breadcrumb parent for each page.
 export const PARENT = {
   home: null, services: 'home', alterations: 'services', repairs: 'services',
-  embroidery: 'services', uniforms: 'embroidery', about: 'home', visit: 'home',
+  embroidery: 'services', uniforms: 'services', about: 'home', visit: 'home',
 };
 
 // Alt text for the reusable stills.
@@ -711,3 +712,6 @@ export const PAGES = {
     },
   },
 };
+
+// Launch 2 (Decision 06): Uniforms page rebuilt, Services reordered, cross links. See content-launch2.mjs.
+applyPages(PAGES);

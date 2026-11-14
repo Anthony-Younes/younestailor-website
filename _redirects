@@ -51,3 +51,11 @@
 /fr/journal/entretien-vetement-heritage*   /fr/services/reparations/  301!
 /fr/journal                                /fr/services/              301!
 /fr/journal/*                              /fr/services/              301!
+
+# Launch 2 (2026-11): Uniforms is a main service, moved out of /embroidery/ (Decision 06). Keep at least a year.
+/services/embroidery/uniforms           /services/uniforms/           301!
+/services/embroidery/uniforms/*         /services/uniforms/           301!
+/ar/services/embroidery/uniforms        /ar/services/uniforms/        301!
+/ar/services/embroidery/uniforms/*      /ar/services/uniforms/        301!
+/fr/services/broderie/uniformes         /fr/services/uniformes/       301!
+/fr/services/broderie/uniformes/*       /fr/services/uniformes/       301!

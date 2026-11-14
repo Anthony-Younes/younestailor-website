@@ -11,12 +11,13 @@ import { PATHS, PARENT, ALT, PAGES } from './content-pages.mjs';
 import { ICONS } from './icons.mjs';
 import { renderHomePilot } from './home-pilot.mjs';
 import { HOME } from './content-home.mjs';
+import { SLOGAN, SIZES } from './content-launch2.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'ar', 'fr'];
 const SITE = FACTS.site;
-const LASTMOD = '2026-10-25';
-const SERVICE_KEYS = ['alterations', 'repairs', 'embroidery', 'uniforms'];
+const LASTMOD = '2026-11-14';
+const SERVICE_KEYS = ['uniforms', 'embroidery', 'alterations', 'repairs'];
 
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s)
@@ -92,7 +93,7 @@ function header(key, lang, page) {
   return `<a class="skip-link" href="#main">${esc(u.skip)}</a>
 <header class="site-header" data-header>
 <div class="container site-header__inner">
-<a class="brand" href="${url('home', lang)}"><img src="/assets/logo/younes-signature-ivory.svg" alt="Younes Tailor — ${esc(u.home)}" width="132" height="51"></a>
+<a class="brand" href="${url('home', lang)}"><img src="/assets/logo/younes-tailor-primary-cream.svg" alt="Younes Tailor — ${esc(u.home)}" width="156" height="52"></a>
 <nav class="nav" aria-label="${esc(u.nav.services)} · ${esc(u.nav.about)} · ${esc(u.nav.visit)}"><ul>${links}</ul></nav>
 <div class="site-header__end">
 <div class="langs" aria-label="${esc(u.langLabel)}">${icon('globe')}${langLinks(key, lang, 'langs__link')}</div>
@@ -160,14 +161,14 @@ function statusPill() {
 
 function footer(key, lang) {
   const u = UI[lang];
-  const pages = ['home', 'services', 'alterations', 'repairs', 'embroidery', 'uniforms', 'about', 'visit'];
+  const pages = ['home', 'services', 'uniforms', 'embroidery', 'alterations', 'repairs', 'about', 'visit'];
   const label = (k) => k === 'home' ? u.home : k === 'services' ? u.nav.services : k === 'about' ? u.nav.about : k === 'visit' ? u.nav.visit : k === 'uniforms' ? u.services.uniforms : u.services[k];
   return `<footer class="site-footer">
 <div class="container">
 <div class="site-footer__grid">
 <div class="lockup">
-<img src="/assets/logo/younes-bilingual-ivory.svg" alt="Younes Tailor — يونس" width="180" height="137" loading="lazy">
-<span class="lockup__caption" lang="en" dir="ltr">Tailor · Byblos</span>
+<img src="/assets/logo/younes-tailor-primary-cream.svg" alt="Younes Tailor" width="212" height="70" loading="lazy">
+<p class="lockup__slogan">${esc(SLOGAN[lang])}</p>
 </div>
 <div>
 <h2 class="site-footer__h">${esc(u.footer.address)}</h2>
@@ -373,6 +374,15 @@ function sVideos(s, key, lang) {
 </section>`;
 }
 
+function sLinks(s, key, lang) {
+  return `<section class="section">
+<div class="container narrow">
+<div class="section-head"><h2>${esc(s.h2)}</h2></div>
+<ul class="linklist">${s.items.map(([k, label]) => `<li><a class="textlink" href="${url(k, lang)}">${esc(label)} ${icon('arrow-right', 'i-arrow')}</a></li>`).join('')}</ul>
+</div>
+</section>`;
+}
+
 function sProse(s) {
   return `<section class="section">
 <div class="container narrow">
@@ -480,6 +490,7 @@ ${opt('alterations', u.services.alterations)}${opt('repairs', u.services.repairs
 <fieldset class="field field--choice" data-only="uniforms"${svc === 'uniforms' ? '' : ' hidden disabled'}><legend>${esc(f.placement)}</legend>
 ${f.placements.map((p) => `<label class="check"><input type="checkbox" name="placement" value="${esc(p)}" data-label="${esc(f.placement)}"><span>${esc(p)}</span></label>`).join('')}
 </fieldset>
+<fieldset class="field field--plain" data-only="uniforms"${svc === 'uniforms' ? '' : ' hidden disabled'}><label for="f-sizes">${esc(SIZES[lang][0])}</label><textarea id="f-sizes" name="sizes" rows="2" aria-describedby="f-sizes-hint" data-label="${esc(SIZES[lang][0].replace(/ \(.*\)/, ''))}"></textarea><p class="hint" id="f-sizes-hint">${esc(SIZES[lang][1])}</p></fieldset>
 <div class="field"><label for="f-stitch">${esc(f.stitch)}</label><input id="f-stitch" name="stitch" type="text" autocomplete="off" aria-describedby="f-stitch-hint" data-label="${esc(f.stitch)}"><p class="hint" id="f-stitch-hint">${esc(f.stitchHint)}</p></div>
 <label class="check"><input type="checkbox" name="artwork" value="${esc(f.artworkHelp)}" data-label="${esc(f.artworkHelp)}" data-flag><span>${esc(f.artworkHelp)}</span></label>
 <div class="field"><label for="f-deadline-e">${esc(f.deadline)}</label><input id="f-deadline-e" name="deadline" type="text" autocomplete="off" data-label="${esc(f.deadline.replace(/ \(.*\)| ؟.*$/, ''))}"></div>
@@ -509,7 +520,7 @@ ${f.placements.map((p) => `<label class="check"><input type="checkbox" name="pla
 const RENDER = {
   hero: sHero, pagehead: sPagehead, groups: sGroups, process: sProcess, list: sList,
   timeline: sTimeline, compare: sCompare, restoration: sRestoration, chips: sChips,
-  twocol: sTwocol, videos: sVideos, prose: sProse, values: sValues, visit: sVisit,
+  twocol: sTwocol, links: sLinks, videos: sVideos, prose: sProse, values: sValues, visit: sVisit,
   visitfull: sVisitFull, faq: sFaq,
 };
 
@@ -520,7 +531,8 @@ function business(lang) {
     '@type': ['LocalBusiness', 'ProfessionalService'],
     '@id': SITE + '/#business',
     name: FACTS.name,
-    description: 'Tailoring and embroidery in Blat, Byblos, near Best Buy Market: alterations, repairs, embroidery and uniform embroidery.',
+    description: 'Uniforms, embroidery and tailoring in Blat, Byblos, near Best Buy Market: uniforms supplied and embroidered with your logo, custom embroidery, alterations and repairs.',
+    slogan: SLOGAN.en,
     url: SITE + '/',
     telephone: FACTS.phoneE164,
     email: FACTS.email,
@@ -533,7 +545,7 @@ function business(lang) {
     areaServed: ['Blat', 'Jbeil (Byblos)', 'Amchit', 'Halat', 'Fidar', 'Kfaryassine', 'Mastita', 'Mount Lebanon'].map((n) => ({ '@type': 'Place', name: n })),
     knowsLanguage: ['ar', 'fr', 'en'],
     foundingDate: '2025',
-    knowsAbout: ['clothing alterations', 'garment repairs', 'wedding dress alterations', 'garment restoration', 'embroidery', 'logo embroidery', 'cap embroidery', 'uniform embroidery'],
+    knowsAbout: ['clothing alterations', 'garment repairs', 'wedding dress alterations', 'garment restoration', 'embroidery', 'logo embroidery', 'cap embroidery', 'uniform embroidery', 'uniform supply'],
     makesOffer: SERVICE_KEYS.map((k) => ({
       '@type': 'Offer',
       itemOffered: { '@type': 'Service', '@id': abs(k, lang) + '#service', name: u.schemaServices[k], url: abs(k, lang) },
@@ -674,7 +686,7 @@ function render404() {
 <body class="page-404">
 <main id="main" class="section nf">
 <div class="container narrow">
-<a class="brand nf__brand" href="/"><img src="/assets/logo/younes-bilingual-ivory.svg" alt="Younes Tailor — يونس" width="180" height="137"></a>
+<a class="brand nf__brand" href="/"><img src="/assets/logo/younes-tailor-primary-cream.svg" alt="Younes Tailor" width="212" height="70"></a>
 ${blocks}
 <p class="nf__contact"><a href="tel:${FACTS.phoneE164}">${ltr(FACTS.phoneDisplay)}</a> · <a href="https://wa.me/${FACTS.wa}" rel="noopener">WhatsApp</a></p>
 </div>
