@@ -134,6 +134,7 @@ html[lang="ar"] .p-hero h1 { font-size: clamp(44px, 11vw, 96px); line-height: 1.
 .p-slogan { margin: 0 0 14px; font: 600 14px/1.3 var(--sans); letter-spacing: .08em; color: var(--gold); }
 [lang="ar"] .p-slogan, [lang="ar"] .lockup__slogan { letter-spacing: 0; font-size: 15px; }
 .lockup__slogan { margin: 0; font: 600 13px/1.3 'Manrope', 'IBM Plex Sans Arabic', sans-serif; letter-spacing: .08em; color: var(--gold); white-space: nowrap; }
+.field--plain { border: 0; padding: 0; margin-inline: 0; min-width: 0; }
 .linklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .linklist .textlink { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
 .p-strip--inline { margin: 18px 0 0; }
@@ -685,6 +686,7 @@ animation: p-rise-only linear both; animation-timeline: view(); animation-range:
 <fieldset class="field field--choice" data-only="uniforms" hidden disabled><legend>مكان الشعار</legend>
 <label class="check"><input type="checkbox" name="placement" value="الصدر" data-label="مكان الشعار"><span>الصدر</span></label><label class="check"><input type="checkbox" name="placement" value="الكمّ" data-label="مكان الشعار"><span>الكمّ</span></label><label class="check"><input type="checkbox" name="placement" value="الظهر" data-label="مكان الشعار"><span>الظهر</span></label><label class="check"><input type="checkbox" name="placement" value="مقدّمة القبّعة" data-label="مكان الشعار"><span>مقدّمة القبّعة</span></label>
 </fieldset>
+<fieldset class="field field--plain" data-only="uniforms" hidden disabled><label for="f-sizes">المقاسات والكميات (اختياري)</label><textarea id="f-sizes" name="sizes" rows="2" aria-describedby="f-sizes-hint" data-label="المقاسات والكميات"></textarea><p class="hint" id="f-sizes-hint">مثلاً: 4 M، 6 L، 2 XL. يمكنكم أيضاً إرسال اللائحة عبر واتساب.</p></fieldset>
 <div class="field"><label for="f-stitch">ما تريدون تطريزه</label><input id="f-stitch" name="stitch" type="text" autocomplete="off" aria-describedby="f-stitch-hint" data-label="ما تريدون تطريزه"><p class="hint" id="f-stitch-hint">اسم، أحرف أولى، نصّ أو شعار</p></div>
 <label class="check"><input type="checkbox" name="artwork" value="أحتاج مساعدة في التصميم" data-label="أحتاج مساعدة في التصميم" data-flag><span>أحتاج مساعدة في التصميم</span></label>
 <div class="field"><label for="f-deadline-e">متى تحتاجونها؟ (اختياري)</label><input id="f-deadline-e" name="deadline" type="text" autocomplete="off" data-label="متى تحتاجونها؟"></div>

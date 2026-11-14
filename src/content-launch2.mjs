@@ -3,6 +3,13 @@
 // tees, hoodies, sweaters) and embroiders them; it does not sew uniforms. Pieces can be added to an order later.
 // This file layers the Launch 2 text over the Launch 1 content; approved Launch 1 strings are reused as they are.
 
+// Uniforms quote form: optional size list (GPT review, 14 Nov).
+export const SIZES = {
+  en: ['Sizes and quantities (optional)', 'For example: 4 M, 6 L, 2 XL. You can also send the list in WhatsApp.'],
+  fr: ['Tailles et quantités (facultatif)', 'Par exemple : 4 M, 6 L, 2 XL. Vous pouvez aussi envoyer la liste dans WhatsApp.'],
+  ar: ['المقاسات والكميات (اختياري)', 'مثلاً: 4 M، 6 L، 2 XL. يمكنكم أيضاً إرسال اللائحة عبر واتساب.'],
+};
+
 export const SLOGAN = {
   en: 'Tailoring · Embroidery · Uniforms',
   fr: 'Couture · Broderie · Uniformes',
@@ -24,12 +31,12 @@ const HOME2 = {
   },
   fr: {
     title: 'Younes Tailor — Uniformes, broderie et couture à Blat, Byblos',
-    description: 'Uniformes fournis et brodés à votre logo, broderie personnalisée, retouches et réparations à Blat, Byblos. Sans minimum de commande. Ouvert du lundi au samedi, 9 h–19 h.',
+    description: 'Uniformes fournis et brodés avec votre logo, broderie personnalisée, retouches et réparations à Blat, Byblos. Sans minimum de commande. Ouvert du lundi au samedi, 9 h–19 h.',
     h1: 'Uniformes, broderie et couture à Blat, Byblos',
     em: ['Uniformes,', 'broderie', 'couture'],
-    lede: 'Nous fournissons des uniformes brodés à votre logo, brodons noms et motifs sur t-shirts, sweats, casquettes et serviettes, et retouchons et réparons les vêtements que vous avez déjà. Passez à l’atelier, ou envoyez d’abord une photo.',
+    lede: 'Nous fournissons des uniformes brodés avec votre logo, brodons noms et motifs sur t-shirts, sweats, casquettes et serviettes, et retouchons et réparons les vêtements que vous avez déjà. Passez à l’atelier, ou envoyez d’abord une photo.',
     btnUniforms: 'Uniformes', uTitle: 'Uniformes', uBtn: 'Uniformes',
-    uLine: 'Polos, chemises, tabliers, vestes de cuisine et casquettes, fournis par l’atelier et brodés à votre logo. Pour restaurants, écoles, clubs et entreprises.',
+    uLine: 'Polos, chemises, tabliers, vestes de cuisine et casquettes, fournis par l’atelier et brodés avec votre logo. Pour restaurants, écoles, clubs et entreprises.',
     uItems: ['Polos', 'Chemises', 'Tabliers', 'Vestes de cuisine', 'Casquettes'],
     scratchA: 'Non, nous travaillons sur les vêtements que vous avez déjà. Pour la broderie et les uniformes, nous fournissons des articles prêts à porter : polos, chemises, tabliers, vestes de cuisine, t-shirts, sweats, casquettes et serviettes.',
     optUniforms: 'Uniformes',
@@ -67,33 +74,33 @@ const UNI = {
     supply: { eyebrow: 'Garments', h2: 'What we supply', items: ['Polos', 'Shirts', 'Aprons', 'Chef jackets', 'Caps', 'Tees, hoodies and sweaters'], note: 'Already have your uniforms? Bring them and we stitch your logo on those.' },
     place: { eyebrow: 'Placement', h2: 'Where the logo goes', items: ['Chest, left or right', 'Sleeve', 'Back', 'Cap front'], note: 'Not sure? Send a photo of the garment and we suggest a placement.' },
     cols: [
-      { eyebrow: 'Reorders', h2: 'Add pieces later', p: 'New staff, or two more hoodies than planned? Order the extra pieces when you need them, on the same terms. No minimum order.' },
+      { eyebrow: 'Reorders', h2: 'Add pieces later', p: 'New staff, or two more hoodies than planned? You can add pieces later, even one at a time. We’ll quote the extra pieces. No minimum order.' },
       { eyebrow: 'Fit', h2: 'Uniforms that fit', p: 'We do not sew uniforms from scratch. We supply ready-made garments, and our tailoring side hems, shortens and takes in the pieces that need it.' },
     ],
     faq: {
       supply: ['Do you supply the uniforms?', 'Yes. We supply polos, shirts, aprons, chef jackets, caps, tees, hoodies and sweaters, and stitch your logo on them. You can also bring garments you already have.'],
       sew: ['Do you sew uniforms from scratch?', 'No. We supply ready-made garments and embroider them. We can alter them if the fit needs it.'],
-      add: ['Can we add pieces later?', 'Yes. Order the extra pieces when you need them, on the same terms.'],
+      add: ['Can we add pieces later?', 'Yes. You can add pieces later, even one at a time. We’ll quote the extra pieces.'],
       time: ['How long does an order take?', 'It depends on the quantity. We give you a date with the quote.'],
       pay: ['How do we pay?', 'Cash only.'],
     },
     links: { h2: 'Related services', items: [['alterations', 'Alterations & fitting'], ['embroidery', 'Embroidery: names, logos, caps, towels'], ['visit', 'Find the shop and opening hours']] },
   },
   fr: {
-    title: 'Uniformes brodés à votre logo à Byblos | Younes Tailor',
-    description: 'Polos, chemises, tabliers, vestes de cuisine et casquettes fournis et brodés à votre logo, pour restaurants, écoles, clubs et entreprises à Byblos. Sans minimum.',
+    title: 'Uniformes brodés avec votre logo à Byblos | Younes Tailor',
+    description: 'Polos, chemises, tabliers, vestes de cuisine et casquettes fournis et brodés avec votre logo, pour restaurants, écoles, clubs et entreprises à Byblos. Sans minimum.',
     eyebrow: 'Uniformes', h1: 'Uniformes à votre logo',
     lede: 'Nous fournissons les vêtements et brodons votre logo à l’atelier, à Blat, Byblos. Pour un nouvel employé comme pour toute une équipe.',
     supply: { eyebrow: 'Vêtements', h2: 'Ce que nous fournissons', items: ['Polos', 'Chemises', 'Tabliers', 'Vestes de cuisine', 'Casquettes', 'T-shirts, sweats à capuche et pulls'], note: 'Vous avez déjà vos uniformes ? Apportez-les, nous brodons votre logo dessus.' },
     place: { eyebrow: 'Emplacement', h2: 'Où placer le logo', items: ['Poitrine, à gauche ou à droite', 'Manche', 'Dos', 'Devant de casquette'], note: 'Un doute ? Envoyez une photo du vêtement et nous vous proposons un emplacement.' },
     cols: [
-      { eyebrow: 'Réassort', h2: 'Ajouter des pièces plus tard', p: 'Un nouvel employé, ou deux sweats de plus que prévu ? Commandez les pièces supplémentaires quand vous en avez besoin, aux mêmes conditions. Sans minimum de commande.' },
+      { eyebrow: 'Réassort', h2: 'Ajouter des pièces plus tard', p: 'Un nouvel employé, ou deux sweats de plus que prévu ? Vous pouvez ajouter des pièces plus tard, même une seule à la fois. Nous établissons un devis pour les pièces supplémentaires. Sans minimum de commande.' },
       { eyebrow: 'Ajustement', h2: 'Des uniformes à la bonne taille', p: 'Nous ne confectionnons pas d’uniformes. Nous fournissons des vêtements prêts à porter, et notre atelier de couture raccourcit, reprend et ajuste les pièces qui en ont besoin.' },
     ],
     faq: {
       supply: ['Fournissez-vous les uniformes ?', 'Oui. Nous fournissons polos, chemises, tabliers, vestes de cuisine, casquettes, t-shirts, sweats et pulls, et nous y brodons votre logo. Vous pouvez aussi apporter vos propres vêtements.'],
       sew: ['Confectionnez-vous des uniformes ?', 'Non. Nous fournissons des vêtements prêts à porter et nous les brodons. Nous pouvons les retoucher si la taille l’exige.'],
-      add: ['Peut-on ajouter des pièces plus tard ?', 'Oui. Commandez les pièces supplémentaires quand vous en avez besoin, aux mêmes conditions.'],
+      add: ['Peut-on ajouter des pièces plus tard ?', 'Oui. Vous pouvez ajouter des pièces plus tard, même une seule à la fois. Nous établissons un devis pour les pièces supplémentaires.'],
       time: ['Quel est le délai ?', 'Cela dépend de la quantité. Nous vous donnons une date avec le devis.'],
       pay: ['Comment payer ?', 'En espèces uniquement.'],
     },
@@ -107,13 +114,13 @@ const UNI = {
     supply: { eyebrow: 'الملابس', h2: 'ما نؤمّنه', items: ['قمصان بولو', 'قمصان', 'مراييل', 'سترات طهاة', 'قبّعات', 'تيشيرتات وهوديات وكنزات'], note: 'عندكم زيّكم الموحّد؟ أحضروه ونطرّز شعاركم عليه.' },
     place: { eyebrow: 'مكان الشعار', h2: 'أين نضع الشعار', items: ['الصدر، يميناً أو يساراً', 'الكمّ', 'الظهر', 'مقدّمة القبّعة'], note: 'لستم متأكدين؟ أرسلوا صورة القطعة ونقترح عليكم المكان المناسب.' },
     cols: [
-      { eyebrow: 'طلبات إضافية', h2: 'أضيفوا قطعاً لاحقاً', p: 'موظّف جديد، أو هوديان أكثر من المتوقّع؟ اطلبوا القطع الإضافية عند الحاجة، بالشروط نفسها. من دون حدّ أدنى للطلب.' },
-      { eyebrow: 'القياس', h2: 'زيّ على القياس', p: 'لا نخيّط الزيّ الموحّد من الصفر. نؤمّن ملابس جاهزة، وقسم الخياطة عندنا يقصّر ويضيّق ويعدّل القطع التي تحتاج إلى ذلك.' },
+      { eyebrow: 'طلبات إضافية', h2: 'أضيفوا قطعاً لاحقاً', p: 'موظّف جديد، أو هوديان أكثر من المتوقّع؟ يمكنكم إضافة قطع لاحقاً، ولو قطعة واحدة في كل مرة. ونعطيكم سعر القطع الإضافية. من دون حدّ أدنى للطلب.' },
+      { eyebrow: 'القياس', h2: 'تعديلات على الزيّ الموحّد', p: 'لا نخيّط الزيّ الموحّد من الصفر. نؤمّن ملابس جاهزة، وقسم الخياطة عندنا يقصّر ويضيّق ويعدّل القطع التي تحتاج إلى ذلك.' },
     ],
     faq: {
       supply: ['هل تؤمّنون الزيّ الموحّد؟', 'نعم. نؤمّن قمصان البولو والقمصان والمراييل وسترات الطهاة والقبّعات والتيشيرتات والهوديات والكنزات، ونطرّز شعاركم عليها. ويمكنكم أيضاً إحضار ملابسكم.'],
       sew: ['هل تخيّطون الزيّ الموحّد من الصفر؟', 'لا. نؤمّن ملابس جاهزة ونطرّزها. ويمكننا تعديلها إذا احتاج القياس إلى ذلك.'],
-      add: ['هل يمكن إضافة قطع لاحقاً؟', 'نعم. اطلبوا القطع الإضافية عند الحاجة، بالشروط نفسها.'],
+      add: ['هل يمكن إضافة قطع لاحقاً؟', 'نعم. يمكنكم إضافة قطع لاحقاً، ولو قطعة واحدة في كل مرة. ونعطيكم سعر القطع الإضافية.'],
       time: ['كم يستغرق الطلب؟', 'بحسب الكمية. نعطيكم موعداً مع السعر.'],
       pay: ['كيف ندفع؟', 'نقداً فقط.'],
     },
@@ -123,7 +130,7 @@ const UNI = {
 
 const SVC = {
   en: { title: 'Services — uniforms, embroidery and tailoring in Byblos | Younes Tailor', description: 'Uniforms with your logo, embroidery, alterations and repairs at Younes Tailor in Blat, Byblos. Pick the closest service or tell us what you need.', h1: 'Uniforms, embroidery and tailoring', lede: 'Three kinds of work in one shop in Blat, Byblos. Pick the closest one, or just tell us what you need.', gTitle: 'Uniforms', gIntro: 'Garments supplied by us, stitched with your logo.' },
-  fr: { title: 'Services — uniformes, broderie et couture à Byblos | Younes Tailor', description: 'Uniformes à votre logo, broderie, retouches et réparations chez Younes Tailor à Blat, Byblos. Choisissez le service le plus proche ou dites-nous ce qu’il vous faut.', h1: 'Uniformes, broderie et couture', lede: 'Trois métiers dans un même atelier à Blat, Byblos. Choisissez le plus proche, ou dites-nous simplement ce qu’il vous faut.', gTitle: 'Uniformes', gIntro: 'Des vêtements fournis par l’atelier, brodés à votre logo.' },
+  fr: { title: 'Services — uniformes, broderie et couture à Byblos | Younes Tailor', description: 'Uniformes à votre logo, broderie, retouches et réparations chez Younes Tailor à Blat, Byblos. Choisissez le service le plus proche ou dites-nous ce qu’il vous faut.', h1: 'Uniformes, broderie et couture', lede: 'Trois métiers dans un même atelier à Blat, Byblos. Choisissez le service qui vous convient, ou dites-nous simplement ce qu’il vous faut.', gTitle: 'Uniformes', gIntro: 'Des vêtements fournis par l’atelier, brodés avec votre logo.' },
   ar: { title: 'الخدمات — زيّ موحّد وتطريز وخياطة في جبيل | خياطة يونس', description: 'زيّ موحّد بشعاركم، تطريز، تعديل وتصليح الملابس في خياطة يونس في بلاط، جبيل. اختاروا الخدمة الأقرب أو أخبرونا بما تحتاجون.', h1: 'زيّ موحّد وتطريز وخياطة', lede: 'ثلاثة أنواع من العمل في محل واحد في بلاط، جبيل. اختاروا الأقرب، أو أخبرونا بما تحتاجون.', gTitle: 'الزيّ الموحّد', gIntro: 'ملابس نؤمّنها ونطرّز شعاركم عليها.' },
 };
 

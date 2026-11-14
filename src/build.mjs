@@ -11,7 +11,7 @@ import { PATHS, PARENT, ALT, PAGES } from './content-pages.mjs';
 import { ICONS } from './icons.mjs';
 import { renderHomePilot } from './home-pilot.mjs';
 import { HOME } from './content-home.mjs';
-import { SLOGAN } from './content-launch2.mjs';
+import { SLOGAN, SIZES } from './content-launch2.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['en', 'ar', 'fr'];
@@ -490,6 +490,7 @@ ${opt('alterations', u.services.alterations)}${opt('repairs', u.services.repairs
 <fieldset class="field field--choice" data-only="uniforms"${svc === 'uniforms' ? '' : ' hidden disabled'}><legend>${esc(f.placement)}</legend>
 ${f.placements.map((p) => `<label class="check"><input type="checkbox" name="placement" value="${esc(p)}" data-label="${esc(f.placement)}"><span>${esc(p)}</span></label>`).join('')}
 </fieldset>
+<fieldset class="field field--plain" data-only="uniforms"${svc === 'uniforms' ? '' : ' hidden disabled'}><label for="f-sizes">${esc(SIZES[lang][0])}</label><textarea id="f-sizes" name="sizes" rows="2" aria-describedby="f-sizes-hint" data-label="${esc(SIZES[lang][0].replace(/ \(.*\)/, ''))}"></textarea><p class="hint" id="f-sizes-hint">${esc(SIZES[lang][1])}</p></fieldset>
 <div class="field"><label for="f-stitch">${esc(f.stitch)}</label><input id="f-stitch" name="stitch" type="text" autocomplete="off" aria-describedby="f-stitch-hint" data-label="${esc(f.stitch)}"><p class="hint" id="f-stitch-hint">${esc(f.stitchHint)}</p></div>
 <label class="check"><input type="checkbox" name="artwork" value="${esc(f.artworkHelp)}" data-label="${esc(f.artworkHelp)}" data-flag><span>${esc(f.artworkHelp)}</span></label>
 <div class="field"><label for="f-deadline-e">${esc(f.deadline)}</label><input id="f-deadline-e" name="deadline" type="text" autocomplete="off" data-label="${esc(f.deadline.replace(/ \(.*\)| ؟.*$/, ''))}"></div>

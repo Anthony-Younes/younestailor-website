@@ -156,7 +156,7 @@ export const UI = {
       other: 'Je ne sais pas / autre chose',
     },
     schemaServices: {
-      alterations: 'Retouches & ajustements', repairs: 'Réparations', embroidery: 'Broderie', uniforms: 'Uniformes brodés à votre logo',
+      alterations: 'Retouches & ajustements', repairs: 'Réparations', embroidery: 'Broderie', uniforms: 'Uniformes brodés avec votre logo',
     },
     groups: { tailoring: 'Couture', embroidery: 'Broderie' },
     trio: ['Sans minimum de commande', 'Un seul prix, création et préparation comprises', 'Aperçu du motif avant broderie, sur demande'],
