@@ -2,6 +2,8 @@
 // Do not edit wording here without updating that document first.
 // msg: labels of the pre-filled WhatsApp message (home-copy.md section 5 templates).
 
+import { applyHome } from './content-launch2.mjs';
+
 export const HOME = {
   en: {
     title: 'Younes Tailor — Tailoring and embroidery in Blat, Byblos',
@@ -228,3 +230,6 @@ export const HOME = {
     msg: { intro: 'Bonjour Younes Tailor', service: 'Service', item: 'Article', do: 'À faire', qty: 'Quantité', garment: 'Article à broder', design: 'Visuel', date: 'Pour le' },
   },
 };
+
+// Launch 2 (Decision 06): uniforms first, slogan. See content-launch2.mjs.
+applyHome(HOME);

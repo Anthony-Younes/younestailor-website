@@ -1,5 +1,7 @@
 # Home page text — EN · AR · FR (APPROVED)
 
+> Amended 14 Nov 2026 (Decision 06, owner approved): titles, descriptions, H1, opening line and the "from scratch" answer now name uniforms; Home gains a Uniforms button and panel and the slogan line (text in src/content-launch2.mjs). AR/FR wording of the amended cells: owner check pending.
+
 Source: owner-edited Docs artifact https://claude.ai/artifact/JnuSijUiUpo1ZiJjHMhG2A · GPT approved (R2, 26 Oct 2026) · owner approved 26 Oct 2026.
 Paste verbatim into the Home page content source. Italic "Builder:" lines are notes, not page text. If text does not fit the layout, stop and ask — never shorten silently.
 
@@ -22,13 +24,12 @@ The first screen says what you do and where in one line, then splits visitors in
 
 |Element  |English  |العربية  |Français  |
 |---|---|---|---|
-|Page title (Google)  |Younes Tailor — Tailoring and embroidery in Blat, Byblos  |خياطة يونس — خياطة وتطريز في بلاط، جبيل  |Younes Tailor — Couture et broderie à Blat, Byblos  |
-|Description (Google)  |Alterations, repairs and embroidery in Blat, Byblos. Names, logos, caps and team kits, no minimum order. Open Mon–Sat 9:00–19:00.  |تعديل الملابس وتصليحها وتطريزها في بلاط، جبيل. أسماء وشعارات وقبّعات وملابس فرق، من دون حدّ أدنى للطلب. مفتوح من الاثنين إلى السبت، ٩:٠٠–١٩:٠٠.  |Retouches, réparations et broderie à Blat, Byblos. Noms, logos, casquettes et tenues d’équipe, sans minimum de commande. Ouvert du lundi au samedi, 9 h–19 h.  |
-|Headline  |Tailoring and embroidery in Blat, Byblos  |خياطة وتطريز في بلاط، جبيل  |Couture et broderie à Blat, Byblos  |
-|Line under it  |We alter and repair the clothes you already own, and stitch names, logos and designs on tees, hoodies, caps, towels and team kits. Walk in, or send a photo first.  |نعدّل ملابسكم ونصلّحها، ونطرّز الأسماء والشعارات والتصاميم على التيشيرتات والهوديات والقبّعات والمناشف وملابس الفرق. زورونا مباشرة، أو أرسلوا لنا صورة أولاً.  |Nous retouchons et réparons les vêtements que vous avez déjà, et brodons noms, logos et motifs sur t-shirts, sweats, casquettes, serviettes et tenues d’équipe. Passez à l’atelier, ou envoyez d’abord une photo.  |
+|Page title (Google)  |Younes Tailor — Uniforms, embroidery and tailoring in Blat, Byblos  |خياطة يونس — زيّ موحّد وتطريز وخياطة في بلاط، جبيل  |Younes Tailor — Uniformes, broderie et couture à Blat, Byblos  |
+|Description (Google)  |Uniforms supplied and embroidered with your logo, custom embroidery, alterations and repairs in Blat, Byblos. No minimum order. Open Mon–Sat 9:00–19:00.  |زيّ موحّد نؤمّنه ونطرّز شعاركم عليه، وتطريز حسب الطلب، وتعديل الملابس وتصليحها في بلاط، جبيل. من دون حدّ أدنى للطلب. مفتوح من الاثنين إلى السبت، ٩:٠٠–١٩:٠٠.  |Uniformes fournis et brodés à votre logo, broderie personnalisée, retouches et réparations à Blat, Byblos. Sans minimum de commande. Ouvert du lundi au samedi, 9 h–19 h.  |
+|Headline  |Uniforms, embroidery and tailoring in Blat, Byblos  |زيّ موحّد وتطريز وخياطة في بلاط، جبيل  |Uniformes, broderie et couture à Blat, Byblos  |
+|Line under it  |We supply uniforms and stitch your logo on them, embroider names and designs on tees, hoodies, caps and towels, and alter and repair the clothes you already own. Walk in, or send a photo first.  |نؤمّن الزيّ الموحّد ونطرّز شعاركم عليه، ونطرّز الأسماء والتصاميم على التيشيرتات والهوديات والقبّعات والمناشف، ونعدّل ملابسكم ونصلّحها. زورونا مباشرة، أو أرسلوا لنا صورة أولاً.  |Nous fournissons des uniformes brodés à votre logo, brodons noms et motifs sur t-shirts, sweats, casquettes et serviettes, et retouchons et réparons les vêtements que vous avez déjà. Passez à l’atelier, ou envoyez d’abord une photo.  |
 |Button 1  |Tailoring  |الخياطة  |Couture  |
 |Button 2  |Embroidery  |التطريز  |Broderie  |
-|Hand-drawn note by the Embroidery button  |single pieces welcome  |ولو قطعة واحدة  |même une seule pièce  |
 |Hours line  |Mon–Sat 09:00–19:00 · Sunday closed  |الاثنين–السبت ٩:٠٠–١٩:٠٠ · الأحد مغلق  |Lun–sam 9 h–19 h · fermé le dimanche  |
 *Builder: the hand-drawn note is decoration; the same message also appears as normal text in **the questions (section 4). Arabic throughout: simple formal Arabic with a warm tone (owner’s choice)**.*
 
@@ -44,7 +45,9 @@ Two big panels replace the four cards; each links to its pages.
 |Tailoring button  |Tailoring  |الخياطة  |Couture  |
 |Embroidery panel: title  |Embroidery  |التطريز  |Broderie  |
 |Embroidery panel: line  |Names, initials, text and logos, stitched on our own machine. Bring your piece or we supply it.  |أسماء وأحرف ونصوص وشعارات، نطرّزها على ماكينتنا. أحضروا قطعتكم أو نؤمّنها لكم.  |Noms, initiales, textes et logos, brodés sur notre propre machine. Apportez votre article ou choisissez-en un fourni par l’atelier.  |
-|Embroidery pills (links)  |Embroidery · Uniforms & teams  |تطريز · زيّ موحّد وفرق  |Broderie · Uniformes et équipes  |
+|Uniforms button and panel title  |Uniforms  |الزيّ الموحّد  |Uniformes  |
+|Uniforms panel line  |Polos, shirts, aprons, chef jackets and caps, supplied by us and stitched with your logo. For restaurants, schools, clubs and companies.  |قمصان بولو وقمصان ومراييل وسترات طهاة وقبّعات، نؤمّنها ونطرّز شعاركم عليها. للمطاعم والمدارس والنوادي والشركات.  |Polos, chemises, tabliers, vestes de cuisine et casquettes, fournis par l’atelier et brodés à votre logo. Pour restaurants, écoles, clubs et entreprises.  |
+|Slogan line  |Tailoring · Embroidery · Uniforms  |خياطة · تطريز · زيّ موحّد  |Couture · Broderie · Uniformes  |
 |Embroidery button  |Embroidery  |التطريز  |Broderie  |
 |"What we stitch on" label  |What we stitch on  |ما نطرّز عليه  |Sur quoi on brode  |
 |Strip items  |Tees · Polos · Hoodies · Sweaters · Caps · Towels · Uniforms · Bags  |تيشيرتات · بولو · هوديات · كنزات · قبّعات · مناشف · زيّ موحّد · حقائب  |T-shirts · Polos · Sweats à capuche · Pulls · Casquettes · Serviettes · Uniformes · Sacs  |
@@ -101,7 +104,7 @@ Address, hours and phone are copied exactly from the confirmed facts.
 |Q  |How long does it take?  |كم يستغرق العمل؟  |Quels sont les délais ?  |
 |A  |It depends on the job. We give you a date when you bring it in, or with the quote.  |يعتمد على العمل. نعطيكم موعداً عندما تحضرون القطعة، أو مع السعر.  |Cela dépend du travail. On vous donne une date au dépôt, ou avec le devis.  |
 |Q  |Do you make clothes from scratch?  |هل تفصّلون ملابس جديدة؟  |Confectionnez-vous des vêtements ?  |
-|A  |No, we work on clothes you already own. For embroidery we can supply the item: tees, hoodies, caps, towels and uniforms.  |لا، نعمل على ملابسكم الموجودة. في التطريز يمكننا تأمين القطعة: تيشيرت، هودي، قبّعة، منشفة أو زيّ موحّد.  |Non, on travaille sur vos vêtements. Pour la broderie, on peut fournir l’article : t-shirts, sweats, casquettes, serviettes, uniformes.  |
+|A  |No, we work on clothes you already own. For embroidery and uniforms we supply ready-made items: polos, shirts, aprons, chef jackets, tees, hoodies, caps and towels.  |لا، نعمل على الملابس التي عندكم. للتطريز والزيّ الموحّد نؤمّن قطعاً جاهزة: قمصان بولو وقمصان ومراييل وسترات طهاة وتيشيرتات وهوديات وقبّعات ومناشف.  |Non, nous travaillons sur les vêtements que vous avez déjà. Pour la broderie et les uniformes, nous fournissons des articles prêts à porter : polos, chemises, tabliers, vestes de cuisine, t-shirts, sweats, casquettes et serviettes.  |
 |Q  |Is there a minimum order for embroidery?  |هل هناك حدّ أدنى لطلب التطريز؟  |Y a-t-il un minimum de commande pour la broderie ?  |
 |A  |No. One piece is fine.  |لا. قطعة واحدة تكفي.  |Non. Une seule pièce suffit.  |
 |Q  |How do I pay?  |ما طرق الدفع؟  |Quels moyens de paiement acceptez-vous ?  |
@@ -117,7 +120,7 @@ The form fills a WhatsApp message; the customer still presses Send.
 |Phone bar (sticky)  |WhatsApp · Call · Directions  |واتساب · اتّصل · الاتجاهات  |WhatsApp · Appeler · Itinéraire  |
 |Form heading  |Tell us what you need  |أخبرونا بما تحتاجون  |Dites-nous ce qu’il vous faut  |
 |Form intro  |Fill in what you know. It opens WhatsApp with your message ready to send.  |املأوا ما تعرفونه. يفتح النموذج واتساب ورسالتكم جاهزة للإرسال.  |Renseignez ce que vous savez. Le formulaire ouvre WhatsApp avec votre message prêt à envoyer.  |
-|Field: service  |What is it for? Alterations · Repairs · Embroidery · Uniforms & teams · Something else  |ما الخدمة؟ تعديل · تصليح · تطريز · زيّ موحّد وفرق · شيء آخر  |Quel service souhaitez-vous ? Retouches · Réparation · Broderie · Uniformes et équipes · Autre chose  |
+|Field: service  |What is it for? Alterations · Repairs · Embroidery · Uniforms · Something else  |ما الخدمة؟ تعديل · تصليح · تطريز · الزيّ الموحّد · شيء آخر  |Quel service souhaitez-vous ? Retouches · Réparation · Broderie · Uniformes · Autre chose  |
 |Field: item  |The item (e.g. trousers, hoodie, cap)  |القطعة (مثلاً بنطلون، هودي، قبّعة)  |L’article (ex. pantalon, sweat, casquette)  |
 |Field: what to do  |What should we do? (e.g. shorten 3 cm, name on the chest)  |ما المطلوب؟ (مثلاً تقصير ٣ سم، اسم على الصدر)  |Que faut-il faire ? (ex. raccourcir de 3 cm, un nom sur la poitrine)  |
 |Field: quantity (embroidery)  |How many? · Not sure yet  |كم قطعة؟ · لست متأكّداً بعد  |Combien ? · Je ne sais pas encore  |

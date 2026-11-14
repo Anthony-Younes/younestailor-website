@@ -26,12 +26,13 @@ export function renderHomePilot(lang, page, x) {
 <section class="p-hero" aria-labelledby="hero-h">
 <div class="p-wrap p-hero__grid">
 <div class="p-hero__copy">
+<p class="p-slogan">${esc(h.slogan)}</p>
 <h1 id="hero-h" data-thread-stop="start">${h1}</h1>
 <p class="p-lede">${esc(h.lede)}</p>
 <div class="p-branches">
-<a class="p-branch" href="${url('services', lang)}#tailoring">${icon('scissors')}<span>${esc(h.btnTailoring)}</span>${icon('arrow-right', 'i-arrow')}</a>
+<a class="p-branch" href="${url('uniforms', lang)}">${icon('users-three')}<span>${esc(h.btnUniforms)}</span>${icon('arrow-right', 'i-arrow')}</a>
 <a class="p-branch" href="${url('embroidery', lang)}">${icon('needle')}<span>${esc(h.btnEmbroidery)}</span>${icon('arrow-right', 'i-arrow')}</a>
-<span class="p-note" aria-hidden="true">${arrow('p-note__arrow')}<span class="p-note__text">${esc(h.note)}</span></span>
+<a class="p-branch" href="${url('services', lang)}#tailoring">${icon('scissors')}<span>${esc(h.btnTailoring)}</span>${icon('arrow-right', 'i-arrow')}</a>
 </div>
 <p class="p-hero__hours">${esc(h.hours)}</p>
 </div>
@@ -51,6 +52,39 @@ export function renderHomePilot(lang, page, x) {
 <h2 id="services-h" class="p-h2" data-thread-stop="loop">${esc(h.whatH2)}</h2>
 </div>
 
+<div class="p-panel p-panel--uniforms" id="uniforms">
+<div class="p-wrap p-panel__grid">
+<div class="p-panel__media"><div class="p-swatch p-swatch--soft">${poster(4, lang)}</div></div>
+<div class="p-panel__copy">
+<h3 class="p-h3" data-thread-stop="loop">${esc(h.uTitle)}</h3>
+<p class="p-line">${esc(h.uLine)}</p>
+<ul class="p-strip p-strip--inline">${h.uItems.map((t, i) => `<li><span class="p-strip__dot" style="--dot:${dots[i % dots.length]}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>
+<p class="p-panel__btn"><a class="p-btn p-btn--ink" href="${url('uniforms', lang)}">${esc(h.uBtn)}${icon('arrow-right', 'i-arrow')}</a></p>
+</div>
+</div>
+</div>
+
+<div class="p-panel p-panel--embroidery" id="embroidery">
+${stitch('p-stitch--top')}
+<div class="p-wrap p-panel__grid p-panel__grid--flip">
+<div class="p-panel__copy">
+<h3 class="p-h3" data-thread-stop="loop">${esc(h.eTitle)}</h3>
+<p class="p-line">${esc(h.eLine)}</p>
+<p class="p-panel__btn"><a class="p-btn p-btn--cream" href="${url('embroidery', lang)}">${esc(h.eBtn)}${icon('arrow-right', 'i-arrow')}</a></p>
+<ul class="trio">${h.promises.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+</div>
+<div class="p-panel__media"><div class="p-swatch p-swatch--arch">${poster(3, lang)}</div></div>
+</div>
+<div class="p-wrap">
+<h4 class="p-strip__h" id="stitch-on">${esc(h.stripLabel)}</h4>
+<ul class="p-strip" aria-labelledby="stitch-on">${h.strip.map((t, i) => `<li><span class="p-strip__dot" style="--dot:${dots[i % dots.length]}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>
+</div>
+<div class="p-wrap p-process">
+<h4 class="p-process__h" id="proc-e">${esc(h.eProcH)}</h4>
+${steps(h.eSteps, 'proc-e')}
+</div>
+${stitch('p-stitch--bottom')}
+</div>
 <div class="p-panel p-panel--tailoring" id="tailoring">
 <div class="p-wrap p-panel__grid">
 <div class="p-panel__media"><div class="p-swatch p-swatch--soft">${picture('lockstitch', lang, { sizes: '(min-width: 880px) 34vw, 80vw' })}</div></div>
@@ -67,28 +101,6 @@ ${steps(h.tSteps, 'proc-t')}
 </div>
 </div>
 
-<div class="p-panel p-panel--embroidery" id="embroidery">
-${stitch('p-stitch--top')}
-<div class="p-wrap p-panel__grid p-panel__grid--flip">
-<div class="p-panel__copy">
-<h3 class="p-h3" data-thread-stop="loop">${esc(h.eTitle)}</h3>
-<p class="p-line">${esc(h.eLine)}</p>
-<ul class="p-pills p-pills--on-navy">${pill('embroidery', h.ePills[0])}${pill('uniforms', h.ePills[1])}</ul>
-<p class="p-panel__btn"><a class="p-btn p-btn--cream" href="${url('embroidery', lang)}">${esc(h.eBtn)}${icon('arrow-right', 'i-arrow')}</a></p>
-<ul class="trio">${h.promises.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-</div>
-<div class="p-panel__media"><div class="p-swatch p-swatch--arch">${poster(3, lang)}</div></div>
-</div>
-<div class="p-wrap">
-<h4 class="p-strip__h" id="stitch-on">${esc(h.stripLabel)}</h4>
-<ul class="p-strip" aria-labelledby="stitch-on">${h.strip.map((t, i) => `<li><span class="p-strip__dot" style="--dot:${dots[i % dots.length]}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>
-</div>
-<div class="p-wrap p-process">
-<h4 class="p-process__h" id="proc-e">${esc(h.eProcH)}</h4>
-${steps(h.eSteps, 'proc-e')}
-</div>
-${stitch('p-stitch--bottom')}
-</div>
 </section>
 
 <section class="p-visit" id="visit" aria-labelledby="visit-h">

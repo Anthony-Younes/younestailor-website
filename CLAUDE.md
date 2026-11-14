@@ -33,7 +33,7 @@ If the Claude Design handoff says anything that conflicts with 1–3 — facts, 
 Short, specific, plain, dry. Sentence case. No AI filler: no "not just X, it's Y", "passion", "crafted", "elevate", "journey", "bespoke experience", "seamless", "we pride ourselves". No exclamation marks. Arabic and French must read as native, not translated word by word.
 
 ## Brand (approved values; the handoff may refine exact hex/font files, but never overrides the rules in this file)
-- Dark only. ink `#0B1120`, panel `#121A2C`, navy `#1F305D` / `#1B2B55`, cream `#EEE8DA`, body text `#A9B0BD`, gold `#CDB88A` (hairlines, numerals, small labels).
+- Decision 03 grounds (cream + navy bands). ink `#0B1120`, panel `#121A2C`, navy `#1F305D` / `#1B2B55`, cream `#EEE8DA`, body text `#A9B0BD`, gold `#CDB88A` (hairlines, numerals, small labels).
 - Every text colour pair ≥ 4.5:1 (large text ≥ 3:1). The mockup's dim grey labels fail on navy: lighten them.
 - Fonts self-hosted WOFF2 in `/assets/fonts/` (CSP is `font-src 'self'`): Playfair Display Italic (real headlines only) + Medium (card titles); Montserrat 400/600 (body ≥16px, never thin cuts for text); Arabic: Amiri (headings) + IBM Plex Sans Arabic (body). No uppercase or letter-spacing on Arabic. Load only what each language needs.
 - Icons: Phosphor, thin outline; controls always have text labels.
